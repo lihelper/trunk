@@ -44,83 +44,108 @@
 		</div>
 	<!-- header end-->
 	
+	<!--主体部分-->
 	<div  class="main">
+	    <!--标签-->
 		<ul class="nav nav-tabs nav-pills" >
 		  <li class="active">
 			<a href="#1" data-toggle="tab"><i class="icon-align-right"></i>系统状态</a>
 		  </li>
-		  <li><a href="#2" data-toggle="tab"> <i class="icon-cog"></i>系统操作</a></li>
+		  <li class="dropdown" id="menutest1">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#menutest1" >
+			  <i class="icon-cog"></i>系统操作</a
+			  <b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+			  <li><a href="#21" data-toggle="tab">基本操作</a></li>
+			  <li><a href="#22" data-toggle="tab">文件操作</a></li>
+			</ul>
+		  </li>
 		  <li><a href="#3" data-toggle="tab"><i class="icon-eye-open"></i>监控报警</a></li>
 		  <li><a href="#4" data-toggle="tab"><i class="icon-search"></i>性能分析</a></li>
 		  <li><a href="#5" data-toggle="tab"><i class="icon-plane"></i>高级功能</a></li>
 		  <li><a href="#6" data-toggle="tab"><i class="icon-user"></i>交流社区</a></li>
 		</ul>
+		<!--标签结束-->
+		
 		 <div class="tab-content">
+		    <!--系统状态层-->
 			<div class="tab-pane active" id="1">
-			    <div class="accordion" id="accordion2">
-            <div class="accordion-group-self">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                  基本信息
-                </a>
+			  <div class="accordion" id="accordion2">
+				<div class="accordion-group-self">
+					  <div class="accordion-heading">
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+						  基本信息
+						</a>
+					  </div>
+					  <div id="collapseOne" class="accordion-body collapse in">
+						<div class="accordion-inner">
+							<p>
+								当前IP：
+							 </p>
+							 <p>
+								发行版本：
+							</p>
+							<p>
+								当前IP：
+							 </p>
+							 <p>
+								发行版本：
+							</p>
+							<p>
+								当前IP：
+							 </p>
+							 <p>
+								发行版本：
+							</p>					
+						</div>
+					  </div>
+				</div>
+				<div class="accordion-group-self">
+					  <div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+							  运行状态
+							</a>
+					  </div>
+					  <div id="collapseTwo" class="accordion-body collapse in">
+						<div class="accordion-inner">
+							<p>
+								当前IP：
+							 </p>
+							 <p>
+								发行版本：
+							</p>
+							<p>
+								当前IP：
+							 </p>
+							 <p>
+								发行版本：
+							</p>
+							<p>
+								当前IP：
+							 </p>
+							 <p>
+								发行版本：
+							</p>
+						</div>
+					  </div>
+				</div>
               </div>
-              <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-		            <p>
-						当前IP：
-					 </p>
-					 <p>
-						发行版本：
-					</p>
-		            <p>
-						当前IP：
-					 </p>
-					 <p>
-						发行版本：
-					</p>
-		            <p>
-						当前IP：
-					 </p>
-					 <p>
-						发行版本：
-					</p>					
-                </div>
-              </div>
-            </div>
-            <div class="accordion-group-self">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                  运行状态
-                </a>
-              </div>
-              <div id="collapseTwo" class="accordion-body collapse in">
-                <div class="accordion-inner">
-		            <p>
-						当前IP：
-					 </p>
-					 <p>
-						发行版本：
-					</p>
-		            <p>
-						当前IP：
-					 </p>
-					 <p>
-						发行版本：
-					</p>
-		            <p>
-						当前IP：
-					 </p>
-					 <p>
-						发行版本：
-					</p>
-                </div>
-              </div>
-            </div>
-          </div>
+		     </div>
+			 <!--系统状态层结束-->
+			 
+			 <!--基本操作层-->
+			<div class="tab-pane" id="21">
+			  <p>基本操作.</p>
 			</div>
-			<div class="tab-pane" id="2">
-			  <p>这里是章节 2.</p>
+			 <!--基本操作层结束-->
+			 
+			 <!--文件操作层-->
+			 <div class="tab-pane" id="22">
+			  <p>文件操作s.</p>
 			</div>
+			<!--文件操作层结束-->
+			
 			<div class="tab-pane"  id="3">
 			  <p>这里是章节 1.</p>
 			</div>
