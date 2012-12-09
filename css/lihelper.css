@@ -1,0 +1,34 @@
+.lhfooter {
+margin-left:10%;
+margin-right:10%;
+text-align:center;
+}
+
+.form-horizontal-small .control-label {
+	width: 100px;
+}
+
+.form-box{width:300px;border:2px solid #c7d3db;background:#f3f8fb;margin:0 auto;padding:40px 80px;text-align:left;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px;margin-top:5%;}
+
+.forgetpwd{
+ margin-top:5%;
+ margin-left:10%;
+}
+
+.login-main
+{
+border: 2px solid #C7D3DB;
+background:#F3F8FB;
+
+padding: 10px 0px;
+margin-left:30%;
+margin-right:35%;
+
+margin-bottom:10%;
+margin-top:10%;
+/*
+margin-left:50%;
+margin-right:50%;
+margin-top:50%;
+*/
+}
