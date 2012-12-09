@@ -4,6 +4,34 @@ margin-right:10%;
 text-align:center;
 }
 
+  .index1 {
+  /*set first page image */
+   width: 80%;
+   margin-top:5%;
+   margin-right:10%;
+   margin-left:10%;
+  }
+  .container_self {
+    width : 100%;
+  }
+  .header-width {
+    width : 92%;
+  }
+  
+  .navbar .brand_self {
+  display: block;
+  float: left;
+  padding: 10px 120px 10px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #777777;
+  text-shadow: 0 1px 0 #ffffff;
+}
+
+ .navbar .nav.pull-right-self {
+  margin-right: 11%;
+}
+
 .form-horizontal-small .control-label {
 	width: 100px;
 }

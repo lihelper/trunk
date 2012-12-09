@@ -11,6 +11,7 @@
 	-->
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="css/lihelper.css">
 	<!--[if lt IE 9]>
 	<script src="lib/html5shim/html5shiv-printshiv.min.js"></script>
 	<![endif]-->
@@ -19,30 +20,37 @@
 	<![endif]-->
 </head>
 <body>
+<div class="container_self">
      <!-- header start -->
-	 <div class="navbar navbar-fixed-top">
-		  <div class="navbar-inner">
-			<div class="container-fluid">
-			  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			  </a>
-			 <a href="#"  class="brand" >Lihelper中国第一辅助平台</a>
-			 <div class="nav-collapse">
-			 <p class="navbar-text pull-right-self"><a href="#">我的Lihelper</a>|<a href="#">免费注册</a></p>
-			  </div><!--/.nav-collapse -->
-			</div>
+	 <div class="navbar  navbar-fixed-top">
+	      
+		  <div class="navbar-inner"> 
+				<div class="header-width">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">	
+						<span class="icon-bar"></span>							
+						<span class="icon-bar"></span>							
+						<span class="icon-bar"></span>						
+					</button>
+					<a class="brand_self" href="index.html">Lihelper 中国第一Linux辅助平台</a>
+					<div class="nav-collapse collapse">							
+						<ul class="nav pull-right">							
+							<li ng-class="'active' | ifmatch:[currentItem,'setting(..*)?']"><a href="#/setting">我的Lihelper</a></li>			
+							<li class="divider-vertical"></li>								
+							<li ng-class="'active' | ifmatch:[currentItem,'logout']"><a href="register.html">注册</a></li>	
+							<li class="divider-vertical"></li>	
+						</ul>						
+					</div>
+				</div>
 		  </div>
 		</div>
 	<!-- header end-->
 	
 	<!-- container start -->
-	<div class="span20" >
+	<div class="index1" >
           <div id="myCarousel" class="carousel slide">
             <div class="carousel-inner" > 
               <div class="item active" >
-                <img src="images/1.jpg" >
+                <img src="images/test5.png" >
                 <div class="carousel-caption">
                   <h4>图片一</h4>
                   <p>
@@ -51,7 +59,7 @@
                 </div>
               </div>
               <div class="item">
-                <img src="images/1.jpg" alt=""  height="50">
+                <img src="images/test4.png" alt=""  height="50">
                 <div class="carousel-caption">
                   <h4>图片2</h4>
                   <p>
@@ -59,7 +67,7 @@
                 </div>
               </div>
               <div class="item">
-                <img src="images/3.jpg" alt=""  height="50">
+                <img src="images/test3.png" alt=""  height="50">
                 <div class="carousel-caption">
                   <h4>图片三</h4>
                   <p>
@@ -89,7 +97,7 @@
 		</div>
     </div>
 	<!-- footer end -->
-
+</div>
 
 <!--[if lte IE 6]>
 <script src="lib/ie6warning/warning.js"></script>
