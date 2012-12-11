@@ -146,12 +146,51 @@
 				  <tr>
 					<td>用户管理</td>
 					<td class="muted">管理系统用户和用户密码</td>
-					<td><button class="btn btn-small btn-primary">进入管理页面</button></td>
+					<!-- 用户管理页面开始 -->
+				<div id="userControl" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>用户管理</h3>
+            			</div>
+            			<div class="modal-body">
+						  <p>
+							 文字说明1
+						  </p>
+						  <hr>
+							<p>文字说明2</p>
+	        			</div>
+            
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          		</div>
+					<td><a data-toggle="modal" href="#userControl" class="btn btn-small btn-primary">进入管理页面</a></td>
+				<!-- 用户管理页面结束 -->
 				   </tr>
 				  <tr>
-					<td>重启服务器</td>
+					<td>服务器操作</td>
 					<td class="muted">重启您的服务器</td>
-					<td><button class="btn btn-small btn-primary">进入管理页面</button></td>
+					<!-- 用户管理页面开始 -->
+				<div id="machineControl" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal"></a>
+							<h3>服务器重启</h3>
+            			</div>
+            			<div class="modal-body">
+						  <div class="alert">
+  								<a class="close" data-dismiss="alert">×</a>
+								  <strong>警告！</strong>服务器重启会导致服务暂停，您真的需要重启服务器吗？
+							</div>
+						  <a href="#" class="btn btn-small btn-primary">确认重启</a>
+	        			</div>
+            
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+            		</div>
+          		</div>
+					<td><a data-toggle="modal" href="#machineControl" class="btn btn-small btn-primary">进入管理页面</a></td>
+				<!-- 用户管理页面结束 -->
 				   </tr>
 				</tbody>
 				</table>
