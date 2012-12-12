@@ -245,7 +245,7 @@
 				  <tr>
 					<td>内存阈值报警</td>
 					<td class="muted">内存使用状态报警</td>
-					<div id="cpuAlarm" class="modal hide fade" style="display: none; ">
+					<div id="memAlarm" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
               				<a class="close" data-dismiss="modal">×</a>
               				<h3>内存阈值设定</h3>
@@ -267,12 +267,12 @@
               			<a href="#" class="btn btn-primary">保存更改</a>
             		</div>
           			</div>
-					<td><a data-toggle="modal" href="#cpuAlarm" class="btn btn-small btn-primary">开始设置</a></td>
+					<td><a data-toggle="modal" href="#memAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				  <tr>
 					<td>磁盘阈值报警</td>
 					<td class="muted">磁盘空间使用报警</td>
-					<div id="cpuAlarm" class="modal hide fade" style="display: none; ">
+					<div id="diskAlarm" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
               				<a class="close" data-dismiss="modal">×</a>
               				<h3>磁盘阈值设定</h3>
@@ -294,17 +294,61 @@
               			<a href="#" class="btn btn-primary">保存更改</a>
             		</div>
           			</div>
-					<td><a data-toggle="modal" href="#cpuAlarm" class="btn btn-small btn-primary">开始设置</a></td>
+					<td><a data-toggle="modal" href="#diskAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				  <tr>
 					<td>IO阈值报警</td>
 					<td class="muted">IO负载状态报警</td>
-					<td><button class="btn btn-small btn-primary">进入设置</button></td>
+					<div id="ioAlarm" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>磁盘阈值设定</h3>
+            			</div>
+						<div class="modal-body">
+						  <p>
+							 设置报警范围：&nbsp;&nbsp;当磁盘高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+						  </p>
+						  <hr>
+						  设置报警选项：&nbsp;&nbsp;
+						  <div class="btn-group" data-toggle="buttons-checkbox">
+						  <button class="btn">开启邮箱报警</button>
+						  <button class="btn">开启短信报警</button>
+						  <!--这里少了一个div 但是加上会变形-->
+						</div>
+	        		</div>
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#ioAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				   <tr>
 					<td>流量阈值报警</td>
 					<td class="muted">流量状态报警</td>
-					<td><button class="btn btn-small btn-primary">进入设置</button></td>
+					<div id="flowAlarm" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>磁盘阈值设定</h3>
+            			</div>
+						<div class="modal-body">
+						  <p>
+							 设置报警范围：&nbsp;&nbsp;当磁盘高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+						  </p>
+						  <hr>
+						  设置报警选项：&nbsp;&nbsp;
+						  <div class="btn-group" data-toggle="buttons-checkbox">
+						  <button class="btn">开启邮箱报警</button>
+						  <button class="btn">开启短信报警</button>
+						  <!--这里少了一个div 但是加上会变形-->
+						</div>
+	        		</div>
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#flowAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				   </tbody>
 				   
