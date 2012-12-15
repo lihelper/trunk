@@ -1,6 +1,6 @@
-html body {
+html body table {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.4em;
   color: #333333;
   background: url('../images/base-noise.jpeg?141b58b60994') #f5f5f5;
