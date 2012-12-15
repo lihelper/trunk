@@ -222,14 +222,21 @@
 			<!-- 监控报警开始-->
 			<div class="tab-pane"  id="monitor">
 			  <div class="span8">
-			  
-			   	 <h4>监控报警</h4>
+			   <h4>监控报警</h4>
 				 <hr>
+				 <!--控制伸缩-->
+				 <div class="accordion" id="monitor1">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor1" href="#collapse-monitor">
+							  基础选项
+							</a>
+						  </div>
+						  <div id="collapse-monitor" class="accordion-body collapse in">
+							<div class="accordion-inner">
+				 <!--控制伸缩结束-->
 				<table class="table table-striped">
 				<thead>
-				  <tr>
-					<th>基础选项</th>
-				  </tr>
 				</thead>
 				<tbody>
 				  <tr>
@@ -368,13 +375,26 @@
 					<td><a data-toggle="modal" href="#flowAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				   </tbody>
+				</table>
+				</div>
+				</div>
+				</div>
+				</div>
+				<!--基础监控层结束-->
 
-				 
+				 <!--容器伸缩控制-->
+				 <div class="accordion" id="monitor2">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor2" href="#collapse-container">
+							  容器选项
+							</a>
+						  </div>
+						  <div id="collapse-container" class="accordion-body collapse in">
+							<div class="accordion-inner">
+				 <!--控制伸缩结束-->
 				  <table class="table table-striped">
 				  <thead>
-				  	<tr>
-						<th>容器选项</th>
-				  	</tr>
 				</thead>
 				     <tbody>
 				   <tr>
@@ -422,15 +442,26 @@
 				   </tr>
 				   </tbody>
 				   </table>
+				   </div>
+				   </div>
+				   </div>
+				   </div>
+				   <!--容器监控结束-->
 				   
 				   
-				   
-				   
+				  <!--自定义控制伸缩-->
+				 <div class="accordion" id="monitor3">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor3" href="#collapse-self">
+							  自定义监控
+							</a>
+						  </div>
+						  <div id="collapse-self" class="accordion-body collapse in">
+							<div class="accordion-inner">
+				 <!--控制伸缩结束--> 
 				  <table class="table table-striped">  
 				<thead>
-				  	<tr>
-						<th>自定义选项</th>
-				  	</tr>
 				</thead>
 				   <tbody>
 				    <tr>
@@ -438,7 +469,22 @@
 					</tr>
 				   </tbody>
 				</table> 
-				   
+				</div>
+				</div>
+				</div>
+				</div>
+				 
+				 <!--报警信息设置伸缩-->
+				 <div class="accordion" id="monitor4">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor4" href="#collapse-setting">
+							  报警信息设置
+							</a>
+						  </div>
+						  <div id="collapse-setting" class="accordion-body collapse in">
+							<div class="accordion-inner">
+				 <!--控制伸缩结束-->   
 				<table class="table table-striped">  
 				<thead>
 				  	<tr>
@@ -466,6 +512,11 @@
 				    </tr>
 				   </tbody>
 				</table>
+				</div>
+				</div>
+				</div>
+				</div>
+				<!--报警信息设置结束-->
 				
 				</table>
 		    	</div>
