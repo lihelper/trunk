@@ -1,0 +1,554 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>medicinal</title> 
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css">
+	<link rel="stylesheet" href="css/example.css">	
+</head>
+<body class="app">
+
+<div class="topbar">
+	<div class="container"> 
+		<h3 class="logo"><a href="">medicinal</a></h3>
+		<div class="nav-user">
+			<ul class="nav nav-pills">			
+				<li><a href=""><i class="icon-user"></i>交流社区</a></li>
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">我的medicinal <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="">修改密码</a></li>
+						<li class="divider"></li>
+						<li><a href="">安全退出</a></li> 
+					</ul>
+				</li>
+			</ul>
+		</div>	
+	
+	</div> 
+</div>
+
+<!--
+<div id="body" class="container">
+-->
+<div class="container">
+			<div class="row">
+			    <!-- 左边的菜单项 -->
+				<div id="sidebar" >
+					<div class="span3-lihelper">
+						  <div class="well-lihelper sidebar-nav">
+							<ul class="nav nav-list">
+							  <li class="nav-header"><i class="icon-align-right"></i>药品状态</li>
+							  <li class="active"><a href="#base-info" data-toggle="tab">基础信息</a></li>
+							  <li><a href="#base-info" data-toggle="tab">运行状态</a>
+							  </li><li class="divider"></li>
+							  <li class="nav-header"><i class="icon-cog"></i>药品操作</li>
+							  <li><a href="#sys-operat成本n" data-toggle="tab">基本操作</a></li>
+							  <li><a href="#file-operat成本n" data-toggle="tab">运输操作</a></li>
+							  <li class="divider"></li>
+							  <li class="nav-header"><i class="icon-eye-open"></i>药品监控报警</li>
+							  <li><a href="#monitor" data-toggle="tab">基础报警项</a></li>
+							  <li><a href="#monitor" data-toggle="tab">自定义报警项</a></li>
+							  <li><a href="#monitor" data-toggle="tab">设置报警信息</a></li>
+							  <li class="divider"></li>
+							  <li class="nav-header"><i class="icon-search"></i>性能分析</li>
+							  <li><a href="#perf" data-toggle="tab">运输性能分析</a></li>
+							  <li class="divider"></li>						  
+							  <li class="nav-header"><i class="icon-plane"></i>高级功能</li>
+							  <li><a href="#user" data-toggle="tab">自定义脚本</a></li>						  
+							</ul>
+						  </div><!--/.well -->
+					</div>
+				</div>
+				
+				<!-- 左边的菜单项结束-->
+				
+				<!-- 右边的主体 -->
+				<div class="main span9-lihelper">
+				 <div class="tab-content">
+		    <!--药品状态层-->
+			<div class="tab-pane active" id="base-info">
+			<div class="span8">
+			<h4>药品状态</h4>
+			  </hr>
+				  <div class="accord成本n" id="accord成本n2">
+					<div class="accord成本n-group-self">
+						  <div class="accord成本n-heading alert alert-info">
+						  
+							<a class="accord成本n-toggle" data-toggle="collapse" data-parent="#accord成本n2" href="#collapseOne">
+							  状态
+							</a>
+							
+						  </div>
+						  <div id="collapseOne" class="accord成本n-body collapse in">
+							<div class="accord成本n-inner">
+								<p>
+									状态
+								</p>	
+								<p>
+									状态
+								</p>
+								<p>
+									状态
+								</p>
+								<p>
+									状态
+								</p>								
+							</div>
+						  </div>
+					</div>
+					<div class="accord成本n-group-self">
+						  <div class="accord成本n-heading alert alert-info">
+								<a class="accord成本n-toggle" data-toggle="collapse" data-parent="#accord成本n2" href="#collapseTwo">
+								  状态
+								</a>
+						  </div>
+						  <div id="collapseTwo" class="accord成本n-body collapse in">
+							<div class="accord成本n-inner">
+								<p>
+									状态
+								</p>
+																<p>
+									状态
+								</p>
+																<p>
+									状态
+								</p>
+																<p>
+									状态
+								</p>
+																<p>
+									状态
+								</p>
+																<p>
+									状态
+								</p>
+																<p>
+									状态
+								</p>
+							</div>
+						  </div>
+					</div>
+				  </div>
+				  </div>
+				 </div>
+				 <!--药品状态层结束-->
+				 
+				  <!--基本操作层-->
+			 <div class="tab-pane" id="sys-operat成本n">
+			  <div class="span8">
+			  <h4>药品操作</h4>
+			  </hr>
+				<table class="table table-striped">
+				<thead>
+				  <tr>
+					<th>通用设置</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td>用户管理</td>
+					<td class="muted">管理药品用户和用户密码</td>
+					<!-- 用户管理页面开始 -->
+					<div id="userControl" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>用户管理</h3>
+            			</div>
+            			<div class="modal-body">
+						  <p>
+							 文字说明1
+						  </p>
+						  <hr>
+							<p>文字说明2</p>
+	        			</div>
+            
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#userControl" class="btn btn-small btn-primary">进入管理页面</a></td>
+					<!-- 用户管理页面结束 -->
+				   </tr>
+				  <tr>
+					<td>操作管理</td>
+					<td class="muted">操作管理</td>
+					<!-- 用户管理页面开始 -->
+					<div id="machineControl" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal"></a>
+							<h3>操作管理</h3>
+            			</div>
+            			<div class="modal-body">
+						  <div class="alert">
+  								<a class="close" data-dismiss="alert">×</a>
+								  <strong>警告！</strong>操作管理，您真的需要操作管理吗？
+							</div>
+						  <a href="#" class="btn btn-small btn-danger btn-primary">确认操作</a>
+	        			</div>
+            
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">退出</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#machineControl" class="btn btn-small btn-primary">进入管理页面</a></td>
+					<!-- 用户管理页面结束 -->
+				   </tr>
+				</tbody>
+				</table>
+		    	</div>
+			 </div>
+			 <!--基本操作层结束-->
+			 
+			 <!--保质期操作层-->
+			 <div class="tab-pane" id="file-operat成本n">
+			 <div class="span8">
+			  <h4>保质期操作</h4>
+			  </hr>
+			  <span class="badge badge-success">即将上线,敬请关注</span>
+			  </div>
+			 </div>
+			 
+			<!--文件操作层结束-->
+			
+			<!-- 药品监控报警开始-->
+			<div class="tab-pane"  id="monitor">
+			  <div class="span8">
+			   <h4>药品监控报警</h4>
+				 <hr>
+				 <!--控制伸缩-->
+				 <div class="accord成本n" id="monitor1">
+					<div class="accord成本n-group-self">
+						  <div class="accord成本n-heading alert alert-info">
+						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor1" href="#collapse-monitor">
+							  基础选项
+							</a>
+						  </div>
+						  <div id="collapse-monitor" class="accord成本n-body collapse in">
+							<div class="accord成本n-inner">
+				 <!--控制伸缩结束-->
+				<table class="table table-striped">
+				<thead>
+				</thead>
+				<tbody>
+				  <tr>
+					<td>运输阈值报警</td>
+					<td class="muted">运输使用状态的报警</td>
+					<div id="运输Alarm" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>运输阈值设定</h3>
+            			</div>
+						<div class="modal-body">
+						  <p>
+							 设置报警范围：&nbsp;&nbsp;当运输高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+						  </p>
+						  <hr>
+						  设置报警选项：&nbsp;&nbsp;
+						  <div class="btn-group" data-toggle="buttons-checkbox">
+						  <button class="btn">开启邮箱报警</button>
+						  <button class="btn">开启短信报警</button>
+						  <!--这里少了一个div 但是加上会变形-->
+						</div>
+	        		</div>
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#运输Alarm" class="btn btn-small btn-primary">开始设置</a></td>
+				   </tr>
+				  <tr>
+					<td>价格阈值报警</td>
+					<td class="muted">价格使用状态报警</td>
+					<div id="memAlarm" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>价格阈值设定</h3>
+            			</div>
+						<div class="modal-body">
+						  <p>
+							 设置报警范围：&nbsp;&nbsp;当价格高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+						  </p>
+						  <hr>
+						  设置报警选项：&nbsp;&nbsp;
+						  <div class="btn-group" data-toggle="buttons-checkbox">
+						  <button class="btn">开启邮箱报警</button>
+						  <button class="btn">开启短信报警</button>
+						  <!--这里少了一个div 但是加上会变形-->
+						</div>
+	        		</div>
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#memAlarm" class="btn btn-small btn-primary">开始设置</a></td>
+				   </tr>
+				  <tr>
+					<td>风险阈值报警</td>
+					<td class="muted">风险使用报警</td>
+					<div id="diskAlarm" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>风险阈值设定</h3>
+            			</div>
+						<div class="modal-body">
+						  <p>
+							 设置报警范围：&nbsp;&nbsp;当风险高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+						  </p>
+						  <hr>
+						  设置报警选项：&nbsp;&nbsp;
+						  <div class="btn-group" data-toggle="buttons-checkbox">
+						  <button class="btn">开启邮箱报警</button>
+						  <button class="btn">开启短信报警</button>
+						  <!--这里少了一个div 但是加上会变形-->
+						</div>
+	        		</div>
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#diskAlarm" class="btn btn-small btn-primary">开始设置</a></td>
+				   </tr>
+				  <tr>
+					<td>成本阈值报警</td>
+					<td class="muted">成本负载状态报警</td>
+					<div id="成本Alarm" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>风险阈值设定</h3>
+            			</div>
+						<div class="modal-body">
+						  <p>
+							 设置报警范围：&nbsp;&nbsp;当风险高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+						  </p>
+						  <hr>
+						  设置报警选项：&nbsp;&nbsp;
+						  <div class="btn-group" data-toggle="buttons-checkbox">
+						  <button class="btn">开启邮箱报警</button>
+						  <button class="btn">开启短信报警</button>
+						  <!--这里少了一个div 但是加上会变形-->
+						</div>
+	        		</div>
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#成本Alarm" class="btn btn-small btn-primary">开始设置</a></td>
+				   </tr>
+				   <tr>
+					<td>流量阈值报警</td>
+					<td class="muted">流量状态报警</td>
+					<div id="flowAlarm" class="modal hide fade" style="display: none; ">
+            			<div class="modal-header">
+              				<a class="close" data-dismiss="modal">×</a>
+              				<h3>风险阈值设定</h3>
+            			</div>
+						<div class="modal-body">
+						  <p>
+							 设置报警范围：&nbsp;&nbsp;当风险高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+						  </p>
+						  <hr>
+						  设置报警选项：&nbsp;&nbsp;
+						  <div class="btn-group" data-toggle="buttons-checkbox">
+						  <button class="btn">开启邮箱报警</button>
+						  <button class="btn">开启短信报警</button>
+						  <!--这里少了一个div 但是加上会变形-->
+						</div>
+	        		</div>
+					<div class="modal-footer">
+              			<a href="#" class="btn" data-dismiss="modal">关闭</a>
+              			<a href="#" class="btn btn-primary">保存更改</a>
+            		</div>
+          			</div>
+					<td><a data-toggle="modal" href="#flowAlarm" class="btn btn-small btn-primary">开始设置</a></td>
+				   </tr>
+				   </tbody>
+				</table>
+				</div>
+				</div>
+				</div>
+				</div>
+				<!--基础药品监控层结束-->
+
+				 <!--容器伸缩控制-->
+				 <div class="accord成本n" id="monitor2">
+					<div class="accord成本n-group-self">
+						  <div class="accord成本n-heading alert alert-info">
+						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor2" href="#collapse-container">
+							  容器选项
+							</a>
+						  </div>
+						  <div id="collapse-container" class="accord成本n-body collapse in">
+							<div class="accord成本n-inner">
+				 <!--控制伸缩结束-->
+				  <table class="table table-striped">
+				  <thead>
+				</thead>
+				     <tbody>
+				   <tr>
+					<td>1报警</td>
+					<td class="muted">1服务是否正常</td>
+					<td>
+						<div class="btn-group" data-toggle="buttons-rad成本">
+					  	<button class="btn btn-small">开启</button>
+					  	<button class="btn btn-small">关闭</button>
+						</div>
+					</td>
+				   </tr>
+				   
+				   <tr>
+					<td>2报警</td>
+					<td class="muted">2服务是否正常</td>
+					<td>
+						<div class="btn-group" data-toggle="buttons-rad成本">
+					  	<button class="btn btn-small">开启</button>
+					  	<button class="btn btn-small">关闭</button>
+						</div>
+					</td>
+				   </tr>
+				   
+				   <tr>
+					<td>3报警</td>
+					<td class="muted">3服务是否正常</td>
+					<td>
+						<div class="btn-group" data-toggle="buttons-rad成本">
+					  	<button class="btn btn-small">开启</button>
+					  	<button class="btn btn-small">关闭</button>
+						</div>
+					</td>
+				   </tr>
+				   
+				   <tr>
+					<td>4报警</td>
+					<td class="muted">4服务是否正常</td>
+					<td>
+						<div class="btn-group" data-toggle="buttons-rad成本">
+					  	<button class="btn btn-small">开启</button>
+					  	<button class="btn btn-small">关闭</button>
+						</div>
+					</td>
+				   </tr>
+				   </tbody>
+				   </table>
+				   </div>
+				   </div>
+				   </div>
+				   </div>
+				   <!--容器药品监控结束-->
+				   
+				   
+				  <!--自定义控制伸缩-->
+				 <div class="accord成本n" id="monitor3">
+					<div class="accord成本n-group-self">
+						  <div class="accord成本n-heading alert alert-info">
+						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor3" href="#collapse-self">
+							  自定义药品监控
+							</a>
+						  </div>
+						  <div id="collapse-self" class="accord成本n-body collapse in">
+							<div class="accord成本n-inner">
+				 <!--控制伸缩结束--> 
+				  <table class="table table-striped">  
+				<thead>
+				</thead>
+				   <tbody>
+				    <tr>
+					 <td><span class="badge badge-success">即将上线,敬请关注</span></td>
+					</tr>
+				   </tbody>
+				</table> 
+				</div>
+				</div>
+				</div>
+				</div>
+				 
+				 <!--报警信息设置伸缩-->
+				 <div class="accord成本n" id="monitor4">
+					<div class="accord成本n-group-self">
+						  <div class="accord成本n-heading alert alert-info">
+						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor4" href="#collapse-setting">
+							  报警信息设置
+							</a>
+						  </div>
+						  <div id="collapse-setting" class="accord成本n-body collapse in">
+							<div class="accord成本n-inner">
+				 <!--控制伸缩结束-->   
+				<table class="table table-striped">  
+				<thead>
+				  	<tr>
+						<th>添加报警信息</th>
+				  	</tr>
+				</thead>
+				   <tbody>
+				    <tr>
+					<td>邮箱账户</td>
+					<td>
+					<div class="controls">
+              			<input class="disabled" id="disabledInput"  type="text" placeholder="just2test@163.com" disabled="">
+            		</div>
+					</td>
+					<td><button class="btn btn-small btn-primary">账户修改</button></td>
+				    </tr>
+					<tr>
+					<td>短信号码</td>
+					<td>
+					<div class="controls">
+              			<input class="disabled" id="disabledInput" type="text" placeholder="15998751542" disabled="">
+            		</div>
+					</td>
+					<td><button class="btn btn-small btn-primary">号码修改</button></td>
+				    </tr>
+				   </tbody>
+				</table>
+				</div>
+				</div>
+				</div>
+				</div>
+				<!--报警信息设置结束-->
+				
+				</table>
+		    	</div>
+			</div>
+			<!--药品监控报警结束-->
+			
+			<!-- 父管理 -->
+			<div class="tab-pane" id="perf">
+			<div class="span8">
+			<h4>父管理</h4>
+			  </hr>
+			  <span class="badge badge-success">即将上线,敬请关注</span>
+			 </div>
+			</div>
+			<!--父管理-->
+			
+			<!--高级功能开始-->
+			<div class="tab-pane" id="user">
+			<div class="span8">
+			<h4>高级功能</h4>
+			  </hr>
+			  <p>xxxxxxxxxxxxxx</p>
+			  </div>
+			</div>
+			<!--高级功能结束--> 
+				 
+			</div>
+				
+					<div class="footer">
+						<a href="/about/">About</a> |
+						<a href="">Blog</a>|
+						<a href="" target="_blank">@xxxxx</a>
+					</div>
+				</div>
+				<!-- 右边的主体结束-->
+			</div>
+</div>
+
+<script src="lib/jquery/jquery-1.8.2.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
