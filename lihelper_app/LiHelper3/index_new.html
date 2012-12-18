@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>medicinal</title> 
+    <title>服务器管理之旅</title> 
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css">
 	<link rel="stylesheet" href="css/lihelper.css">	
@@ -10,12 +10,12 @@
 
 <div class="topbar">
 	<div class="container"> 
-		<h3 class="logo"><a href="http://www.lihelper.com">medicinal</a></h3>
+		<h3 class="logo"><a href="http://www.lihelper.com">Lihelper</a></h3>
 		<div class="nav-user">
 			<ul class="nav nav-pills">			
 				<li><a href=""><i class="icon-user"></i>交流社区</a></li>
 				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">我的medicinal <b class="caret"></b></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">我的Lihelper <b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><a href="">修改密码</a></li>
 						<li class="divider"></li>
@@ -38,24 +38,24 @@
 					<div class="span3-lihelper">
 						  <div class="well-lihelper sidebar-nav">
 							<ul class="nav nav-list">
-							  <li class="nav-header"><i class="icon-align-right"></i>药品状态</li>
+							  <li class="nav-header"><i class="icon-align-right"></i>系统状态</li>
 							  <li class="active"><a href="#base-info" data-toggle="tab">基础信息</a></li>
 							  <li><a href="#base-info" data-toggle="tab">运行状态</a>
 							  </li><li class="divider"></li>
-							  <li class="nav-header"><i class="icon-cog"></i>药品操作</li>
-							  <li><a href="#sys-operat成本n" data-toggle="tab">基本操作</a></li>
-							  <li><a href="#file-operat成本n" data-toggle="tab">运输操作</a></li>
+							  <li class="nav-header"><i class="icon-cog"></i>系统操作</li>
+							  <li><a href="#sys-operation" data-toggle="tab">基本操作</a></li>
+							  <li><a href="#file-operation" data-toggle="tab">文件操作</a></li>
 							  <li class="divider"></li>
-							  <li class="nav-header"><i class="icon-eye-open"></i>药品监控报警</li>
+							  <li class="nav-header"><i class="icon-eye-open"></i>监控报警</li>
 							  <li><a href="#monitor" data-toggle="tab">基础报警项</a></li>
 							  <li><a href="#monitor" data-toggle="tab">自定义报警项</a></li>
 							  <li><a href="#monitor" data-toggle="tab">设置报警信息</a></li>
 							  <li class="divider"></li>
 							  <li class="nav-header"><i class="icon-search"></i>性能分析</li>
-							  <li><a href="#perf" data-toggle="tab">运输性能分析</a></li>
+							  <li><a href="#perf" data-toggle="tab">CPU性能分析</a></li>
 							  <!--
 							  <li><a href="#perf" data-toggle="tab">I/O性能分析</a></li>
-							  <li><a href="#perf" data-toggle="tab">风险性能分析</a></li>
+							  <li><a href="#perf" data-toggle="tab">磁盘性能分析</a></li>
 							  <li><a href="#perf" data-toggle="tab">网络性能分析</a></li>
 							  -->
 							  <li class="divider"></li>						  
@@ -71,36 +71,66 @@
 				<!-- 右边的主体 -->
 				<div class="main span9-lihelper">
 				 <div class="tab-content">
-		    <!--药品状态层-->
+		    <!--系统状态层-->
 			<div class="tab-pane active" id="base-info">
 			<div class="span8">
-			<h4>药品状态</h4>
+			<h4>系统状态</h4>
 			  </hr>
-				  <div class="accord成本n" id="accord成本n2">
-					<div class="accord成本n-group-self">
-						  <div class="accord成本n-heading alert alert-info">
+				  <div class="accordion" id="accordion2">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading alert alert-info">
 						  
-							<a class="accord成本n-toggle" data-toggle="collapse" data-parent="#accord成本n2" href="#collapseOne">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
 							  基本信息
 							</a>
 						  </div>
-						  <div id="collapseOne" class="accord成本n-body collapse in">
-							<div class="accord成本n-inner">
-								
+						  <div id="collapseOne" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<p>
+									当前IP：
+								 </p>
+								 <p>
+									发行版本：
+								</p>
+								<p>
+									当前IP：
+								 </p>
+								 <p>
+									发行版本：
+								</p>
+								<p>
+									当前IP：
+								 </p>
+								 <p>
 									发行版本：
 								</p>					
 							</div>
 						  </div>
 					</div>
-					<div class="accord成本n-group-self">
-						  <div class="accord成本n-heading alert alert-info">
-								<a class="accord成本n-toggle" data-toggle="collapse" data-parent="#accord成本n2" href="#collapseTwo">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading alert alert-info">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
 								  运行状态
 								</a>
 						  </div>
-						  <div id="collapseTwo" class="accord成本n-body collapse in">
-							<div class="accord成本n-inner">
-								
+						  <div id="collapseTwo" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<p>
+									当前IP：
+								 </p>
+								 <p>
+									发行版本：
+								</p>
+								<p>
+									当前IP：
+								 </p>
+								 <p>
+									发行版本：
+								</p>
+								<p>
+									当前IP：
+								 </p>
+								 <p>
 									发行版本：
 								</p>
 							</div>
@@ -109,12 +139,12 @@
 				  </div>
 				  </div>
 				 </div>
-				 <!--药品状态层结束-->
+				 <!--系统状态层结束-->
 				 
 				  <!--基本操作层-->
-			 <div class="tab-pane" id="sys-operat成本n">
+			 <div class="tab-pane" id="sys-operation">
 			  <div class="span8">
-			  <h4>药品操作</h4>
+			  <h4>系统操作</h4>
 			  </hr>
 				<table class="table table-striped">
 				<thead>
@@ -125,7 +155,7 @@
 				<tbody>
 				  <tr>
 					<td>用户管理</td>
-					<td class="muted">管理药品用户和用户密码</td>
+					<td class="muted">管理系统用户和用户密码</td>
 					<!-- 用户管理页面开始 -->
 					<div id="userControl" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
@@ -178,10 +208,10 @@
 			 </div>
 			 <!--基本操作层结束-->
 			 
-			 <!--保质期操作层-->
-			 <div class="tab-pane" id="file-operat成本n">
+			 <!--文件操作层-->
+			 <div class="tab-pane" id="file-operation">
 			 <div class="span8">
-			  <h4>保质期操作</h4>
+			  <h4>文件操作</h4>
 			  </hr>
 			  <span class="badge badge-success">即将上线,敬请关注</span>
 			  </div>
@@ -189,37 +219,37 @@
 			 
 			<!--文件操作层结束-->
 			
-			<!-- 药品监控报警开始-->
+			<!-- 监控报警开始-->
 			<div class="tab-pane"  id="monitor">
 			  <div class="span8">
-			   <h4>药品监控报警</h4>
+			   <h4>监控报警</h4>
 				 <hr>
 				 <!--控制伸缩-->
-				 <div class="accord成本n" id="monitor1">
-					<div class="accord成本n-group-self">
-						  <div class="accord成本n-heading alert alert-info">
-						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor1" href="#collapse-monitor">
+				 <div class="accordion" id="monitor1">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading alert alert-info">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor1" href="#collapse-monitor">
 							  基础选项
 							</a>
 						  </div>
-						  <div id="collapse-monitor" class="accord成本n-body collapse in">
-							<div class="accord成本n-inner">
+						  <div id="collapse-monitor" class="accordion-body collapse in">
+							<div class="accordion-inner">
 				 <!--控制伸缩结束-->
 				<table class="table table-striped">
 				<thead>
 				</thead>
 				<tbody>
 				  <tr>
-					<td>运输阈值报警</td>
-					<td class="muted">运输使用状态的报警</td>
-					<div id="运输Alarm" class="modal hide fade" style="display: none; ">
+					<td>CPU阈值报警</td>
+					<td class="muted">CPU使用状态的报警</td>
+					<div id="cpuAlarm" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
               				<a class="close" data-dismiss="modal">×</a>
-              				<h3>运输阈值设定</h3>
+              				<h3>CPU阈值设定</h3>
             			</div>
 						<div class="modal-body">
 						  <p>
-							 设置报警范围：&nbsp;&nbsp;当运输高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+							 设置报警范围：&nbsp;&nbsp;当CPU高于<input type="text" class="span1" placeholder="1-100">%的时候报警
 						  </p>
 						  <hr>
 						  设置报警选项：&nbsp;&nbsp;
@@ -234,19 +264,19 @@
               			<a href="#" class="btn btn-primary">保存更改</a>
             		</div>
           			</div>
-					<td><a data-toggle="modal" href="#运输Alarm" class="btn btn-small btn-primary">开始设置</a></td>
+					<td><a data-toggle="modal" href="#cpuAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				  <tr>
-					<td>价格阈值报警</td>
-					<td class="muted">价格使用状态报警</td>
+					<td>内存阈值报警</td>
+					<td class="muted">内存使用状态报警</td>
 					<div id="memAlarm" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
               				<a class="close" data-dismiss="modal">×</a>
-              				<h3>价格阈值设定</h3>
+              				<h3>内存阈值设定</h3>
             			</div>
 						<div class="modal-body">
 						  <p>
-							 设置报警范围：&nbsp;&nbsp;当价格高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+							 设置报警范围：&nbsp;&nbsp;当内存高于<input type="text" class="span1" placeholder="1-100">%的时候报警
 						  </p>
 						  <hr>
 						  设置报警选项：&nbsp;&nbsp;
@@ -264,16 +294,16 @@
 					<td><a data-toggle="modal" href="#memAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				  <tr>
-					<td>风险阈值报警</td>
-					<td class="muted">风险空间使用报警</td>
+					<td>磁盘阈值报警</td>
+					<td class="muted">磁盘空间使用报警</td>
 					<div id="diskAlarm" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
               				<a class="close" data-dismiss="modal">×</a>
-              				<h3>风险阈值设定</h3>
+              				<h3>磁盘阈值设定</h3>
             			</div>
 						<div class="modal-body">
 						  <p>
-							 设置报警范围：&nbsp;&nbsp;当风险高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+							 设置报警范围：&nbsp;&nbsp;当磁盘高于<input type="text" class="span1" placeholder="1-100">%的时候报警
 						  </p>
 						  <hr>
 						  设置报警选项：&nbsp;&nbsp;
@@ -291,16 +321,16 @@
 					<td><a data-toggle="modal" href="#diskAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				  <tr>
-					<td>成本阈值报警</td>
-					<td class="muted">成本负载状态报警</td>
-					<div id="成本Alarm" class="modal hide fade" style="display: none; ">
+					<td>IO阈值报警</td>
+					<td class="muted">IO负载状态报警</td>
+					<div id="ioAlarm" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
               				<a class="close" data-dismiss="modal">×</a>
-              				<h3>风险阈值设定</h3>
+              				<h3>磁盘阈值设定</h3>
             			</div>
 						<div class="modal-body">
 						  <p>
-							 设置报警范围：&nbsp;&nbsp;当风险高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+							 设置报警范围：&nbsp;&nbsp;当磁盘高于<input type="text" class="span1" placeholder="1-100">%的时候报警
 						  </p>
 						  <hr>
 						  设置报警选项：&nbsp;&nbsp;
@@ -315,7 +345,7 @@
               			<a href="#" class="btn btn-primary">保存更改</a>
             		</div>
           			</div>
-					<td><a data-toggle="modal" href="#成本Alarm" class="btn btn-small btn-primary">开始设置</a></td>
+					<td><a data-toggle="modal" href="#ioAlarm" class="btn btn-small btn-primary">开始设置</a></td>
 				   </tr>
 				   <tr>
 					<td>流量阈值报警</td>
@@ -323,11 +353,11 @@
 					<div id="flowAlarm" class="modal hide fade" style="display: none; ">
             			<div class="modal-header">
               				<a class="close" data-dismiss="modal">×</a>
-              				<h3>风险阈值设定</h3>
+              				<h3>磁盘阈值设定</h3>
             			</div>
 						<div class="modal-body">
 						  <p>
-							 设置报警范围：&nbsp;&nbsp;当风险高于<input type="text" class="span1" placeholder="1-100">%的时候报警
+							 设置报警范围：&nbsp;&nbsp;当磁盘高于<input type="text" class="span1" placeholder="1-100">%的时候报警
 						  </p>
 						  <hr>
 						  设置报警选项：&nbsp;&nbsp;
@@ -350,28 +380,28 @@
 				</div>
 				</div>
 				</div>
-				<!--基础药品监控层结束-->
+				<!--基础监控层结束-->
 
 				 <!--容器伸缩控制-->
-				 <div class="accord成本n" id="monitor2">
-					<div class="accord成本n-group-self">
-						  <div class="accord成本n-heading alert alert-info">
-						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor2" href="#collapse-container">
+				 <div class="accordion" id="monitor2">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading alert alert-info">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor2" href="#collapse-container">
 							  容器选项
 							</a>
 						  </div>
-						  <div id="collapse-container" class="accord成本n-body collapse in">
-							<div class="accord成本n-inner">
+						  <div id="collapse-container" class="accordion-body collapse in">
+							<div class="accordion-inner">
 				 <!--控制伸缩结束-->
 				  <table class="table table-striped">
 				  <thead>
 				</thead>
 				     <tbody>
 				   <tr>
-					<td>1报警</td>
-					<td class="muted">1服务是否正常</td>
+					<td>Mysql报警</td>
+					<td class="muted">Mysql服务是否正常</td>
 					<td>
-						<div class="btn-group" data-toggle="buttons-rad成本">
+						<div class="btn-group" data-toggle="buttons-radio">
 					  	<button class="btn btn-small">开启</button>
 					  	<button class="btn btn-small">关闭</button>
 						</div>
@@ -379,10 +409,10 @@
 				   </tr>
 				   
 				   <tr>
-					<td>2报警</td>
-					<td class="muted">2服务是否正常</td>
+					<td>Apache报警</td>
+					<td class="muted">Apache服务是否正常</td>
 					<td>
-						<div class="btn-group" data-toggle="buttons-rad成本">
+						<div class="btn-group" data-toggle="buttons-radio">
 					  	<button class="btn btn-small">开启</button>
 					  	<button class="btn btn-small">关闭</button>
 						</div>
@@ -390,10 +420,10 @@
 				   </tr>
 				   
 				   <tr>
-					<td>3报警</td>
-					<td class="muted">3服务是否正常</td>
+					<td>PHP报警</td>
+					<td class="muted">PHP服务是否正常</td>
 					<td>
-						<div class="btn-group" data-toggle="buttons-rad成本">
+						<div class="btn-group" data-toggle="buttons-radio">
 					  	<button class="btn btn-small">开启</button>
 					  	<button class="btn btn-small">关闭</button>
 						</div>
@@ -401,10 +431,10 @@
 				   </tr>
 				   
 				   <tr>
-					<td>4报警</td>
-					<td class="muted">4服务是否正常</td>
+					<td>Memcached报警</td>
+					<td class="muted">Memcached服务是否正常</td>
 					<td>
-						<div class="btn-group" data-toggle="buttons-rad成本">
+						<div class="btn-group" data-toggle="buttons-radio">
 					  	<button class="btn btn-small">开启</button>
 					  	<button class="btn btn-small">关闭</button>
 						</div>
@@ -416,19 +446,19 @@
 				   </div>
 				   </div>
 				   </div>
-				   <!--容器药品监控结束-->
+				   <!--容器监控结束-->
 				   
 				   
 				  <!--自定义控制伸缩-->
-				 <div class="accord成本n" id="monitor3">
-					<div class="accord成本n-group-self">
-						  <div class="accord成本n-heading alert alert-info">
-						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor3" href="#collapse-self">
-							  自定义药品监控
+				 <div class="accordion" id="monitor3">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading alert alert-info">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor3" href="#collapse-self">
+							  自定义监控
 							</a>
 						  </div>
-						  <div id="collapse-self" class="accord成本n-body collapse in">
-							<div class="accord成本n-inner">
+						  <div id="collapse-self" class="accordion-body collapse in">
+							<div class="accordion-inner">
 				 <!--控制伸缩结束--> 
 				  <table class="table table-striped">  
 				<thead>
@@ -445,15 +475,15 @@
 				</div>
 				 
 				 <!--报警信息设置伸缩-->
-				 <div class="accord成本n" id="monitor4">
-					<div class="accord成本n-group-self">
-						  <div class="accord成本n-heading alert alert-info">
-						  <a class="accord成本n-toggle" data-toggle="collapse" data-parent="#monitor4" href="#collapse-setting">
+				 <div class="accordion" id="monitor4">
+					<div class="accordion-group-self">
+						  <div class="accordion-heading alert alert-info">
+						  <a class="accordion-toggle" data-toggle="collapse" data-parent="#monitor4" href="#collapse-setting">
 							  报警信息设置
 							</a>
 						  </div>
-						  <div id="collapse-setting" class="accord成本n-body collapse in">
-							<div class="accord成本n-inner">
+						  <div id="collapse-setting" class="accordion-body collapse in">
+							<div class="accordion-inner">
 				 <!--控制伸缩结束-->   
 				<table class="table table-striped">  
 				<thead>
@@ -491,7 +521,7 @@
 				</table>
 		    	</div>
 			</div>
-			<!--药品监控报警结束-->
+			<!--监控报警结束-->
 			
 			<!-- 性能分析开始 -->
 			<div class="tab-pane" id="perf">
