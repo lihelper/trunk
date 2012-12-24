@@ -1,4 +1,4 @@
-package com.lihelper.viewobject;
+package com.lihelper.model.viewobject;
 
 import java.io.Serializable;
 

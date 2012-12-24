@@ -1,6 +1,6 @@
 package com.lihelper.dao.impl;
 
-import org.freehep.util.Assert;
+import org.testng.Assert;
 import org.jtester.unitils.dbfit.DbFit;
 import org.testng.annotations.Test;
 import org.unitils.spring.annotation.SpringBeanByName;
@@ -17,7 +17,7 @@ public class UserDaoImplTest extends BaseJtester {
 	@DbFit(when = {"UserDaoImplTest.testGetUserByEmail.when.wiki"})
 	@Test
 	public void testGetUserByEmail() {
-		UserDO user = userDao.getUser("test1@ali.com");
+		UserDO user = userDao.getUserByEmail("test1@ali.com");
 		Assert.assertNotNull(user);
 	}
 }

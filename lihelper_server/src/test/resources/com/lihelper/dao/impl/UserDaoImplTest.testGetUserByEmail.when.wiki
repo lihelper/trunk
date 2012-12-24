@@ -1,7 +1,7 @@
 |connect|
-|clean table|`image`|
-|insert|`image`|
+|clean table|`user`|
+|insert|`user`|
 |email|password|access_id|secret_key|alarm_email|alarm_phone|gmt_create|gmt_modify|
-|test1@ali.com|11111|access1|secret1|test1@ali.com|123544675634|now()|now()|
-|test2@ali.com|11111|access2|secret2|test2@ali.com|1345555555|now()|now()|
-|test3@ali.com|11111|access3|secret3|test3@ali.com|1355555555|now()|now()|
+|test1@ali.com|11111|access1|secret1|test1@ali.com|123544675634|2011-05-01 |2013-05-01|
+|test2@ali.com|11111|access2|secret2|test2@ali.com|1345555555|2011-05-01 |2013-05-01|
+|test3@ali.com|11111|access3|secret3|test3@ali.com|1355555555|2011-05-01 |2013-05-01|

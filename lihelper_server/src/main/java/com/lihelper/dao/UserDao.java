@@ -8,5 +8,7 @@ public interface UserDao {
 	 * @param email
 	 * @return
 	 */
-	public UserDO getUser(String email);
+	public UserDO getUserByEmail(String email);
+	
+	public UserDO getUserByAccessId(String accessId);
 }

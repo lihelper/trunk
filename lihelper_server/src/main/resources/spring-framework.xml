@@ -45,13 +45,15 @@
 				<property name="dataSource">
 					<ref bean="dataSource" />
 				</property>
-				<property name="configLocation" value="classpath:/houyi-ibatis-config.xml" />
+				<property name="configLocation" value="classpath:/lihelper-ibatis-config.xml" />
 			</bean>
 		</property>
 	</bean>
 	<!-- jdbc end -->
 	
-	
+	<bean id="clientAwareInterceptor" class="com.lihelper.interceptor.ClientAwareInterceptor" >
+		<property name="clientService" ref="clientService"/>
+	</bean>
     <bean id="executeActionFactory" class="com.lihelper.action.ExecuteActionFactory" />
     
     <!-- callback proxy actdion -->
@@ -96,7 +98,10 @@
 	<bean id="notifyAlarmService" class="com.lihelper.service.impl.NotifyAlarmServiceImpl">
 	   <property name="emailService" ref="emailService"/>
 	</bean>
-		
+
+	<bean id="clientService" class="com.lihelper.service.impl.ClientServiceImpl">
+	   <property name="clientDao" ref="clientDao"/>
+	</bean>		
 	<!-- service end -->
 	
 	<!-- dao start -->
@@ -104,6 +109,8 @@
 	<bean id="userDao" class="com.lihelper.dao.impl.UserDaoImpl">
 	   <property name="sqlMapTemplate" ref="sqlMapTemplate"/>
 	</bean>
-		
+	<bean id="clientDao" class="com.lihelper.dao.impl.ClientDaoImpl">
+	   <property name="sqlMapTemplate" ref="sqlMapTemplate"/>
+	</bean>	
 	<!-- dao end -->
 </beans>

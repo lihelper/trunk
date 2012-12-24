@@ -1,25 +1,21 @@
-package com.lihelper.model.dataobject;
+package com.lihelper.model.viewobject;
 
 import java.io.Serializable;
 
-public final class ClientDO implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8659272303066804347L;
-	private int id;
+public final class ClientVO implements Serializable {
+	private static final long serialVersionUID = -7885872577099732211L;
+	private int clientId;
 	private String host;
 	private int cpu;
 	private int mem;
 	private int disk;
-	private int userId;
+	private UserVO user;
 	
-	public int getId() {
-		return id;
+	public int getClientId() {
+		return clientId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
 	}
 	public String getHost() {
 		return host;
@@ -45,10 +41,11 @@ public final class ClientDO implements Serializable {
 	public void setDisk(int disk) {
 		this.disk = disk;
 	}
-	public int getUserId() {
-		return userId;
+	public UserVO getUser() {
+		return user;
 	}
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(UserVO user) {
+		this.user = user;
 	}
+	
 }

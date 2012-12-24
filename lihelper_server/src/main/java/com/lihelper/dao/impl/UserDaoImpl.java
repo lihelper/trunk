@@ -8,10 +8,15 @@ import com.lihelper.model.dataobject.UserDO;
 public class UserDaoImpl implements UserDao {
 
 	@Override
-	public UserDO getUser(String email) {
+	public UserDO getUserByEmail(String email) {
 		return (UserDO)sqlMapTemplate.queryForObject("user.getUserByEmail", email);
 	}
 
+	@Override
+	public UserDO getUserByAccessId(String accessId) {
+		return (UserDO)sqlMapTemplate.queryForObject("user.getUserByAccessId", accessId);
+	}
+	
 	private SqlMapClientOperations sqlMapTemplate;
 	
 	public void setSqlMapTemplate(SqlMapClientOperations sqlMapTemplate) {

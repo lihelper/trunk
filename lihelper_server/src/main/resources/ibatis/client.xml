@@ -9,14 +9,20 @@
        <result property="cpu" column="cpu" />
        <result property="mem" column="mem" />
        <result property="disk" column="disk"/>
-       <result property="user.id" column="user_id"/> 
+       <result property="userId" column="user_id"/> 
     </resultMap>
 
-	<!--根据email得到user详细信息-->
-	<select id="getUserByEmail" resultMap="userMap">
-		select email,password,access_id,secret_key,alarm_email,alarm_phone
-		from user
-		where email=#email#	
+	<!--根据id得到client详细信息-->
+	<select id="getClientById" resultMap="userMap">
+		select id,host,cpu,mem,disk,user_id 
+		from client
+		where id = #id#	
 	</select>
 
+	<!--根据host得到client详细信息-->
+	<select id="getClientByHost" resultMap="userMap">
+		select id,host,cpu,mem,disk,user_id 
+		from client
+		where host = #host#	
+	</select>
 </sqlMap>
