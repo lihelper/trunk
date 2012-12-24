@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender name="DEBUG" class="org.apache.log4j.RollingFileAppender">
+            <param name="File" value="debug.log"/>
+            <param name="MaxBackupIndex" value="30"/>
+            <param name="Encoding" value="UTF-8"/>
+            <param name="MaxFileSize" value="200MB"/>
+            <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+            <layout class="org.apache.log4j.PatternLayout">
+                    <param name="ConversionPattern" value="%d{ISO8601} %p [%c] - [%m]%n"/>
+            </layout>
+            <filter class="org.apache.log4j.varia.LevelRangeFilter">
+                    <param name="LevelMin" value="debug"/>
+                    <param name="LevelMax" value="debug"/>
+                    <param name="acceptOnMatch" value="true"/>
+            </filter>
+    </appender> 
+        
+    <logger name="com.lihelper" additivity="false">
+            <level value="debug"/>
+            <appender-ref ref="DEBUG"/>
+    </logger>
+
+</log4j:configuration>

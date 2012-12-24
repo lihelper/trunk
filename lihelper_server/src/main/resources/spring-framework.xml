@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/jdbc.properties</value>
+				<value>classpath:/email.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- jdbc configration -->
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+       <!-- 获取连接时检测是否失效  -->
+       <property name="testOnBorrow" value="true"/>
+       <!-- 获取连接时检测是否失效SQL  -->
+       <property name="validationQuery" value="SELECT 1 FROM DUAL"/>
+       <property name="driverClassName" value="${db.source.driver}"/>
+       <property name="url" value="${db.source.url}"/>
+       <property name="username" value="${db.source.username}"/>
+       <property name="password" value="${db.source.password}"/>
+       <property name="minIdle" value="${db.source.min.idle}"/>
+       <property name="maxActive" value="${db.source.max.active}"/>
+       <property name="maxIdle" value="${db.source.max.idle}"/>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate" >
+	   <property name="transactionManager" ref="transactionManager"/>
+	</bean>
+	
+	<bean id="sqlMapTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient">
+			<bean class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+				<property name="dataSource">
+					<ref bean="dataSource" />
+				</property>
+				<property name="configLocation" value="classpath:/houyi-ibatis-config.xml" />
+			</bean>
+		</property>
+	</bean>
+	<!-- jdbc end -->
+	
+	
+    <bean id="executeActionFactory" class="com.lihelper.action.ExecuteActionFactory" />
+    
+    <!-- callback proxy actdion -->
+    <bean id="proxyAction" class="com.lihelper.action.ProxyAction">
+        <property name="executeActionFactory" ref="executeActionFactory"/>
+    </bean>
+    
+    <bean id="notify_alarm" class="com.lihelper.action.callback.NotifyAlarmAction">
+         <property name="notifyAlarmService" ref="notifyAlarmService"/>
+    </bean> 
+    <!-- callback end -->
+    
+    
+    <bean id="actionResult" class="com.lihelper.result.ActionResult"/>
+    
+    <bean id="jsonResultFormat" class="com.lihelper.result.JsonResultFormat"/>	
+	
+	<!-- service start -->
+	<bean id="emailSender" class="com.lihelper.mail.MailSender">
+	   <property name="fromAddress" value="${email.fromAddress}"/>
+	   <property name="fromName" value="${email.fromName}"/>
+	   <property name="host" value="${email.host}"/>
+	   <property name="username" value="${email.username}"/>
+	   <property name="password" value="${email.password}"/>
+	</bean>
+
+	<bean id="emailTaskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="10" />
+		<property name="maxPoolSize" value="20" />
+		<property name="queueCapacity" value="50" />
+		<property name="rejectedExecutionHandler">
+			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+		</property>
+	</bean>
+	
+	<bean id="emailService" class="com.lihelper.service.impl.EmailServiceImpl">
+	   <property name="emailSender" ref="emailSender"/>
+	   <property name="emailTaskExecutor" ref="emailTaskExecutor" />
+	</bean>
+
+	<bean id="notifyAlarmService" class="com.lihelper.service.impl.NotifyAlarmServiceImpl">
+	   <property name="emailService" ref="emailService"/>
+	</bean>
+		
+	<!-- service end -->
+	
+	<!-- dao start -->
+	
+	<bean id="userDao" class="com.lihelper.dao.impl.UserDaoImpl">
+	   <property name="sqlMapTemplate" ref="sqlMapTemplate"/>
+	</bean>
+		
+	<!-- dao end -->
+</beans>

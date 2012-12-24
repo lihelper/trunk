@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="client">
+	<typeAlias alias="client" type="com.lihelper.model.dataobject.ClientDO"/>	
+	<typeAlias alias="user" type="com.lihelper.model.dataobject.UserDO"/>	
+	
+	<resultMap id="clientMap" class="client">     
+       <result property="host" column="host" />
+       <result property="cpu" column="cpu" />
+       <result property="mem" column="mem" />
+       <result property="disk" column="disk"/>
+       <result property="user.id" column="user_id"/> 
+    </resultMap>
+
+	<!--根据email得到user详细信息-->
+	<select id="getUserByEmail" resultMap="userMap">
+		select email,password,access_id,secret_key,alarm_email,alarm_phone
+		from user
+		where email=#email#	
+	</select>
+
+</sqlMap>
