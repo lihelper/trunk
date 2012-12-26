@@ -7,7 +7,7 @@ import org.unitils.spring.annotation.SpringBeanByName;
 
 import com.lihelper.dao.UserDao;
 import com.lihelper.dao.base.BaseJtester;
-import com.lihelper.model.dataobject.UserDO;
+import com.lihelper.model.User;
 
 public class UserDaoImplTest extends BaseJtester {
 
@@ -17,7 +17,7 @@ public class UserDaoImplTest extends BaseJtester {
 	@DbFit(when = {"UserDaoImplTest.testGetUserByEmail.when.wiki"})
 	@Test
 	public void testGetUserByEmail() {
-		UserDO user = userDao.getUserByEmail("test1@ali.com");
+		User user = userDao.getUserByEmail("test1@ali.com");
 		Assert.assertNotNull(user);
 	}
 }

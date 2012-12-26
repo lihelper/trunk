@@ -1,9 +1,10 @@
 package com.lihelper.service;
 
-import com.lihelper.model.viewobject.UserVO;
+import com.lihelper.model.User;
 
 public interface UserService {
-	public UserVO getUserByEmail(String email);
+	
+	public User getUserByEmail(String email);
 
-	public UserVO getUserByAccessId(String accessId);
+	public User getUserByAccessId(String accessId);
 }

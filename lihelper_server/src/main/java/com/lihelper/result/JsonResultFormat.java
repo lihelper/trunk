@@ -3,7 +3,7 @@ package com.lihelper.result;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.lihelper.model.dataobject.UserDO;
+import com.lihelper.model.User;
 
 /**
  *

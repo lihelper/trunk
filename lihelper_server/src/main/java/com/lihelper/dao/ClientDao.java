@@ -1,6 +1,6 @@
 package com.lihelper.dao;
 
-import com.lihelper.model.dataobject.ClientDO;
+import com.lihelper.model.BasicClient;
 
 public interface ClientDao {
 	/**
@@ -8,12 +8,12 @@ public interface ClientDao {
 	 * @param clientId
 	 * @return
 	 */
-	public ClientDO getClientById(Integer clientId);
+	public BasicClient getClientById(Integer clientId);
 
 	/**
 	 * 通过host获取信息
 	 * @param host
 	 * @return
 	 */
-	public ClientDO getClientByHost(String host);
+	public BasicClient getClientByHost(String host);
 }

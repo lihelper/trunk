@@ -33,9 +33,20 @@
 	   </global-results>
 	</package>
 
-    <package name="service" extends="lihelper-api" namespace="/">
-		<action name="callback" class="proxyAction" method="execute">
+   <package name="lihelper-web" extends="struts-default" namespace="/" abstract="true">
+       <result-types>
+          <result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult" default="true"/>
+       </result-types>
+	</package>
+	
+    <package name="api" extends="lihelper-api" namespace="/">
+		<action name="callback.action" class="proxyAction" method="execute">
 		    <result type="actionResult"></result>
+		</action>
+	</package>
+    <package name="web" extends="lihelper-web" namespace="/">
+		<action name="getvminfo.action" class="getVmInfoAction" method="execute">
+		    <result type="velocity" name="success">template/client.vm</result >
 		</action>
 	</package>
 </struts>

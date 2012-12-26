@@ -1,0 +1,16 @@
+ <div id="collapseOne" class="accordion-body collapse in">
+	<div class="accordion-inner">
+		<p>
+			当前IP：$clientView.host
+		 </p>
+		 <p>
+			发行版本：$clientView.release
+		</p>
+		<p>
+			运行时间：$clientView.uptime
+		 </p>
+		 <p>
+			内核版本：$clientView.kernel
+		</p>					
+	</div>
+</div>

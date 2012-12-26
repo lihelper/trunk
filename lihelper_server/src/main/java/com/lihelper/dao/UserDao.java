@@ -1,6 +1,6 @@
 package com.lihelper.dao;
 
-import com.lihelper.model.dataobject.UserDO;
+import com.lihelper.model.User;
 
 public interface UserDao {
 	/**
@@ -8,7 +8,7 @@ public interface UserDao {
 	 * @param email
 	 * @return
 	 */
-	public UserDO getUserByEmail(String email);
+	public User getUserByEmail(String email);
 	
-	public UserDO getUserByAccessId(String accessId);
+	public User getUserByAccessId(String accessId);
 }

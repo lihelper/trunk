@@ -51,22 +51,26 @@
 	</bean>
 	<!-- jdbc end -->
 	
-	<bean id="clientAwareInterceptor" class="com.lihelper.interceptor.ClientAwareInterceptor" >
+	<bean id="clientAwareInterceptor" class="com.lihelper.api.interceptor.ClientAwareInterceptor" >
 		<property name="clientService" ref="clientService"/>
 	</bean>
-    <bean id="executeActionFactory" class="com.lihelper.action.ExecuteActionFactory" />
+    <bean id="executeActionFactory" class="com.lihelper.api.action.ExecuteActionFactory" />
     
     <!-- callback proxy actdion -->
-    <bean id="proxyAction" class="com.lihelper.action.ProxyAction">
+    <bean id="proxyAction" class="com.lihelper.api.action.ProxyAction">
         <property name="executeActionFactory" ref="executeActionFactory"/>
     </bean>
     
-    <bean id="notify_alarm" class="com.lihelper.action.callback.NotifyAlarmAction">
+    <bean id="notify_alarm" class="com.lihelper.api.action.callback.NotifyAlarmAction">
          <property name="notifyAlarmService" ref="notifyAlarmService"/>
     </bean> 
     <!-- callback end -->
     
-    
+    <!-- web action -->
+    <bean id="getVmInfoAction" class="com.lihelper.web.action.GetVmInfoAction">
+         <property name="clientService" ref="clientService"/>
+    </bean> 
+    <!-- web action end -->
     <bean id="actionResult" class="com.lihelper.result.ActionResult"/>
     
     <bean id="jsonResultFormat" class="com.lihelper.result.JsonResultFormat"/>	
@@ -101,7 +105,8 @@
 
 	<bean id="clientService" class="com.lihelper.service.impl.ClientServiceImpl">
 	   <property name="clientDao" ref="clientDao"/>
-	</bean>		
+	</bean>
+			
 	<!-- service end -->
 	
 	<!-- dao start -->
