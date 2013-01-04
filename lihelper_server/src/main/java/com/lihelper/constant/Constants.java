@@ -5,8 +5,9 @@ public class Constants {
 	/**
 	 * 请求参数
 	 */
+	public final static String METHOD = "method";
 	public final static String CLIENT_ID = "client_id";
-
+	public final static String ACCESS_ID = "access_id";
 	public final static String COOKIE_ID = "cookie_id";
 
 	public final static String EMAIL = "email";
@@ -21,6 +22,7 @@ public class Constants {
 	public final static String ALARM_ITEM = "alarm_item";
 	public final static String ALARM_VALUE = "alarm_value";
 	public final static String ALARM_MODE = "alarm_mode";
+	public final static String CURRENT_VALUE = "current_value";
 
 	/**
 	 * action层返回视图层的返回变量
@@ -43,4 +45,9 @@ public class Constants {
 	public final static String METHOD_MONITOR_ALARM_URI = "/lihelper/monitor?method=monitor_alarm";
 	public final static String METHOD_GET_MONITOR_INFO_URI = "/lihelper/monitor?method=get_monitor_info";
 	public final static String METHOD_GET_MONITOR_INFOS_URI = "/lihelper/monitor?method=get_monitor_infos";
+
+	/**
+	 * callback action name
+	 */
+	public final static String METHOD_CALLBACK_NOTIFY_ALARM = "notify_alarm";
 }

@@ -16,8 +16,7 @@ import com.lihelper.mail.content.TextContent;
 import com.lihelper.service.EmailService;
 
 public class EmailServiceImpl implements EmailService {
-	private final static Logger logger = Logger
-			.getLogger(EmailServiceImpl.class);
+	private final static Logger logger = Logger.getLogger(EmailServiceImpl.class);
 
 	private final static int MAX_THREAD = 50;
 
@@ -27,12 +26,10 @@ public class EmailServiceImpl implements EmailService {
 
 	private MailSender emailSender;
 
-	private ExecutorService executorService = Executors
-			.newFixedThreadPool(MAX_THREAD);
+	private ExecutorService executorService = Executors.newFixedThreadPool(MAX_THREAD);
 
 	@Override
-	public void sendEmail(String email, String subject, String content)
-			throws Exception {
+	public void sendEmail(String email, String subject, String content) throws Exception {
 		final Mail mail = new Mail();
 		mail.setCharset(DEFAULT_CHARSET);
 		mail.setSubject(subject);

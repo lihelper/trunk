@@ -22,8 +22,7 @@ public class ParameterUtil {
 		return value == null ? null : value;
 	}
 
-	public static int getParameterIntValue(String key)
-			throws NumberFormatException {
+	public static int getParameterIntValue(String key) throws NumberFormatException {
 		HttpServletRequest request = ServletActionContext.getRequest();
 
 		Object value = request.getParameter(key);

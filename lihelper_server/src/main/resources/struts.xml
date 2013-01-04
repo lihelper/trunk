@@ -3,40 +3,21 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-   <package name="lihelper-api" extends="struts-default" namespace="/">
-       <result-types>
-             <result-type name="actionResult" class="actionResult"/>
-       </result-types>
-	   
-       <interceptors>
-      		 <interceptor name="clientAwareInterceptor" class="clientAwareInterceptor"/>          
-             <interceptor-stack name="defaultStack">
-                <interceptor-ref name="exception">
-	                <param name="logEnabled">true</param>  
-	                <param name="logLevel">debug</param> 
-	                <!--<param name="logLevel">${log4j.root.logger.level}</param> -->
-	             </interceptor-ref> 
-                <interceptor-ref name="prepare"/>
-                <interceptor-ref name="staticParams"/>
-                <interceptor-ref name="actionMappingParams"/>
-                <interceptor-ref name="params">
-                  <param name="excludeParams">dojo\..*,^struts\..*</param>
-                </interceptor-ref>
-                <interceptor-ref name="conversionError"/>
-                <interceptor-ref name="clientAwareInterceptor"/>
-             </interceptor-stack>
-       </interceptors>
-       <default-interceptor-ref name="defaultStack"/>
+   <package name="api" extends="struts-default" namespace="/api">
+	    <result-types>
+	        <result-type name="jsonResult" class="jsonResult"/>
+	    </result-types>
 
-	   <global-results>
-	   		<result name="commonError" type="actionResult"/>
-	   </global-results>
-	</package>
-
-   <package name="api" extends="lihelper-api" namespace="/api">
-	   <action name="callback.action" class="proxyAction" method="execute">
-	       <result type="actionResult"></result>
-	   </action>
+	    <interceptors>
+	    	<interceptor name="clientAwareInterceptor" class="clientAwareInterceptor"/>
+	    	<interceptor name="userInterceptor" class="userInterceptor"/>
+	    </interceptors>
+	    	    
+	    <action name="callback" class="callbackAction" method="execute">
+	        <interceptor-ref name ="clientAwareInterceptor" />
+	        <interceptor-ref name ="userInterceptor" />
+	        <result type="jsonResult"></result>
+	    </action>
    </package>
     
     
@@ -45,9 +26,7 @@
 	        <result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult" default="true"/>
 	        <result-type name="jsonResult" class="jsonResult"/>
 	    </result-types>
-		
-
-		
+				
 	    <interceptors>
 	    	<interceptor name="authorizationInterceptor" class="authorizationInterceptor"/>
 	    </interceptors>

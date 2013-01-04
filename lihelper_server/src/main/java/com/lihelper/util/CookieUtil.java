@@ -8,8 +8,7 @@ public class CookieUtil {
 	 * @return
 	 */
 	public static String generateCookieId(String email) {
-		String source = new StringBuffer(email).append(
-				System.currentTimeMillis()).toString();
+		String source = new StringBuffer(email).append(System.currentTimeMillis()).toString();
 
 		return MD5Util.md5(source);
 	}

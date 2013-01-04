@@ -6,6 +6,7 @@ import com.lihelper.model.BasicClient;
 import com.lihelper.model.RequestHolder;
 import com.lihelper.model.ResultMessage;
 import com.lihelper.service.ClientService;
+import com.lihelper.util.StackUtil;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
@@ -31,9 +32,9 @@ public class ClientAwareInterceptor implements Interceptor {
 		String host = ServletActionContext.getRequest().getRemoteAddr();
 		BasicClient client = clientService.getClientInfoInDb(host);
 		if (client == null) {
-			ResultMessage result = new ResultMessage(-200, "host not exist");
-			ServletActionContext.getContext().getValueStack()
-					.set("_result", result);
+			ResultMessage<Object> result = new ResultMessage<Object>(-200, "host not exist");
+
+			StackUtil.setResult(ServletActionContext.getContext().getValueStack(), result);
 			throw new Exception("host:" + host + " not exist");
 		}
 		RequestHolder.setCurrentClient(client);

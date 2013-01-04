@@ -21,47 +21,23 @@ public class JsonResult implements Result {
 	@Override
 	public void execute(ActionInvocation invocation) throws Exception {
 		ActionContext actionContext = invocation.getInvocationContext();
-		HttpServletResponse response = (HttpServletResponse) actionContext
-				.get(StrutsStatics.HTTP_RESPONSE);
+		HttpServletResponse response = (HttpServletResponse) actionContext.get(StrutsStatics.HTTP_RESPONSE);
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");
 		response.setDateHeader("Expires", 0);
+		response.setContentType("text/javascript;charset=utf-8");
 
-		String result = ServletActionContext.getContext().getValueStack()
-				.findString("_result");
+		Object result = ServletActionContext.getContext().getValueStack().findValue("_result");
+
 		if (result == null) {
 			result = "{\"code\":-1,\"message\":\"exception\"}";
 		}
-		
-		response.getWriter().write(result);
+
+		if (result instanceof String) {
+			response.getWriter().write((String) result);
+		} else {
+			JsonResultFormat format = new JsonResultFormat();
+			response.getWriter().write(format.value(result));
+		}
 	}
-
-	private String encoding = "UTF-8";
-	private Integer code;
-	private String msg;
-
-	public Integer getCode() {
-		return code;
-	}
-
-	public void setCode(Integer code) {
-		this.code = code;
-	}
-
-	public String getMsg() {
-		return msg;
-	}
-
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
-
-	public String getEncoding() {
-		return encoding;
-	}
-
-	public void setEncoding(String encoding) {
-		this.encoding = encoding;
-	}
-
 }

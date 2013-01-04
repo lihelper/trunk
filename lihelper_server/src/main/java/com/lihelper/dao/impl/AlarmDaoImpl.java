@@ -27,8 +27,7 @@ public class AlarmDaoImpl implements AlarmDao {
 	}
 
 	@Override
-	public int inertAlarm(int clientId, String alarmType, String alarmItem,
-			int alarmValue) {
+	public int inertAlarm(int clientId, String alarmType, String alarmItem, int alarmValue) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("clientId", clientId);
 		params.put("alarmType", alarmType);

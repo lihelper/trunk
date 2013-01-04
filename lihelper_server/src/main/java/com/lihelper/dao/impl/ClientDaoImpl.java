@@ -9,14 +9,12 @@ public class ClientDaoImpl implements ClientDao {
 
 	@Override
 	public BasicClient getClientById(Integer clientId) {
-		return (BasicClient) sqlMapTemplate.queryForObject("client.getClientById",
-				clientId);
+		return (BasicClient) sqlMapTemplate.queryForObject("client.getClientById", clientId);
 	}
 
 	@Override
 	public BasicClient getClientByHost(String host) {
-		return (BasicClient) sqlMapTemplate.queryForObject(
-				"client.getClientByHost", host);
+		return (BasicClient) sqlMapTemplate.queryForObject("client.getClientByHost", host);
 	}
 
 	private SqlMapClientOperations sqlMapTemplate;

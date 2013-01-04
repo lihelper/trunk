@@ -1,6 +1,6 @@
 package com.lihelper.model;
 
-public enum AlarmMode {
+public enum AlarmModeEnum {
 	email,
 	phone, 
 	message,

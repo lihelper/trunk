@@ -23,7 +23,7 @@ public class GetVmInfoAction extends ActionSupport {
 		}
 
 		/** 将对象Clinet转化成ClientView */
-		convert((Client)result.getR());
+		convert((Client) result.getR());
 
 		return Constants.ACTION_GET_VM_INFO_SUCCESS;
 	}

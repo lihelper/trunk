@@ -3,15 +3,13 @@ package com.lihelper.result;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import com.lihelper.model.User;
-
 /**
  *
  */
 public class JsonResultFormat {
 
 	public String value(Object obj) {
-		if(obj == null){
+		if (obj == null) {
 			return null;
 		}
 		Object jsonObject;
@@ -22,12 +20,8 @@ public class JsonResultFormat {
 		}
 		return jsonObject.toString();
 	}
-
-	public String name() {
-		return "json";
-	}
-
+	
 	public String getContentType(String encoding) {
 		return "text/javascript;charset=" + encoding;
 	}
-}	
+}

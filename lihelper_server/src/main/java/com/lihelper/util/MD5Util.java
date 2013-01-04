@@ -11,15 +11,14 @@ public class MD5Util {
 			byte[] array = md.digest(source.getBytes("utf-8"));
 
 			for (int i = 0; i < array.length; i++) {
-				sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100)
-						.toUpperCase().substring(1, 3));
+				sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).toUpperCase().substring(1, 3));
 			}
 		} catch (Exception e) {
 			return null;
 		}
 		return sb.toString();
 	}
-	
+
 	public static void main(String[] args) {
 		System.out.println(md5("123456"));
 	}

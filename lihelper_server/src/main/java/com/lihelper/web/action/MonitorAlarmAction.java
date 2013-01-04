@@ -15,25 +15,19 @@ public class MonitorAlarmAction extends ActionSupport {
 	public String execute() {
 
 		int clientId = ParameterUtil.getParameterIntValue(Constants.CLIENT_ID);
-		String alarmType = ParameterUtil
-				.getParameterStringValue(Constants.ALARM_TYPE);
-		String alarmItem = ParameterUtil
-				.getParameterStringValue(Constants.ALARM_ITEM);
-		int alarmValue = ParameterUtil
-				.getParameterIntValue(Constants.ALARM_VALUE);
-		String[] alarmModeNames = ParameterUtil
-				.getParameterListValue(Constants.ALARM_MODE);
+		String alarmType = ParameterUtil.getParameterStringValue(Constants.ALARM_TYPE);
+		String alarmItem = ParameterUtil.getParameterStringValue(Constants.ALARM_ITEM);
+		int alarmValue = ParameterUtil.getParameterIntValue(Constants.ALARM_VALUE);
+		String[] alarmModeNames = ParameterUtil.getParameterListValue(Constants.ALARM_MODE);
 
 		AlarmTypeEnum alarmTypeEnum = AlarmTypeEnum.getAlarmTypeEnum(alarmType);
 		AlarmItemEnum alarmItemEnum = AlarmItemEnum.getAlarmItemEnum(alarmItem);
 
 		ResultMessage<Object> reqResult = new ResultMessage<Object>();
 		if (alarmItemEnum == AlarmItemEnum.Health) {
-			reqResult = clientService.monitorAlarm(clientId, alarmTypeEnum,
-					alarmItemEnum, alarmModeNames);
+			reqResult = clientService.monitorAlarm(clientId, alarmTypeEnum, alarmItemEnum, alarmModeNames);
 		}
-		reqResult = clientService.monitorAlarm(clientId, alarmTypeEnum,
-				alarmItemEnum, alarmModeNames, alarmValue);
+		reqResult = clientService.monitorAlarm(clientId, alarmTypeEnum, alarmItemEnum, alarmModeNames, alarmValue);
 
 		if (reqResult.isSuccess()) {
 			return Constants.ACTION_MONITOR_ALARM_SUCCESS;

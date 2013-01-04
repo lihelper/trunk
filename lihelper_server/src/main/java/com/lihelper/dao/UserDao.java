@@ -10,7 +10,7 @@ public interface UserDao {
 	 * @return
 	 */
 	public User getUserByEmail(String email);
-	
+
 	/**
 	 * 根据accessId获取用户信息
 	 * 
@@ -18,7 +18,6 @@ public interface UserDao {
 	 * @return
 	 */
 	public User getUserByAccessId(String accessId);
-	
-	
-	public void insert(String email,String md5pwd);
+
+	public void insert(String email, String md5pwd);
 }

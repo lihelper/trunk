@@ -105,18 +105,15 @@ public class MailSender {
 		Properties props = new Properties();
 
 		if (ssl) {
-			props.setProperty("mail.smtp.socketFactory.class",
-					SSL_SOCKET_FACTORY);
+			props.setProperty("mail.smtp.socketFactory.class", SSL_SOCKET_FACTORY);
 			props.setProperty("mail.smtp.socketFactory.fallback", "false");
-			props.setProperty("mail.smtp.socketFactory.port",
-					Integer.toString(port));
+			props.setProperty("mail.smtp.socketFactory.port", Integer.toString(port));
 		}
 
 		props.setProperty("mail.smtp.host", host);
 		props.setProperty("mail.smtp.port", Integer.toString(port));
 		props.setProperty("mail.smtp.auth", Boolean.toString(auth));
-		props.setProperty("mail.smtp.connectiontimeout",
-				Long.toString(connectionTimeout));
+		props.setProperty("mail.smtp.connectiontimeout", Long.toString(connectionTimeout));
 		props.setProperty("mail.smtp.timeout", Long.toString(timeout));
 
 		Session session = Session.getInstance(props, new Authenticator() {
@@ -127,8 +124,7 @@ public class MailSender {
 
 		MimeMessage message = new MimeMessage(session);
 
-		message.addFrom(new InternetAddress[] { new InternetAddress(
-				fromAddress, fromName) });
+		message.addFrom(new InternetAddress[] { new InternetAddress(fromAddress, fromName) });
 		message.addRecipients(RecipientType.TO, mail.getToAddress());
 		message.addRecipients(RecipientType.CC, mail.getCcAddress());
 		message.addRecipients(RecipientType.BCC, mail.getBccAddress());
@@ -151,8 +147,7 @@ public class MailSender {
 			mail.setCharset("UTF-8");
 			mail.setSubject(subject);
 			mail.setGmtSent(new Date());
-			mail.setToAddress(new InternetAddress[] { new InternetAddress(
-					toEmail) });
+			mail.setToAddress(new InternetAddress[] { new InternetAddress(toEmail) });
 			MixedContent mc = new MixedContent();
 			mc.addContent(new TextContent(content, new ContentType("text/html")));
 			mail.setContent(mc);
@@ -167,7 +162,7 @@ public class MailSender {
 		mailSender.setHost("smtp.163.com");
 		mailSender.setUsername("wysh_110@163.com");
 		mailSender.setPassword("05733643313");
-		//mailSender.setPort(465);
+		// mailSender.setPort(465);
 		try {
 			mailSender.send(mail);
 		} catch (Exception e) {

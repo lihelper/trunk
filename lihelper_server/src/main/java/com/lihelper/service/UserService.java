@@ -20,17 +20,17 @@ public interface UserService {
 	 * @return
 	 */
 	public User getUserByAccessId(String accessId);
-	
+
 	/**
 	 * 注册用户，可根据ResultMessage.getCode()判断操作成功与否
 	 * 
-	 * -101: email注册重复
-	 * -102: 用户注册失败
-	 *  200: 用户注册成功
+	 * <p>
+	 * -101: email注册重复 -102: 用户注册失败 200: 用户注册成功
+	 * </p>
 	 * 
 	 * @param email
 	 * @param md5Pwd
-	 * @return 
+	 * @return
 	 */
 	public ResultMessage<Object> register(String email, String md5Pwd);
 }

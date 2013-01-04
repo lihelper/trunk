@@ -6,6 +6,7 @@ import com.lihelper.constant.Constants;
 import com.lihelper.model.MonitorTypeEnum;
 import com.lihelper.service.ClientService;
 import com.lihelper.util.ParameterUtil;
+import com.lihelper.util.StackUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GetMonitorInfosAction extends ActionSupport {
@@ -15,25 +16,20 @@ public class GetMonitorInfosAction extends ActionSupport {
 		int clientId = ParameterUtil.getParameterIntValue(Constants.CLIENT_ID);
 		String begin = ParameterUtil.getParameterStringValue(Constants.BEGIN);
 		String end = ParameterUtil.getParameterStringValue(Constants.END);
-		String monitorTypeName = ParameterUtil
-				.getParameterStringValue(Constants.MONITOR_TYPE);
+		String monitorTypeName = ParameterUtil.getParameterStringValue(Constants.MONITOR_TYPE);
 
-		MonitorTypeEnum monitorTypeEnum = MonitorTypeEnum
-				.getMonitorTypeEnum(monitorTypeName);
+		MonitorTypeEnum monitorTypeEnum = MonitorTypeEnum.getMonitorTypeEnum(monitorTypeName);
 		String result = null;
 
 		if (monitorTypeEnum == MonitorTypeEnum.Network) {
 			String nio = ParameterUtil.getParameterStringValue(Constants.NIO);
 
-			result = clientService.getMonitorInfosInRemote(clientId, begin,
-					end, monitorTypeEnum, nio);
+			result = clientService.getMonitorInfosInRemote(clientId, begin, end, monitorTypeEnum, nio);
 		} else {
-			result = clientService.getMonitorInfosInRemote(clientId, begin,
-					end, monitorTypeEnum);
+			result = clientService.getMonitorInfosInRemote(clientId, begin, end, monitorTypeEnum);
 		}
 
-		ServletActionContext.getContext().getValueStack()
-				.set("_result", result);
+		StackUtil.setResult(ServletActionContext.getContext().getValueStack(), result);
 		return Constants.ACTION_JSON_RESULT;
 	}
 

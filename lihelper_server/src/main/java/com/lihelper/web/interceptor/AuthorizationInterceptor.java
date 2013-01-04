@@ -25,8 +25,7 @@ public class AuthorizationInterceptor implements Interceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		String cookieId = ParameterUtil
-				.getParameterStringValue(Constants.COOKIE_ID);
+		String cookieId = ParameterUtil.getParameterStringValue(Constants.COOKIE_ID);
 		Object obj = CacheUtil.getCache(cookieId);
 
 		if (obj == null) {

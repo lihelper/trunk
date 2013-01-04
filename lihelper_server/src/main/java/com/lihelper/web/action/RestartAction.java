@@ -12,8 +12,7 @@ public class RestartAction extends ActionSupport {
 
 	public String execute() {
 
-		int clientId = ParameterUtil
-				.getParameterIntValue(Constants.CLIENT_ID);
+		int clientId = ParameterUtil.getParameterIntValue(Constants.CLIENT_ID);
 
 		ResultMessage<Object> reqResult = clientService.restart(clientId);
 

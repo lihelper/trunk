@@ -1,7 +1,5 @@
 package com.lihelper.service;
 
-import java.util.List;
-
 import com.lihelper.model.AlarmItemEnum;
 import com.lihelper.model.AlarmTypeEnum;
 import com.lihelper.model.BasicClient;
@@ -53,9 +51,7 @@ public interface ClientService {
 	 * @param alarmItme
 	 * @return
 	 */
-	public ResultMessage<Object> monitorAlarm(int clientId,
-			AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum,
-			String[] alarmModes);
+	public ResultMessage<Object> monitorAlarm(int clientId, AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum, String[] alarmModes);
 
 	/**
 	 * 监控报警设置，该接口有两部分组成。
@@ -70,9 +66,7 @@ public interface ClientService {
 	 * @param alarmValue
 	 * @return
 	 */
-	public ResultMessage<Object> monitorAlarm(int clientId,
-			AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum,
-			String[] alarmModes, int alarmValue);
+	public ResultMessage<Object> monitorAlarm(int clientId, AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum, String[] alarmModes, int alarmValue);
 
 	/**
 	 * 获取远程客户端的监控信息，并以json格式返回
@@ -91,9 +85,8 @@ public interface ClientService {
 	 * @param monitorTypeEnum
 	 * @return
 	 */
-	public String getMonitorInfosInRemote(int clientId, String begin,
-			String end, MonitorTypeEnum monitorTypeEnum);
-	
+	public String getMonitorInfosInRemote(int clientId, String begin, String end, MonitorTypeEnum monitorTypeEnum);
+
 	/**
 	 * 获取指定时间段内的远程客户端的监控信息，并以json格式返回
 	 * 
@@ -104,6 +97,5 @@ public interface ClientService {
 	 * @param nio
 	 * @return
 	 */
-	public String getMonitorInfosInRemote(int clientId, String begin,
-			String end, MonitorTypeEnum monitorTypeEnum,String nio);
+	public String getMonitorInfosInRemote(int clientId, String begin, String end, MonitorTypeEnum monitorTypeEnum, String nio);
 }

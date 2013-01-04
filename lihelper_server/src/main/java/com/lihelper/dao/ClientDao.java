@@ -5,6 +5,7 @@ import com.lihelper.model.BasicClient;
 public interface ClientDao {
 	/**
 	 * 通过id获取信息
+	 * 
 	 * @param clientId
 	 * @return
 	 */
@@ -12,6 +13,7 @@ public interface ClientDao {
 
 	/**
 	 * 通过host获取信息
+	 * 
 	 * @param host
 	 * @return
 	 */

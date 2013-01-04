@@ -10,7 +10,7 @@ import org.apache.struts2.ServletActionContext;
 public class WriterUtil {
 	private static final String DEFAULT_CHARSET = "UTF-8";
 
-	public static void write(String txt)  {
+	public static void write(String txt) {
 		HttpServletResponse response = ServletActionContext.getResponse();
 		response.setCharacterEncoding(DEFAULT_CHARSET);
 		PrintWriter out = null;
@@ -27,4 +27,3 @@ public class WriterUtil {
 		}
 	}
 }
-

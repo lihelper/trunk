@@ -9,32 +9,29 @@ import org.apache.log4j.Logger;
 /**
  * 
  * @author yongsheng.fangys
- *
+ * 
  */
 public class HttpClientAdapter {
 
 	/** Log object for this class. */
-	private final static  Logger logger = Logger
-			.getLogger(HttpClientAdapter.class);
-	private final static  String PROTOCOL = "http";
-	private final static  int CONNECTION_TIMEOUT = 2 * 1000;
-	private final static  int SO_TIMEOUT = 5 * 1000;
+	private final static Logger logger = Logger.getLogger(HttpClientAdapter.class);
+	private final static String PROTOCOL = "http";
+	private final static int CONNECTION_TIMEOUT = 2 * 1000;
+	private final static int SO_TIMEOUT = 5 * 1000;
 
 	public HttpClientAdapter(String host, int port) {
+
 		/** 设置SimepleHttpConnectionManager的连接为自动释放 */
-		httpClient = new HttpClient(new HttpClientParams(),
-				new SimpleHttpConnectionManager(true));
+		httpClient = new HttpClient(new HttpClientParams(), new SimpleHttpConnectionManager(true));
 
 		/** 设置http请求的host,port,protocol */
 		httpClient.getHostConfiguration().setHost(host, port, PROTOCOL);
 
 		/** 请求连接的超时时间 */
-		httpClient.getHttpConnectionManager().getParams()
-				.setConnectionTimeout(CONNECTION_TIMEOUT);
+		httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(CONNECTION_TIMEOUT);
 
 		/** socket数据等待返回的超时时间 */
-		httpClient.getHttpConnectionManager().getParams()
-				.setSoTimeout(SO_TIMEOUT);
+		httpClient.getHttpConnectionManager().getParams().setSoTimeout(SO_TIMEOUT);
 	}
 
 	/**
@@ -52,6 +49,6 @@ public class HttpClientAdapter {
 		}
 		return null;
 	}
-	
+
 	private HttpClient httpClient;
 }

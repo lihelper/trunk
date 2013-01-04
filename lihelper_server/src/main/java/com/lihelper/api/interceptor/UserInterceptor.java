@@ -2,11 +2,13 @@ package com.lihelper.api.interceptor;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.lihelper.constant.Constants;
 import com.lihelper.model.RequestHolder;
 import com.lihelper.model.ResultMessage;
 import com.lihelper.model.User;
 import com.lihelper.service.UserService;
 import com.lihelper.util.ParameterUtil;
+import com.lihelper.util.StackUtil;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
@@ -33,16 +35,20 @@ public class UserInterceptor implements Interceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		String accessId = ParameterUtil.getParameterStringValue("access_id");
+		String accessId = ParameterUtil.getParameterStringValue(Constants.ACCESS_ID);
 		User user = userService.getUserByAccessId(accessId);
 
 		if (user == null) {
-			ResultMessage result = new ResultMessage(-200, "accessId not exist");
-			ServletActionContext.getContext().getValueStack()
-					.set("_result", result);
+			ResultMessage<Object> result = new ResultMessage<Object>(-200, "accessId not exist");
+
+			StackUtil.setResult(ServletActionContext.getContext().getValueStack(), result);
 			throw new Exception("accessId:" + accessId + " not exist");
 		}
 		RequestHolder.setCurrentUser(user);
 		return invocation.invoke();
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 }

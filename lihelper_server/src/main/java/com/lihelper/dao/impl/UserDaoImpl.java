@@ -12,14 +12,12 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUserByEmail(String email) {
-		return (User) sqlMapTemplate.queryForObject("user.getUserByEmail",
-				email);
+		return (User) sqlMapTemplate.queryForObject("user.getUserByEmail", email);
 	}
 
 	@Override
 	public User getUserByAccessId(String accessId) {
-		return (User) sqlMapTemplate.queryForObject("user.getUserByAccessId",
-				accessId);
+		return (User) sqlMapTemplate.queryForObject("user.getUserByAccessId", accessId);
 	}
 
 	@Override
@@ -27,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("email", email);
 		params.put("password", md5pwd);
-		
+
 		sqlMapTemplate.insert("user.insert", params);
 	}
 

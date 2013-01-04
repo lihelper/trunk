@@ -6,27 +6,27 @@ import com.lihelper.service.NotifyAlarmService;
 
 public class EmailNotifyAlarmServiceImpl implements NotifyAlarmService {
 	private String subject;
-	
+
 	private String content;
-	
+
 	private EmailService emailService;
 
 	@Override
-	public ResultMessage alarm(String destination, String message) {
+	public ResultMessage<Object> alarm(String destination, String message) {
 
 		if (subject == null || subject.length() == 0) {
-			return new ResultMessage(-202, "subject empty.");
+			return new ResultMessage<Object>(-202, "subject empty.");
 		}
 
 		if (content == null || content.length() == 0) {
-			return new ResultMessage(-202, "content empty.");
+			return new ResultMessage<Object>(-202, "content empty.");
 		}
 		// 用message替换content中的<message/>
 		content = content.replaceAll("\\$message\\$", message);
 		try {
 			emailService.sendEmail(destination, subject, content);
 		} catch (Exception e) {
-			return new ResultMessage(-203, e.getMessage());
+			return new ResultMessage<Object>(-203, e.getMessage());
 		}
 		return ResultMessage.SUCCESS;
 	}
@@ -42,6 +42,7 @@ public class EmailNotifyAlarmServiceImpl implements NotifyAlarmService {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public static void main(String[] args) {
 		String a = "<html><body><h1>alarm $message$ </body</html>";
 		System.out.println(a.replaceAll("\\$message\\$", "this is pig"));

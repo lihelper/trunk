@@ -16,8 +16,7 @@ public class RegisterAction extends ActionSupport {
 
 	public String execute() {
 		String email = ParameterUtil.getParameterStringValue(Constants.EMAIL);
-		String password = ParameterUtil
-				.getParameterStringValue(Constants.PASSWORD);
+		String password = ParameterUtil.getParameterStringValue(Constants.PASSWORD);
 		String md5pwd = MD5Util.md5(password);
 
 		ResultMessage<Object> result = userService.register(email, md5pwd);

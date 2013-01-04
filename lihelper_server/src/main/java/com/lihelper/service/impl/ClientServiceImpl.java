@@ -29,8 +29,7 @@ import com.lihelper.service.ClientService;
 import com.lihelper.service.HttpClientAdapter;
 
 public class ClientServiceImpl implements ClientService {
-	private final static Logger logger = Logger
-			.getLogger(ClientServiceImpl.class);
+	private final static Logger logger = Logger.getLogger(ClientServiceImpl.class);
 
 	/** 客户端默认的服务端口 */
 	private final static int DEFAULT_PORT = 10888;
@@ -44,12 +43,10 @@ public class ClientServiceImpl implements ClientService {
 	public ResultMessage<Client> getClientInfoInRemote(int clientId) {
 
 		/** 设置获取客户端详细信息的请求URI */
-		ResultMessage<String> rqResult = sendRequestInGetMethod(clientId,
-				Constants.METHOD_GET_VM_INFO_URI);
+		ResultMessage<String> rqResult = sendRequestInGetMethod(clientId, Constants.METHOD_GET_VM_INFO_URI);
 
 		if (!rqResult.isSuccess()) {
-			return new ResultMessage<Client>(rqResult.getCode(),
-					rqResult.getMsg());
+			return new ResultMessage<Client>(rqResult.getCode(), rqResult.getMsg());
 		}
 
 		Client client = new Client();
@@ -86,8 +83,7 @@ public class ClientServiceImpl implements ClientService {
 		}
 
 		/** 设置ResultMessage返回对象 */
-		ResultMessage<Client> result = new ResultMessage<Client>(200,
-				"successful");
+		ResultMessage<Client> result = new ResultMessage<Client>(200, "successful");
 		result.setR(client);
 
 		return result;
@@ -96,65 +92,49 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public ResultMessage<Object> restart(int clientId) {
 
-		ResultMessage<String> reqResultMsg = sendRequestInGetMethod(clientId,
-				Constants.METHOD_RESTART_URI);
+		ResultMessage<String> reqResultMsg = sendRequestInGetMethod(clientId, Constants.METHOD_RESTART_URI);
 
 		if (reqResultMsg.isSuccess()) {
 			return ResultMessage.SUCCESS;
 		}
 
-		return new ResultMessage<Object>(reqResultMsg.getCode(),
-				reqResultMsg.getMsg());
+		return new ResultMessage<Object>(reqResultMsg.getCode(), reqResultMsg.getMsg());
 	}
 
 	@Override
-	public ResultMessage<Object> monitorAlarm(int clientId,
-			AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum,
-			String[] alarmModes) {
-		return monitorAlarm(clientId, alarmTypeEnum, alarmItemEnum, alarmModes,
-				-1);
+	public ResultMessage<Object> monitorAlarm(int clientId, AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum, String[] alarmModes) {
+		return monitorAlarm(clientId, alarmTypeEnum, alarmItemEnum, alarmModes, -1);
 	}
 
 	@Override
-	public ResultMessage<Object> monitorAlarm(int clientId,
-			AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum,
-			String[] alarmModes, int alarmValue) {
+	public ResultMessage<Object> monitorAlarm(int clientId, AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum, String[] alarmModes, int alarmValue) {
 
 		/**
 		 * 拼装请求的URI
 		 * 
-		 * <pre>
+		 * <p>
 		 * 具体的例子如下：
-		 * 		http://42.125.126.1:10888/lihelper/monitor?method=monitor_alarm
-		 * 				&alarm_type=basic&alarm_item=cpu&alarm_value=90
-		 * </pre>
+		 * http://42.125.126.1:10888/lihelper/monitor?method=monitor_alarm
+		 * &alarm_type=basic&alarm_item=cpu&alarm_value=90
+		 * </p>
 		 */
 		String uri = null;
 		if (alarmValue == -1) {
-			uri = String.format("%s&alarm_type=%salarm_item=%s",
-					Constants.METHOD_MONITOR_ALARM_URI,
-					alarmTypeEnum.getName(), alarmItemEnum.getName());
+			uri = String.format("%s&alarm_type=%salarm_item=%s", Constants.METHOD_MONITOR_ALARM_URI, alarmTypeEnum.getName(), alarmItemEnum.getName());
 		} else {
-			uri = String.format("%s&alarm_type=%salarm_item=%s&alarm_value=%d",
-					Constants.METHOD_MONITOR_ALARM_URI,
-					alarmTypeEnum.getName(), alarmItemEnum.getName(),
-					alarmValue);
+			uri = String.format("%s&alarm_type=%salarm_item=%s&alarm_value=%d", Constants.METHOD_MONITOR_ALARM_URI, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
 		}
 
-		ResultMessage<String> reqResultMsg = sendRequestInGetMethod(clientId,
-				uri);
+		ResultMessage<String> reqResultMsg = sendRequestInGetMethod(clientId, uri);
 
 		if (!reqResultMsg.isSuccess()) {
 			return new ResultMessage<Object>(-1, "send request error");
 		}
 
-		DefaultTransactionDefinition def = new DefaultTransactionDefinition(
-				TransactionDefinition.PROPAGATION_REQUIRED);// 事务定义类
+		DefaultTransactionDefinition def = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);// 事务定义类
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
-			int alarmId = alarmDao.inertAlarm(clientId,
-					alarmTypeEnum.getName(), alarmItemEnum.getName(),
-					alarmValue);
+			int alarmId = alarmDao.inertAlarm(clientId, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
 
 			for (String alarmModeName : alarmModes) {
 				alarmModeDao.insertAlarmMode(alarmId, alarmModeName);
@@ -172,40 +152,29 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public String getMonitorInfoInRemote(int clientId) {
-		ResultMessage<String> result = sendRequestInGetMethod(clientId,
-				Constants.METHOD_GET_MONITOR_INFO_URI);
+		ResultMessage<String> result = sendRequestInGetMethod(clientId, Constants.METHOD_GET_MONITOR_INFO_URI);
 
 		return result.getR();
 	}
 
 	@Override
-	public String getMonitorInfosInRemote(int clientId, String begin,
-			String end, MonitorTypeEnum monitorTypeEnum) {
-		return getMonitorInfosInRemote(clientId, begin, end, monitorTypeEnum,
-				null);
+	public String getMonitorInfosInRemote(int clientId, String begin, String end, MonitorTypeEnum monitorTypeEnum) {
+		return getMonitorInfosInRemote(clientId, begin, end, monitorTypeEnum, null);
 	}
 
 	@Override
-	public String getMonitorInfosInRemote(int clientId, String begin,
-			String end, MonitorTypeEnum monitorTypeEnum, String nio) {
+	public String getMonitorInfosInRemote(int clientId, String begin, String end, MonitorTypeEnum monitorTypeEnum, String nio) {
 		final int amount = 100;
 
 		String requestUrl = null;
 
 		if (nio == null) {
-			requestUrl = String.format(
-					"%s&begin=%s&end=%s&amount=%d&monitor_type=%s",
-					Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, amount,
-					monitorTypeEnum.getName());
+			requestUrl = String.format("%s&begin=%s&end=%s&amount=%d&monitor_type=%s", Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, amount, monitorTypeEnum.getName());
 		} else {
-			requestUrl = String.format(
-					"%s&begin=%s&end=%s&amount=%d&monitor_type=%s&nio=%s",
-					Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, amount,
-					monitorTypeEnum.getName(), nio);
+			requestUrl = String.format("%s&begin=%s&end=%s&amount=%d&monitor_type=%s&nio=%s", Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, amount, monitorTypeEnum.getName(), nio);
 		}
 
-		ResultMessage<String> result = sendRequestInGetMethod(clientId,
-				requestUrl);
+		ResultMessage<String> result = sendRequestInGetMethod(clientId, requestUrl);
 		return result.getR();
 	}
 
@@ -224,8 +193,7 @@ public class ClientServiceImpl implements ClientService {
 	 * @param requestURI
 	 * @return
 	 */
-	private ResultMessage<String> sendRequestInGetMethod(int clientId,
-			String requestURI) {
+	private ResultMessage<String> sendRequestInGetMethod(int clientId, String requestURI) {
 
 		/** 通过clientId获取Client的主机地址 */
 		BasicClient basicClient = clientDao.getClientById(clientId);
@@ -260,8 +228,7 @@ public class ClientServiceImpl implements ClientService {
 
 	private DataSourceTransactionManager transactionManager;
 
-	public void setTransactionManager(
-			DataSourceTransactionManager transactionManager) {
+	public void setTransactionManager(DataSourceTransactionManager transactionManager) {
 		this.transactionManager = transactionManager;
 	}
 

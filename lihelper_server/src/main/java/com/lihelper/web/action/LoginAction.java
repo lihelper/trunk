@@ -18,8 +18,7 @@ public class LoginAction extends ActionSupport {
 
 	public String execute() {
 		String email = ParameterUtil.getParameterStringValue(Constants.EMAIL);
-		String password = ParameterUtil
-				.getParameterStringValue(Constants.PASSWORD);
+		String password = ParameterUtil.getParameterStringValue(Constants.PASSWORD);
 		String md5Password = MD5Util.md5(password);
 
 		User user = userService.getUserByEmail(email);
