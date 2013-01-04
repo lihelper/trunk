@@ -12,7 +12,7 @@ public class AlarmLog implements Serializable {
 	private Date alarmTime;
 	private int currentVlaue;
 	private int status;
-	private MonitorAlarm monitorAlarm;
+	private Alarm monitorAlarm;
 	public Date getAlarmTime() {
 		return alarmTime;
 	}
@@ -31,10 +31,10 @@ public class AlarmLog implements Serializable {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public MonitorAlarm getMonitorAlarm() {
+	public Alarm getMonitorAlarm() {
 		return monitorAlarm;
 	}
-	public void setMonitorAlarm(MonitorAlarm monitorAlarm) {
+	public void setMonitorAlarm(Alarm monitorAlarm) {
 		this.monitorAlarm = monitorAlarm;
 	}
 }

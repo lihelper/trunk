@@ -33,7 +33,7 @@ public class UserInterceptor implements Interceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		String accessId = ParameterUtil.getParameterValue("access_id");
+		String accessId = ParameterUtil.getParameterStringValue("access_id");
 		User user = userService.getUserByAccessId(accessId);
 
 		if (user == null) {

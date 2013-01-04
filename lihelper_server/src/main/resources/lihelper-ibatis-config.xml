@@ -6,4 +6,6 @@
     <settings useStatementNamespaces="true" />
     <sqlMap resource="ibatis/user.xml" />
     <sqlMap resource="ibatis/client.xml" />
+    <sqlMap resource="ibatis/alarm.xml" />
+    <sqlMap resource="ibatis/alarmMode.xml" />
 </sqlMapConfig>

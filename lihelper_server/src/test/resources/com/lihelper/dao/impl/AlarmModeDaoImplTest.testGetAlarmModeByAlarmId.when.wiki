@@ -1,0 +1,6 @@
+|connect|
+|clean table|`alarm_mode`|
+|insert|`alarm_mode`|
+|name|alarm_id|
+|phone|4|
+|email|4|

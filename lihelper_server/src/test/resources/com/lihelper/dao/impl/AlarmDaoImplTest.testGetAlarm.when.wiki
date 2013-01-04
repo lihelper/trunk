@@ -1,0 +1,8 @@
+|connect|
+|clean table|`alarm`|
+|insert|`alarm`|
+|id|alarm_type|alarm_item|alarm_value|status|client_id|gmt_create|gmt_modify|
+|1|php|cpu|90|1|1|2011-05-01 |2013-05-01|
+|2|php|mem|90|1|1|2011-05-01 |2013-05-01|
+|3|php|disk|90|1|1|2011-05-01 |2013-05-01|
+|4|php|health|0|1|1|2011-05-01 |2013-05-01|

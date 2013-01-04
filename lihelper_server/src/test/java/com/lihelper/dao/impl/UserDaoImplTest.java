@@ -5,8 +5,8 @@ import org.jtester.unitils.dbfit.DbFit;
 import org.testng.annotations.Test;
 import org.unitils.spring.annotation.SpringBeanByName;
 
+import com.lihelper.base.BaseJtester;
 import com.lihelper.dao.UserDao;
-import com.lihelper.dao.base.BaseJtester;
 import com.lihelper.model.User;
 
 public class UserDaoImplTest extends BaseJtester {

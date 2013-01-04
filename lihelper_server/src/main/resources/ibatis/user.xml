@@ -19,4 +19,7 @@
 		where email=#email#	
 	</select>
 
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into user(email,password,access_id,secret_key,alarm_email,alarm_phone,gmt_create,gmt_modify) values(#email#,#password#,#email#,#email#,'','',now(),now());
+	</insert>
 </sqlMap>

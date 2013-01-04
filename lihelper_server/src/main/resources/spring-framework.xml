@@ -9,6 +9,7 @@
 			<list>
 				<value>classpath:/jdbc.properties</value>
 				<value>classpath:/email.properties</value>
+				<value>classpath:/notify.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -54,6 +55,9 @@
 	<bean id="clientAwareInterceptor" class="com.lihelper.api.interceptor.ClientAwareInterceptor" >
 		<property name="clientService" ref="clientService"/>
 	</bean>
+
+	<bean id="authorizationInterceptor" class="com.lihelper.web.interceptor.AuthorizationInterceptor " />
+		
     <bean id="executeActionFactory" class="com.lihelper.api.action.ExecuteActionFactory" />
     
     <!-- callback proxy actdion -->
@@ -62,15 +66,43 @@
     </bean>
     
     <bean id="notify_alarm" class="com.lihelper.api.action.callback.NotifyAlarmAction">
-         <property name="notifyAlarmService" ref="notifyAlarmService"/>
+         <property name="notifyAlarmDistributeService" ref="notifyAlarmDistributeService"/>
     </bean> 
     <!-- callback end -->
     
     <!-- web action -->
-    <bean id="getVmInfoAction" class="com.lihelper.web.action.GetVmInfoAction">
+    <bean id="jsonResult" class="com.lihelper.result.JsonResult"/>
+    
+    <bean id="getvminfo" class="com.lihelper.web.action.GetVmInfoAction">
          <property name="clientService" ref="clientService"/>
     </bean> 
+ 
+    <bean id="restart" class="com.lihelper.web.action.RestartAction">
+         <property name="clientService" ref="clientService"/>
+    </bean> 
+
+    <bean id="monitorAlarm" class="com.lihelper.web.action.MonitorAlarmAction">
+         <property name="clientService" ref="clientService"/>
+    </bean> 
+       
+    <bean id="login" class="com.lihelper.web.action.LoginAction">
+         <property name="userService" ref="userService"/>
+    </bean> 
+
+    <bean id="register" class="com.lihelper.web.action.RegisterAction">
+         <property name="userService" ref="userService"/>
+    </bean> 
+
+    <bean id="getMonitorInfo" class="com.lihelper.web.action.GetMonitorInfoAction">
+         <property name="clientService" ref="clientService"/>
+    </bean> 
+
+    <bean id="getMonitorInfos" class="com.lihelper.web.action.GetMonitorInfosAction">
+         <property name="clientService" ref="clientService"/>
+    </bean> 
+               
     <!-- web action end -->
+    
     <bean id="actionResult" class="com.lihelper.result.ActionResult"/>
     
     <bean id="jsonResultFormat" class="com.lihelper.result.JsonResultFormat"/>	
@@ -84,29 +116,29 @@
 	   <property name="password" value="${email.password}"/>
 	</bean>
 
-	<bean id="emailTaskExecutor"
-		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-		<property name="corePoolSize" value="10" />
-		<property name="maxPoolSize" value="20" />
-		<property name="queueCapacity" value="50" />
-		<property name="rejectedExecutionHandler">
-			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
-		</property>
-	</bean>
-	
 	<bean id="emailService" class="com.lihelper.service.impl.EmailServiceImpl">
 	   <property name="emailSender" ref="emailSender"/>
-	   <property name="emailTaskExecutor" ref="emailTaskExecutor" />
 	</bean>
-
-	<bean id="notifyAlarmService" class="com.lihelper.service.impl.NotifyAlarmServiceImpl">
+	
+	<bean id="notifyAlarmDistributeService" class="com.lihelper.service.impl.NotifyAlarmDistributeServiceImpl">
+	</bean>
+	
+	<bean id="emailNotifyAlarmService" class="com.lihelper.service.impl.EmailNotifyAlarmServiceImpl">
 	   <property name="emailService" ref="emailService"/>
+	   <property name="subject" value="${notify.email.subject}"/>
+	   <property name="content" value="${notify.email.content}"/>
 	</bean>
 
 	<bean id="clientService" class="com.lihelper.service.impl.ClientServiceImpl">
 	   <property name="clientDao" ref="clientDao"/>
+	   <property name="alarmDao" ref="alarmDao"/>
+	   <property name="alarmModeDao" ref="alarmModeDao"/>
+	   <property name="transactionManager" ref="transactionManager"/>
 	</bean>
-			
+
+	<bean id="userService" class="com.lihelper.service.impl.UserServiceImpl">
+	   <property name="userDao" ref="userDao"/>
+	</bean>			
 	<!-- service end -->
 	
 	<!-- dao start -->
@@ -115,6 +147,12 @@
 	   <property name="sqlMapTemplate" ref="sqlMapTemplate"/>
 	</bean>
 	<bean id="clientDao" class="com.lihelper.dao.impl.ClientDaoImpl">
+	   <property name="sqlMapTemplate" ref="sqlMapTemplate"/>
+	</bean>	
+	<bean id="alarmDao" class="com.lihelper.dao.impl.AlarmDaoImpl">
+	   <property name="sqlMapTemplate" ref="sqlMapTemplate"/>
+	</bean>	
+	<bean id="alarmModeDao" class="com.lihelper.dao.impl.AlarmModeDaoImpl">
 	   <property name="sqlMapTemplate" ref="sqlMapTemplate"/>
 	</bean>	
 	<!-- dao end -->

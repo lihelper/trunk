@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="alarmMode">
+
+	<!--根据email得到user详细信息-->
+	<select id="getAlarmModeByAlarmId" resultClass="java.lang.String">
+		select name 
+		from alarm_mode
+		where alarm_id = #alarmId#
+	</select>
+
+	<insert id="insertAlarmMode" parameterClass="java.util.Map">
+		insert into alarm_mode(name,alarm_id,gmt_create,gmt_modify) values(#alarmModeName#,#alarmId#,now(),now());
+		<selectKey resultClass="integer" keyProperty="id">
+			select last_insert_id() as ID from alarm_mode limit 1
+        </selectKey>
+	</insert>
+</sqlMap>

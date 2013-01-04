@@ -5,19 +5,37 @@ import java.util.List;
 import com.lihelper.model.Network;
 
 public class ClientView {
-	private String host;
+	private int cpu;
+	private int mem;
+	private int disk;
 	private String uptime;
 	private String kernel;
 	private String osType;
 	private String release;
 	private List<Network> networks;
 
-	public String getHost() {
-		return host;
+	public int getCpu() {
+		return cpu;
 	}
 
-	public void setHost(String host) {
-		this.host = host;
+	public void setCpu(int cpu) {
+		this.cpu = cpu;
+	}
+
+	public int getMem() {
+		return mem;
+	}
+
+	public void setMem(int mem) {
+		this.mem = mem;
+	}
+
+	public int getDisk() {
+		return disk;
+	}
+
+	public void setDisk(int disk) {
+		this.disk = disk;
 	}
 
 	public String getUptime() {

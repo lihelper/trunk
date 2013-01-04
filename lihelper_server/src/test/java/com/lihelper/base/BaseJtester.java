@@ -1,4 +1,4 @@
-package com.lihelper.dao.base;
+package com.lihelper.base;
 
 import org.jtester.testng.JTester;
 import org.jtester.unitils.spring.AutoBeanInject;

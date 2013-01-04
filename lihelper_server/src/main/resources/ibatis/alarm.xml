@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="alarm">
+	<typeAlias alias="alarm" type="com.lihelper.model.Alarm"/>	
+	
+	<resultMap id="alarmMap" class="alarm">   
+	   <result property="id" column="id" />  
+       <result property="alarmType" column="alarm_type" />
+       <result property="alarmItem" column="alarm_item" />
+       <result property="alarmValue" column="alarm_value" />
+    </resultMap>
+
+	<!--根据email得到user详细信息-->
+	<select id="getAlarm" resultMap="alarmMap">
+		select id,alarm_type,alarm_value,alarm_item
+		from alarm a
+		where a.client_id = #clientId#
+			and a.alarm_type = #alarmType#
+			and a.alarm_item= #alarmItem#
+	</select>
+
+	<insert id="insertAlarm" parameterClass="java.util.Map">
+		insert into alarm(alarm_type,alarm_item,alarm_value,client_id,gmt_create,gmt_modify) values(#alarmType#,#alarmItem#,#alarmValue#,#clientId#,now(),now());
+		<selectKey resultClass="integer" keyProperty="id">
+			select last_insert_id() as ID from alarm limit 1
+        </selectKey>
+	</insert>
+	
+</sqlMap>

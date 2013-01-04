@@ -2,23 +2,25 @@ package com.lihelper.api.action.callback;
 
 import com.lihelper.api.action.ExecuteAction;
 import com.lihelper.model.ResultMessage;
-import com.lihelper.service.NotifyAlarmService;
+import com.lihelper.service.NotifyAlarmDistributeService;
 import com.lihelper.util.ParameterUtil;
 
 public class NotifyAlarmAction implements ExecuteAction {
 
 	@Override
 	public ResultMessage doExecute() {
-		String alarmType = ParameterUtil.getParameterValue("alarm_type");
-		String alarmItem = ParameterUtil.getParameterValue("alarm_item");
-		int currentValue = Integer.valueOf(ParameterUtil.getParameterValue("current_value"));
+		String alarmType = ParameterUtil.getParameterStringValue("alarm_type");
+		String alarmItem = ParameterUtil.getParameterStringValue("alarm_item");
+		int currentValue = Integer.valueOf(ParameterUtil.getParameterStringValue("current_value"));
 
-		return notifyAlarmService.alarm(alarmType, alarmItem, currentValue);
+		return notifyAlarmDistributeService.alarm(alarmType, alarmItem, currentValue);
 	}
 
-	private NotifyAlarmService notifyAlarmService;
+	private NotifyAlarmDistributeService notifyAlarmDistributeService;
 
-	public void setNotifyAlarmService(NotifyAlarmService notifyAlarmService) {
-		this.notifyAlarmService = notifyAlarmService;
+	public void setNotifyAlarmDistributeService(
+			NotifyAlarmDistributeService notifyAlarmDistributeService) {
+		this.notifyAlarmDistributeService = notifyAlarmDistributeService;
 	}
+
 }

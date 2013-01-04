@@ -33,20 +33,70 @@
 	   </global-results>
 	</package>
 
-   <package name="lihelper-web" extends="struts-default" namespace="/" abstract="true">
-       <result-types>
-          <result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult" default="true"/>
-       </result-types>
-	</package>
+   <package name="api" extends="lihelper-api" namespace="/api">
+	   <action name="callback.action" class="proxyAction" method="execute">
+	       <result type="actionResult"></result>
+	   </action>
+   </package>
+    
+    
+	<package name="web" extends="struts-default" namespace="/web">   
+	    <result-types>
+	        <result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult" default="true"/>
+	        <result-type name="jsonResult" class="jsonResult"/>
+	    </result-types>
+		
+
+		
+	    <interceptors>
+	    	<interceptor name="authorizationInterceptor" class="authorizationInterceptor"/>
+	    </interceptors>
+	  	
+	  	<global-results>
+			<result type="velocity" name="Login">/template/login.vm</result>
+		</global-results>
+		  	
+	    <action name="getvminfo" class="getvminfo" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
+	  		<result type="velocity" name="GetVmInfoSuccess">/template/get_vm_info_success.vm</result>
+	    </action>
 	
-    <package name="api" extends="lihelper-api" namespace="/">
-		<action name="callback.action" class="proxyAction" method="execute">
-		    <result type="actionResult"></result>
+	    <action name="restart" class="restart" method="execute">
+	         <interceptor-ref name ="authorizationInterceptor" />
+	  		<result type="velocity" name="RestartSuccess">/template/restart_vm_success.vm</result>
+	 		<result type="velocity" name="RestartFailure">/template/restart_vm_failed.vm</result>	
+	    </action>
+
+	    <action name="monitoralarm" class="monitorAlarm" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
+	  		<result type="velocity" name="MonitorAlarmSuccess">/template/restart_vm_success.vm</result>
+	 		<result type="velocity" name="MonitorAlarmFailure">/template/restart_vm_failed.vm</result>		
+	    </action>
+	    
+	    <action name="getmonitorinfo" class="getMonitorInfo" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
+	        <result type="jsonResult" name="JsonResult"></result>	
+	    </action>
+	
+	    <action name="getmonitorinfos" class="getMonitorInfos" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
+	        <result type="jsonResult" name="JsonResult"></result>	
+	    </action>
+	    	    	    
+	    <action name="login" class="login" method="execute">
+	  		<result type="velocity" name="UserNotFound">/template/user_not_found.vm</result>
+	        <result type="velocity" name="LoginSuccess">/template/login_success.vm</result>
+	    </action>
+	  
+	    <action name="register" class="register" method="execute">
+	  		<result type="velocity" name="RegisterSuccess">/template/register_success.vm</result>
+	     	<result type="velocity" name="RegisterFailure">/template/register_failure.vm</result>
+	    </action>	 
+	          
+	    <!-- 	           
+		<action name="monitor" class="webProxyAction" method="execute">
+	     	<interceptor-ref name ="authorizationInterceptor" /> 
 		</action>
-	</package>
-    <package name="web" extends="lihelper-web" namespace="/">
-		<action name="getvminfo.action" class="getVmInfoAction" method="execute">
-		    <result type="velocity" name="success">template/client.vm</result >
-		</action>
+	 	-->
 	</package>
 </struts>
