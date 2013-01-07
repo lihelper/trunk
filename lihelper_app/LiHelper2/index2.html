@@ -5,20 +5,13 @@
     <title>Lihelper 中国第一Linux辅助平台</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Linux 助手 服务器 便捷管理">   
-
-
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css">
 	<link rel="stylesheet" href="css/lihelper.css" type="text/css">
 	<link rel="stylesheet" href="css/lihelper2.css" type="text/css">
-	<script type="text/javascript" async="" src="js/mixpanel.js"></script>
-	<script type="text/javascript" src="js/c352b52f05c4.js"></script>
-	<script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/32208237.js"></script>
-    <script type="text/javascript" src="js/uni3hmm.js"></script>
-    <style type="text/css">.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}</style>
 </head>
 <body class="home home-new  logged-out ">
+
     <nav class="navbar">
       <div class="navbar-inner">
         <div class="container">
@@ -28,10 +21,10 @@
 				<span class="icon-bar"></span>
 			  </a>
             <a href="www.lihelper.com" class="brand"><img src="images/kippt-logo-86.png" alt="Kippt" width="86" height="46"></a>
-            <div class="nav-collapse">         
-				<ul class="nav actions">
-					<li><a href="" data-link="modal" data-target="#login-modal">登录</a></li>
-					<li><a href="https://kippt.com/signup/" data-link="modal" data-target="#signup-modal">免费注册</a></li>
+			<div class="nav-collapse">         
+				<ul class="nav actions">			
+					<li><a href="#login-modal" data-toggle="modal">登录</a></li>
+					<li><a href="#signup-modal" data-toggle="modal">免费注册</a></li>
                 </ul>                           
                 <ul class="nav">
 					<li><a href="https://kippt.com/about/">关于我们</a></li>
@@ -67,7 +60,7 @@
             <div class="carousel-caption">
               <h1>菜鸟也能轻松玩转Linux服务器</h1>
               <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			  <a class="btn btn-green btn-large" href="/signup/" data-link="modal" data-target="#signup-modal">  免 费 加 入 体 验  </a>
+			  <a class="btn1 btn1-green" href="#signup-modal" data-toggle="modal">  免 费 加 入 体 验  </a>
             </div>
           </div>
         </div>
@@ -77,7 +70,7 @@
             <div class="carousel-caption">
               <h1>菜鸟也能轻松玩转Linux服务器</h1>
               <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-              <a class="btn btn-large btn-primary" href="#">免费加入体验</a>
+              <a class="btn1 btn-large btn-primary" href="#">免费加入体验</a>
             </div>
           </div>
         </div>
@@ -137,64 +130,75 @@
       </div>
 </div>
 
- <div class="modal hide fade" id="login-modal">
-		<a class="close" data-dismiss="modal">×</a>
-		<h1>登录</h1>
-    
-    <form class="connect-button" name="login" method="post" action="https://kippt.com/social/twitter/redirect/" id="twitter-connect-form">
-		<div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="7nsyPSbGRMXihcssHD6e2ssEAWntyuzp"></div>  
-		<a href="https://kippt.com/#" onclick="$(&#39;#twitter-connect-form&#39;).submit(); return false;" class="signup-twitter signup-btn" id="twitter_button"><i></i>Log in with Twitter</a>
-    </form>
-    <form class="connect-button" name="login" method="post" action="https://kippt.com/social/facebook/redirect/" id="facebook-connect-form">
-      <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="7nsyPSbGRMXihcssHD6e2ssEAWntyuzp"></div>     
-      <a href="https://kippt.com/#" onclick="$(&#39;#facebook-connect-form&#39;).submit(); return false;" class="signup-facebook signup-btn" id="facebook_button"><i></i>Log in  with Facebook</a>
-    </form>
-
-      <form action="https://kippt.com/login" method="POST" autocomplete="off"><div style="display:none">
-	    <input type="hidden" name="csrfmiddlewaretoken" value="7nsyPSbGRMXihcssHD6e2ssEAWntyuzp"></div>     
-        <fieldset>
-            <h5>or with Kippt account</h5>
-            <input type="text" placeholder="用户名或邮箱" name="username" maxlength="30" id="id_username">
-            <input type="password" placeholder="密码" name="password" id="id_password">
-            <input type="submit" value="登 录" class="btn">
-        </fieldset>
-         <a href="https://kippt.com/accounts/password/reset/"><span>忘记密码?</span></a> · <a href="https://kippt.com/signup/"><span>免费注册</span></a>
-     </form>
+<div id="login-modal" class="modal hide fade" style="display: none;" aria-hidden="true">
+	<form class="form-horizontal form-horizontal-small ng-pristine ng-valid" ng-submit="login()" onsubmit="return false" method="get" action="/">
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal">×</a>
+			<h3>登录</h3>
+        </div>
+		<div class="alert">DEMO 帐号：demo，密码：demo。</div>
+		<div ng-show="showLoginForm" style="">
+			<div class="control-group">
+				<label class="control-label" for="username">用户名:&nbsp&nbsp</label>
+				<div class="controls">
+					<input ng-model="username" ng-disabled="processing" type="text" id="username" placeholder="管理员用户名" autofocus="" class="ng-pristine ng-valid">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="password">密码:&nbsp&nbsp</label>
+				<div class="controls">
+					<input ng-model="password" ng-disabled="processing" type="password" id="password" placeholder="管理员密码" class="ng-pristine ng-valid">
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" id="login" class="btn btn-primary" ng-disabled="processing">
+					<i class="icon-user icon-white"></i> <span ng-bind-template="登录" class="ng-binding">登录</span></button>
+					<span class="help-inline" style="padding-left:20px"><a ng-click="showForgetPwdMsg=true" href="#" onclick="return false">忘记密码？</a></span>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
-<div class="modal hide fade" id="signup-modal">
-    <a class="close" data-dismiss="modal">×</a>
-    <h1>免费注册</h1>
-    
-    <form class="connect-button" name="login" method="post" action="https://kippt.com/social/twitter/redirect/" id="twitter-connect-form">
-    <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="7nsyPSbGRMXihcssHD6e2ssEAWntyuzp"></div>
-    
-        <input type="hidden" name="next" value="/welcome/">
-    
-    <a href="https://kippt.com/#" onclick="$(&#39;#twitter-connect-form&#39;).submit(); return false;" class="signup-twitter signup-btn" id="twitter_button"><i></i>Sign up with Twitter</a>
-    </form>
-    <form class="connect-button" name="login" method="post" action="https://kippt.com/social/facebook/redirect/" id="facebook-connect-form">
-      <div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="7nsyPSbGRMXihcssHD6e2ssEAWntyuzp"></div>
-      
-          <input type="hidden" name="next" value="/welcome/">
-      
-      <a href="https://kippt.com/#" onclick="$(&#39;#facebook-connect-form&#39;).submit(); return false;" class="signup-facebook signup-btn" id="facebook_button"><i></i>Sign up with Facebook</a>
-      </form>
 
-      <form action="https://kippt.com/signup" method="POST" autocomplete="off"><div style="display:none"><input type="hidden" name="csrfmiddlewaretoken" value="7nsyPSbGRMXihcssHD6e2ssEAWntyuzp"></div>
-          
-            <input type="hidden" name="next" value="/welcome/">
-          
-        <fieldset>
-            <h5>or with email</h5>
-            <input type="text" placeholder="用户名" name="username" maxlength="30" id="id_username">
-            <input type="email" placeholder="邮箱" name="email" maxlength="75" id="id_email"><div class="email_suggestion"></div>
-            <input type="password" placeholder="密码" name="password" id="id_password">
-            <input type="submit" value="免费注册" class="btn">
-        </fieldset>
-         <a href="https://kippt.com/login/"><span>已有帐号?</span>登 录</a>
-     </form>
+<div id="signup-modal" class="modal hide fade" style="display: none;" aria-hidden="true">
+	<form class="form-horizontal form-horizontal-small ng-pristine ng-valid" ng-submit="login()" onsubmit="return false" method="get" action="/">
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal">×</a>
+			<h3>免费注册</h3>
+        </div>
+		
+		<div class="alert">现在注册，我们免费提供所有的服务</div>
+		<div ng-show="showLoginForm" style="">
+			<div class="control-group">
+				<label class="control-label" for="username">用户名:&nbsp&nbsp</label>
+				<div class="controls">
+					<input ng-model="username" ng-disabled="processing" type="text" id="username" placeholder="请输入正确的邮箱/手机/用户名" autofocus="" class="ng-pristine ng-valid">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="password">密码:&nbsp&nbsp</label>
+				<div class="controls">
+					<input ng-model="password" ng-disabled="processing" type="password" id="password" placeholder="" class="ng-pristine ng-valid">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="password">确认密码:&nbsp&nbsp</label>
+				<div class="controls">
+					<input ng-model="password" ng-disabled="processing" type="password" id="password" placeholder="" class="ng-pristine ng-valid">
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button type="submit" id="login" class="btn btn-primary" ng-disabled="processing">
+					<i class="icon-user icon-white"></i> <span ng-bind-template="免费注册" class="ng-binding">免费注册</span></button>
+					<span class="help-inline" style="padding-left:20px">已有帐号，在此<a ng-click="showForgetPwdMsg=true" href="#" onclick="return false">登录</a></span>
+				</div>
+			</div>
+		</div>
+	</form>
 </div>
-    
+					
 
 <footer>
 	<p>
@@ -206,6 +210,8 @@
 		<div style="vertical-align:middle; margin-right:20px"><a href="https://twitter.com/kippt" class="twitter-follow-button" data-show-count="false">关注 @Linux助手</a>
 	</div>        
 </footer>
-</article> <!-- /container -->
 
+</article> <!-- /container -->
+<script src="lib/jquery/jquery-1.8.2.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script> 
 </body></html>
