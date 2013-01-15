@@ -31,9 +31,7 @@ define("port", default=10888, help="run on the given port", type=int)
 
 class MachineInfoHandler(tornado.web.RequestHandler):
     def get(self):
-        #self.write("Hello, world")
 	print machine_info.get_machine_info()
-	print tornado.web.RequestHandler
 	self.write(machine_info.get_machine_info())
 
 class MonitorInfoHandler(tornado.web.RequestHandler):
@@ -53,11 +51,11 @@ class GetHistoryDataHandler(tornado.web.RequestHandler):
 
 class SetAlarmHandler(tornado.web.RequestHandler):
 	def get(self):
+		type = self.get_argument('alarm_type', '')
 		item = self.get_argument('alarm_item', '')
 		value = self.get_argument('alarm_value', '')
-		element = self.get_argument('alarm_element', '')
 		#self.write(get_history_data.get_history_data("2013-01-01","2013-01-02",'mem'))
-		self.write(alarm_control.modify_alarm_conf(item,element,value))
+		self.write(alarm_control.modify_alarm_conf(type,item,value))
 
 def main():
     tornado.options.parse_command_line()

@@ -44,7 +44,6 @@ def b_create_daily_file():
 
 def time2line(time_format):
 	try:
-		print "===>" + time_format
 		hour = time_format.split(":")[0]
 		minute = time_format.split(":")[1]
 		line = int(hour) * 12 + int(minute)/5 + 1
@@ -55,11 +54,11 @@ def time2line(time_format):
 
 def get_machine_value():
     try:
-	mem = os.popen('cat /proc/meminfo |grep MemTotal| awk -F " " \'{print $2}\'').read().strip()
+	total_mem = os.popen('cat /proc/meminfo |grep MemTotal| awk -F " " \'{print $2}\'').read().strip()
 	free_mem =  os.popen('cat /proc/meminfo |grep MemFree| awk -F " " \'{print $2}\'').read().strip()
-	mem_usage = str(int(mem) - int(free_mem))
+	#mem_usage = str(int(mem) - int(free_mem))
 	cpu_usage = os.popen('top -n 1 |grep Cpu |awk -F " " \'{print $2}\'').read().strip().split("%")[0]
-	result = 'mem_usage:' + mem_usage + ',' + "cpu_usage:" + cpu_usage
+	result = 'total_mem:' + total_mem  + ',' + "free_mem:" + free_mem + ","  + "cpu_usage:" + cpu_usage
 	global logger
         logger.debug("get machine info -->: " + str(result))
 	return result
@@ -69,7 +68,6 @@ def get_machine_value():
 def write_history_data(time_format):
 	try:
 		check_file =  b_create_daily_file()
-		print check_file
 		if check_file == False:
 			logger.debug("cat't find history data file ")
 		value = get_machine_value()
@@ -78,14 +76,6 @@ def write_history_data(time_format):
 	except SyntaxError:
 		logger.debug("write history data ERROR: " +  str(sys.exc_info()))
 if __name__ == '__main__':
-#	b_create_daily_file()
-#    create_daily_file()
-#	time2line('23:59')
-#	time2line('23:20')
-#	time2line('00:00')
-#	get_machine_value()
-	#write_history_data('23:40')
-	#sys.exit(0)
 	write_min = -1
 	while 1:
 		time.sleep(3)

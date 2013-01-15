@@ -71,7 +71,7 @@ def modify_alarm_conf(type,element,value):
 
 if __name__ == '__main__':
 	#print get_monitor_info()
-	modify_alarm_conf(CPU_ALARM,'switch','on')
+	modify_alarm_conf('basic','cpu','90')
 #	while 1:
 #		config = ConfigParser.ConfigParser()
 #		config.readfp(open(ALARM_FILE_PATH))

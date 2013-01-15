@@ -36,6 +36,7 @@ def get_machine_info():
         cpu = os.popen('cat /proc/cpuinfo |grep physical|grep id|sort -u|wc -l').read().strip()
 	uptime = os.popen('uptime |awk -F "," \'{print $1}\'').read().strip()
 	kernel = os.popen('uname -r').read().strip()
+	release = os.popen('head -n 1 /etc/issue').read().strip()
 	os_type = os.popen('uname -i').read().strip()
 	disk_name_list = os.popen('df -h|grep -v Filesystem |awk -F " " \'{print $1}\'').read().strip().split('\n')
 	disk_size_list = os.popen('df -h|grep -v Filesystem |awk -F " " \'{print $2}\'').read().strip().split('\n')
@@ -44,7 +45,7 @@ def get_machine_info():
 		disk_list = []
 		while i<len(disk_name_list):
 			tmp_dict = {}
-			tmp_dict = {"disk":disk_name_list[i],"size":disk_size_list[i]}
+			tmp_dict = {"mount":disk_name_list[i],"size":disk_size_list[i]}
 			disk_list.append(tmp_dict)
 			i += 1
 	nets = os.popen('ls /etc/sysconfig/network-scripts/ifcfg-*').read().strip().split('\n')
@@ -55,9 +56,10 @@ def get_machine_info():
 		net_name = net.replace('/etc/sysconfig/network-scripts/ifcfg-','')
 		net_ip = os.popen('cat ' + net + ' |grep IPADDR |grep -v \'#\'').read().strip()
 		if net_name !="" and net_ip !="":
+			net_ip = net_ip.replace("IPADDR=","")
 			temp_dict = {"nio":net_name,"ip":net_ip}
 			net_list.append(temp_dict)
-	dict_result = {"code":200,"message":"get machine info","data":{"cpu":cpu,"mem":mem,"uptime":uptime,"kernel":kernel,"os_type":os_type},"disk":disk_list,"network":net_list}
+	dict_result = {"code":200,"data":{"cpu":cpu,"mem":mem,"uptime":uptime,"kernel":kernel,"os_type":os_type,"disks":disk_list,"network":net_list,"release":release}}
 	json_resout = json.dumps(dict_result)
 	return json_resout
 	global logger

@@ -31,13 +31,13 @@ logger = log.LOG().getlogger()
                         
 def get_monitor_info():
     try:
-	mem = os.popen('cat /proc/meminfo |grep MemTotal| awk -F " " \'{print $2}\'').read().strip()
+	total_mem = os.popen('cat /proc/meminfo |grep MemTotal| awk -F " " \'{print $2}\'').read().strip()
 	free_mem =  os.popen('cat /proc/meminfo |grep MemFree| awk -F " " \'{print $2}\'').read().strip()
-        mem_usage = str(int(mem) - int(free_mem))
-	cpu_usage = os.popen('top -n 1 |grep Cpu |awk -F " " \'{print $2}\'').read().strip().split("%")[0]
+	#usage_mem = str(int(total_mem) - int(free_mem))
+	mem_dict = {"total_mem":total_mem,"free_mem":free_mem}
+	usage_cpu = os.popen('top -n 1 |grep Cpu |awk -F " " \'{print $2}\'').read().strip().split("%")[0]
 	timestamp = os.popen('/bin/date |awk -F " " \'{print $4}\'').read().strip()
-	print cpu_usage
-	dict_result = {"code":200,"message":"get monitor info","data":{"mem_usage":mem_usage,"cpu":cpu_usage,"timestamp":timestamp}}
+	dict_result = {"code":200,"data":{"mem":mem_dict,"usage_cpu":usage_cpu,"timestamp":timestamp}}
 	json_result = json.dumps(dict_result)
 	return json_result
 	global logger
@@ -46,5 +46,5 @@ def get_monitor_info():
         logger.debug("add_nc_info ERROR: " +  str(sys.exc_info()))
 
 if __name__ == '__main__':
-	get_monitor_info()
+	print get_monitor_info()
 

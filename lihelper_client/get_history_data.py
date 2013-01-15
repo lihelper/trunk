@@ -29,6 +29,7 @@ HISTORY_DATA_DIR = './history_data/'
 HISTORY_TEMPLATE_DIR = './history_data/template'
 TODAY = str(time.strftime('%Y-%m-%d',time.localtime(time.time())))                        
 
+
 def get_date_interval(start_time, end_time):
 	try:
 		ends = end_time.split("-")
@@ -62,6 +63,8 @@ def get_history_data(start_time, end_time, element):
 		start_month = int(starts[1])
 		start_day = int(starts[2])
 		date_interval = get_date_interval(start_time, end_time) 
+		if date_interval > 288:
+			date_interval = 288
 		start_day =datetime.date(start_year,start_month,start_day)
 		interval = 0
 		file_list = []
@@ -87,17 +90,19 @@ def data2json(content_list,element):
 			tmp_dict = {}
 			cs = content.split('\t')
 			if cs[1] == 'value':
-				cpu_usage = 0
-				mem_usage = 0
+				usage_cpu = "0"
+				total_mem = "0"
+				free_mem = "0"
 			else:
-				cpu_usage = cs[1].split(",")[0].split(":")[1]
-				mem_usage = cs[1].split(",")[1].split(":")[1]
+				usage_cpu = str(cs[1].split(",")[2].split(":")[1])
+				total_mem = str(cs[1].split(",")[0].split(":")[1])
+				free_mem = str(cs[1].split(",")[1].split(":")[1])
 			if element == 'cpu':
-				tmp_dict = {"cpu_usage":cpu_usage,"timestamp":cs[0]}
+				tmp_dict = {"usage_cpu":usage_cpu,"timestamp":cs[0]}
 			if element == 'mem':
-				tmp_dict = {"mem_usage":mem_usage,"timestamp":cs[0]}
+				tmp_dict = {"total_mem":total_mem,"free_mem":free_mem,"timestamp":cs[0]}
 			data_list.append(tmp_dict)
-		dict_result = {"code":200,"message":"get history data","data":data_list}
+		dict_result = {"code":200,"data":data_list}
 		json_result = json.dumps(dict_result)
 		return json_result
 	except SyntaxError:
@@ -113,14 +118,13 @@ def read_file_data(file_list,date_interval):
 			file_path = HISTORY_DATA_DIR + file
 			if os.path.isfile(file_path) ==  False:
 				logger.debug(file_path + 'is not find ')
-				return -1
-				break
+				file_path = HISTORY_TEMPLATE_DIR
 			i = 1
 			while i <= 288:
 				if i%date_interval != 0:
 					i = i + 1
 					continue
-				content_list.append(file + "-" +  linecache.getline(file_path,i).strip())
+				content_list.append(file + " " +  linecache.getline(file_path,i).strip())
 				i = i + 1
 		return content_list
 	except SyntaxError:
@@ -129,4 +133,4 @@ def read_file_data(file_list,date_interval):
 if __name__ == '__main__':
     #get_date_interval('2011-12-23','2012-12-30')
     #get_history_data('2013-01-01','2013-01-02','mem')
-    print get_history_data('2012-01-01','2012-01-02','mem')
+    print get_history_data('2013-1-14','2013-1-19','mem')
