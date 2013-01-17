@@ -132,7 +132,8 @@ textarea {
 }
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:"Microsoft YaHei";
+  
   font-size: 13px;
   line-height: 18px;
   color: #333333;
@@ -6059,4 +6060,9 @@ a:hover,a:active{text-decoration:underline;}
 .slides-pagination li a:hover{background-position:0 -10px;}
 .slide-1 a{position:absolute;top:220px;left:0;width:283px;height:57px;text-indent:-999px;overflow:hidden;background:url(../images/slide_1_button.png) no-repeat;}
 
-
+h2 {
+color: #333;
+font-size: 30px;
+font-family: "Microsoft Yahei","SimHei","Lucida Grande",Helvetica,Arial;
+font-weight: 600;
+}
