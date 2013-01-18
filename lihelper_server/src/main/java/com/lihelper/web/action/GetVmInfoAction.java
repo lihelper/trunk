@@ -35,7 +35,6 @@ public class GetVmInfoAction extends ActionSupport {
 
 		clientView.setCpu(client.getCpu());
 		clientView.setMem(client.getMem());
-		clientView.setDisk(client.getDisk());
 		clientView.setKernel(client.getKernel());
 		clientView.setOsType(client.getOsType());
 		clientView.setRelease(client.getRelease());

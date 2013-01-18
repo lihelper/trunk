@@ -2,7 +2,6 @@ package com.lihelper.model;
 
 import java.util.List;
 
-
 public class Client extends BasicClient {
 
 	/**
@@ -14,6 +13,15 @@ public class Client extends BasicClient {
 	private String osType;
 	private String release;
 	private List<Network> networks;
+	private List<Disk> disks;
+
+	public List<Disk> getDisks() {
+		return disks;
+	}
+
+	public void setDisks(List<Disk> disks) {
+		this.disks = disks;
+	}
 
 	public String getUptime() {
 		return uptime;

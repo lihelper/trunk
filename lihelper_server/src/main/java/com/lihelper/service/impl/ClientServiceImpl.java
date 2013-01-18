@@ -22,6 +22,7 @@ import com.lihelper.model.AlarmItemEnum;
 import com.lihelper.model.AlarmTypeEnum;
 import com.lihelper.model.BasicClient;
 import com.lihelper.model.Client;
+import com.lihelper.model.Disk;
 import com.lihelper.model.MonitorTypeEnum;
 import com.lihelper.model.Network;
 import com.lihelper.model.ResultMessage;
@@ -55,7 +56,6 @@ public class ClientServiceImpl implements ClientService {
 			JSONObject dataObject = jsonObject.getJSONObject("data");
 			client.setCpu(dataObject.getInt("cpu"));
 			client.setMem(dataObject.getInt("mem"));
-			client.setDisk(dataObject.getInt("disk"));
 			client.setUptime(dataObject.getString("uptime"));
 			client.setKernel(dataObject.getString("kernel"));
 			client.setOsType(dataObject.getString("os_type"));
@@ -75,8 +75,23 @@ public class ClientServiceImpl implements ClientService {
 				network.setNio(nio);
 				networks.add(network);
 			}
-
 			client.setNetworks(networks);
+
+			List<Disk> disks = new ArrayList<Disk>();
+			array = dataObject.getJSONArray("disks");
+			size = array.size();
+			for (int i = 0; i < size; i++) {
+
+				/** json串中获取网络相关信息 */
+				String mount = array.getJSONObject(i).getString("mount");
+				String diskSize = array.getJSONObject(i).getString("size");
+
+				Disk disk = new Disk();
+				disk.setMount(mount);
+				disk.setSize(diskSize);
+				disks.add(disk);
+			}
+			client.setDisks(disks);
 		} catch (Exception e) {
 			logger.error("json format error.", e);
 			return new ResultMessage<Client>(-1, "json format error.");
@@ -118,12 +133,7 @@ public class ClientServiceImpl implements ClientService {
 		 * &alarm_type=basic&alarm_item=cpu&alarm_value=90
 		 * </p>
 		 */
-		String uri = null;
-		if (alarmValue == -1) {
-			uri = String.format("%s&alarm_type=%salarm_item=%s", Constants.METHOD_MONITOR_ALARM_URI, alarmTypeEnum.getName(), alarmItemEnum.getName());
-		} else {
-			uri = String.format("%s&alarm_type=%salarm_item=%s&alarm_value=%d", Constants.METHOD_MONITOR_ALARM_URI, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
-		}
+		String uri = String.format("%s&alarm_type=%salarm_item=%s&alarm_value=%d", Constants.METHOD_MONITOR_ALARM_URI, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
 
 		ResultMessage<String> reqResultMsg = sendRequestInGetMethod(clientId, uri);
 
@@ -153,7 +163,6 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public String getMonitorInfoInRemote(int clientId) {
 		ResultMessage<String> result = sendRequestInGetMethod(clientId, Constants.METHOD_GET_MONITOR_INFO_URI);
-
 		return result.getR();
 	}
 
@@ -164,14 +173,12 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public String getMonitorInfosInRemote(int clientId, String begin, String end, MonitorTypeEnum monitorTypeEnum, String nio) {
-		final int amount = 100;
-
 		String requestUrl = null;
 
 		if (nio == null) {
-			requestUrl = String.format("%s&begin=%s&end=%s&amount=%d&monitor_type=%s", Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, amount, monitorTypeEnum.getName());
+			requestUrl = String.format("%s&begin=%s&end=%s&monitor_type=%s", Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, monitorTypeEnum.getName());
 		} else {
-			requestUrl = String.format("%s&begin=%s&end=%s&amount=%d&monitor_type=%s&nio=%s", Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, amount, monitorTypeEnum.getName(), nio);
+			requestUrl = String.format("%s&begin=%s&end=%s&monitor_type=%s&nio=%s", Constants.METHOD_GET_MONITOR_INFOS_URI, begin, end, monitorTypeEnum.getName(), nio);
 		}
 
 		ResultMessage<String> result = sendRequestInGetMethod(clientId, requestUrl);

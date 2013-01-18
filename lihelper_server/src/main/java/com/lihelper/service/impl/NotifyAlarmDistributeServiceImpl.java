@@ -50,7 +50,7 @@ public class NotifyAlarmDistributeServiceImpl implements NotifyAlarmDistributeSe
 	}
 
 	private String getMessage(Alarm alarm, int currentValue) {
-		if (alarm.getAlarmItem().equals(AlarmItemEnum.Health.name())) {
+		if (alarm.getAlarmItem().equals(AlarmItemEnum.CPU.name())) {
 			return new StringBuffer(alarm.getAlarmType()).append(" not ok").toString();
 		}
 

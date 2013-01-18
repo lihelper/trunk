@@ -2,17 +2,18 @@ package com.lihelper.model.view;
 
 import java.util.List;
 
+import com.lihelper.model.Disk;
 import com.lihelper.model.Network;
 
 public class ClientView {
 	private int cpu;
 	private int mem;
-	private int disk;
 	private String uptime;
 	private String kernel;
 	private String osType;
 	private String release;
 	private List<Network> networks;
+	private List<Disk> disks;
 
 	public int getCpu() {
 		return cpu;
@@ -28,14 +29,6 @@ public class ClientView {
 
 	public void setMem(int mem) {
 		this.mem = mem;
-	}
-
-	public int getDisk() {
-		return disk;
-	}
-
-	public void setDisk(int disk) {
-		this.disk = disk;
 	}
 
 	public String getUptime() {
@@ -76,5 +69,13 @@ public class ClientView {
 
 	public void setNetworks(List<Network> networks) {
 		this.networks = networks;
+	}
+
+	public List<Disk> getDisks() {
+		return disks;
+	}
+
+	public void setDisks(List<Disk> disks) {
+		this.disks = disks;
 	}
 }

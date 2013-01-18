@@ -42,9 +42,9 @@ public class Constants {
 	 */
 	public final static String METHOD_GET_VM_INFO_URI = "/lihelper/basic?method=getvminfo";
 	public final static String METHOD_RESTART_URI = "/lihelper/basic?method=restart";
-	public final static String METHOD_MONITOR_ALARM_URI = "/lihelper/monitor?method=monitor_alarm";
+	public final static String METHOD_MONITOR_ALARM_URI = "/lihelper/alarm?method=set_alarm";
 	public final static String METHOD_GET_MONITOR_INFO_URI = "/lihelper/monitor?method=get_monitor_info";
-	public final static String METHOD_GET_MONITOR_INFOS_URI = "/lihelper/monitor?method=get_monitor_infos";
+	public final static String METHOD_GET_MONITOR_INFOS_URI = "/lihelper/history?method=get_monitor_infos";
 
 	/**
 	 * callback action name

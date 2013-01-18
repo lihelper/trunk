@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum AlarmItemEnum {
-	Health("health"), Cpu("cpu"), Mem("mem"), Disk("disk"), Io("io"), Flow(
-			"flow");
+	CPU("cpu"), MEM("mem"), DISK("disk"), IO("io"), FLOW("flow"), CPU_SWITCH("cpu_switch"), MEM_SWITCH("mem_switch"), DISK_SWITCH("disk_switch"), IO_SWITCH("io_switch"), FLOW_SWITCH("flow_switch");
 
 	public static Map<String, AlarmItemEnum> ALARM_ITEM_ENUMS = new HashMap<String, AlarmItemEnum>();
 
@@ -29,7 +28,7 @@ public enum AlarmItemEnum {
 	public static AlarmItemEnum getAlarmItemEnum(String name) {
 		AlarmItemEnum alarmItemEnum = ALARM_ITEM_ENUMS.get(name);
 		if (alarmItemEnum == null) {
-			return AlarmItemEnum.Health;
+			return AlarmItemEnum.CPU;
 		}
 		return alarmItemEnum;
 	}
