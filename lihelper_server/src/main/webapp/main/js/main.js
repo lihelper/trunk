@@ -1,6 +1,6 @@
-function asyncCall(obj) {
+function showProduct(obj) {
         $.ajax({
-                url:"http://127.0.0.1:8080/lihelper/web/getvminfo.action",
+                url:"http://www.163.com/",
                 type: "GET",
                 cache: false,
                 success: function(html) {
@@ -12,4 +12,4 @@ function asyncCall(obj) {
 					return;
 				}
         });
-}
+}n
