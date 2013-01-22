@@ -9,6 +9,8 @@
   <url>http://maven.apache.org</url>
   <properties>		
 	 <jetty.version>7.6.7.v20120910</jetty.version>
+         <java.source.version>1.6</java.source.version>
+	 <java.target.version>1.6</java.target.version>
   </properties>
   <dependencies>
     <dependency>
@@ -167,5 +169,6 @@
   </dependencies>
   <build>
     <finalName>lihelper</finalName>
+    		<pluginManagement>			<plugins>				<plugin>					<groupId>org.apache.maven.plugins</groupId>					<artifactId>maven-eclipse-plugin</artifactId>					<configuration>					  <source>${java.source.version}</source>						<target>${java.target.version}</target>						<encoding>${file.encoding}</encoding>						<ajdtVersion>none</ajdtVersion>					</configuration>				</plugin>				<plugin>            <groupId>org.apache.maven.plugins</groupId>            <artifactId>maven-compiler-plugin</artifactId>            <configuration>              <source>${java.source.version}</source>              <target>${java.target.version}</target>              <encoding>${file.encoding}</encoding>            </configuration>         </plugin>				<plugin>					<groupId>org.apache.maven.plugins</groupId>					<artifactId>maven-resources-plugin</artifactId>					<configuration>						<encoding>${file.encoding}</encoding>					</configuration>				</plugin>				<plugin>					<groupId>org.apache.maven.plugins</groupId>					<artifactId>maven-jar-plugin</artifactId>					<configuration>						<excludes>							<exclude>*.svn</exclude>							<exclude>**/.svn</exclude>						</excludes>					</configuration>				</plugin>			</plugins>		</pluginManagement>
   </build>
 </project>
