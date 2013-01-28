@@ -41,67 +41,11 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public ResultMessage<Client> getClientInfoInRemote(int clientId) {
+	public String getClientInfoInRemote(int clientId) {
 
 		/** 设置获取客户端详细信息的请求URI */
 		ResultMessage<String> rqResult = sendRequestInGetMethod(clientId, Constants.METHOD_GET_VM_INFO_URI);
-
-		if (!rqResult.isSuccess()) {
-			return new ResultMessage<Client>(rqResult.getCode(), rqResult.getMsg());
-		}
-
-		Client client = new Client();
-		try {
-			JSONObject jsonObject = JSONObject.fromObject(rqResult.getR());
-			JSONObject dataObject = jsonObject.getJSONObject("data");
-			client.setCpu(dataObject.getInt("cpu"));
-			client.setMem(dataObject.getInt("mem"));
-			client.setUptime(dataObject.getString("uptime"));
-			client.setKernel(dataObject.getString("kernel"));
-			client.setOsType(dataObject.getString("os_type"));
-			client.setRelease(dataObject.getString("release"));
-
-			List<Network> networks = new ArrayList<Network>();
-			JSONArray array = dataObject.getJSONArray("network");
-			int size = array.size();
-			for (int i = 0; i < size; i++) {
-
-				/** json串中获取网络相关信息 */
-				String nio = array.getJSONObject(i).getString("nio");
-				String ip = array.getJSONObject(i).getString("ip");
-
-				Network network = new Network();
-				network.setIp(ip);
-				network.setNio(nio);
-				networks.add(network);
-			}
-			client.setNetworks(networks);
-
-			List<Disk> disks = new ArrayList<Disk>();
-			array = dataObject.getJSONArray("disks");
-			size = array.size();
-			for (int i = 0; i < size; i++) {
-
-				/** json串中获取网络相关信息 */
-				String mount = array.getJSONObject(i).getString("mount");
-				String diskSize = array.getJSONObject(i).getString("size");
-
-				Disk disk = new Disk();
-				disk.setMount(mount);
-				disk.setSize(diskSize);
-				disks.add(disk);
-			}
-			client.setDisks(disks);
-		} catch (Exception e) {
-			logger.error("json format error.", e);
-			return new ResultMessage<Client>(-1, "json format error.");
-		}
-
-		/** 设置ResultMessage返回对象 */
-		ResultMessage<Client> result = new ResultMessage<Client>(200, "successful");
-		result.setR(client);
-
-		return result;
+		return rqResult.getR();
 	}
 
 	@Override

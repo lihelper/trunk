@@ -1,11 +1,11 @@
 package com.lihelper.web.action;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.lihelper.constant.Constants;
-import com.lihelper.model.Client;
-import com.lihelper.model.ResultMessage;
-import com.lihelper.model.view.ClientView;
 import com.lihelper.service.ClientService;
 import com.lihelper.util.ParameterUtil;
+import com.lihelper.util.StackUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class GetVmInfoAction extends ActionSupport {
@@ -16,37 +16,10 @@ public class GetVmInfoAction extends ActionSupport {
 		int clientId = ParameterUtil.getParameterIntValue(Constants.CLIENT_ID);
 
 		/** 调用client获取详细信息 */
-		ResultMessage<?> result = clientService.getClientInfoInRemote(clientId);
+		String result = clientService.getClientInfoInRemote(clientId);
 
-		if (!result.isSuccess()) {
-			return Constants.ACTION_GET_VM_INFO_FAILURE;
-		}
-
-		/** 将对象Clinet转化成ClientView */
-		convert((Client) result.getR());
-
-		return Constants.ACTION_GET_VM_INFO_SUCCESS;
-	}
-
-	private void convert(Client client) {
-		if (client == null) {
-			return;
-		}
-
-		clientView.setCpu(client.getCpu());
-		clientView.setMem(client.getMem());
-		clientView.setKernel(client.getKernel());
-		clientView.setOsType(client.getOsType());
-		clientView.setRelease(client.getRelease());
-		clientView.setUptime(client.getUptime());
-		clientView.setNetworks(client.getNetworks());
-	}
-
-	/** velocity展现层使用 */
-	private ClientView clientView = new ClientView();
-
-	public ClientView getClientView() {
-		return clientView;
+		StackUtil.setResult(ServletActionContext.getContext().getValueStack(), result);
+		return Constants.ACTION_JSON_RESULT;
 	}
 
 	private ClientService clientService;

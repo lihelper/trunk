@@ -29,7 +29,7 @@ public interface ClientService {
 	 * @param clientId
 	 * @return
 	 */
-	public ResultMessage<Client> getClientInfoInRemote(int clientId);
+	public String getClientInfoInRemote(int clientId);
 
 	/**
 	 * 远程重启Client机器

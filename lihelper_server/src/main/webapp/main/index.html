@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-responsive.css">
 	<link rel="stylesheet" href="css/lihelper.css">	
+	<link rel="stylesheet" type="text/css" href="css/ext-all.css" />
 </head>
 <body class="app">
 
@@ -87,23 +88,29 @@
 						  <div id="collapseOne" class="accordion-body collapse in">
 							<div class="accordion-inner">
 								<p>
-									当前IP：
+									CPU个数：<div id="cpu"></div>
 								 </p>
 								 <p>
-									发行版本：
+									内存大小：<div id="mem"></div>
 								</p>
 								<p>
-									当前IP：
+									存储空间：<div id="disks"></div>
 								 </p>
 								 <p>
-									发行版本：
+									最后运行时间：<div id="uptime"></div>
 								</p>
 								<p>
-									当前IP：
+									内核版本：<div id="kernel"></div>
 								 </p>
 								 <p>
-									发行版本：
-								</p>					
+									操作系统版本：<div id="os_type"></div>
+								</p>
+								 <p>
+									发行版本：<div id="release"></div>
+								</p>
+								 <p>
+									网络：<div id="network"></div>
+								</p>								
 							</div>
 						  </div>
 					</div>
@@ -558,5 +565,7 @@
 <script src="lib/jquery/jquery-1.8.2.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
+<script type="text/javascript" src="js/ext-all.js"></script>
+<script type="text/javascript" src="js/line-demo.js"></script>
 </body>
 </html>

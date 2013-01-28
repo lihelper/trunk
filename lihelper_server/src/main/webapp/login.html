@@ -54,11 +54,12 @@
        </form>
    </div>
    
-   <form action="web/login.action" method="POST" id="auth-form">   
+   <form id="form1" method="POST" action="web/login.action">   
       <div class="all-errors"></div>
       <div class="input"> <input id="id_email" type="text" name="email" maxlength="75" placeholder="邮箱"/> </div>
       <div class="input"> <input type="password" name="password" id="id_password" placeholder="密码" /> </div>
       <div class="actions clearfix"><input type="submit" value="登 录" class="btn btn-green" /></div>
+	  <span id="result"></span>
     </form>
 </div>
 <p class="note"><a href="reset_password.html">忘记密码?</a> &middot; 需要帐号? <a href="register.html">免费注册</a> </p>
@@ -79,4 +80,27 @@
 <!--网页内容的尾部结束-->
 </article> <!-- /container -->
 <div id="fb-root"></div>
+<script type ="text/javascript" src ="lib/jquery/jquery.min.js"></script>
+<script type ="text/javascript" src ="lib/jquery/jquery.form.js"></script>
+<script type="text/javascript">
+         // wait for the DOM to be loaded
+          $(document).ready(function() 
+            {
+                $('#result').hide();//显示操作提示的元素不可见
+                $('#form1').submit(function()//提交表单
+                {
+                    //alert("ddd");
+                    var options = { 
+                    target:'#result', //后台将把传递过来的值赋给该元素
+                    url:'web/login.action', //提交给哪个执行
+                    type:'POST'//, 
+                    //success: function(){ alert($('#result').text());} //显示操作提示
+                    }; 
+                    $('#form1').ajaxSubmit(options); 
+                    return false; //为了不刷新页面,返回false，反正都已经在后台执行完了，没事！
+
+                });  
+            }
+         );
+ </script>
 </body></html>
