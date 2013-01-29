@@ -77,7 +77,7 @@ public class ClientServiceImpl implements ClientService {
 		 * &alarm_type=basic&alarm_item=cpu&alarm_value=90
 		 * </p>
 		 */
-		String uri = String.format("%s&alarm_type=%salarm_item=%s&alarm_value=%d", Constants.METHOD_MONITOR_ALARM_URI, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
+		String uri = String.format("%s&alarm_type=%s&alarm_item=%s&alarm_value=%d", Constants.METHOD_MONITOR_ALARM_URI, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
 
 		ResultMessage<String> reqResultMsg = sendRequestInGetMethod(clientId, uri);
 

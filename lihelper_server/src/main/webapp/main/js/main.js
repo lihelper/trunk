@@ -20,10 +20,40 @@ $(document).ready(function(){
 			$('#network').append(html);  
         });		
 	});
-	
 });
+  $("a#cpuAlarmSave").click(function(e){
+    $.ajax({
+		type:'post',
+		url:'/lihelper/web/monitoralarm.action',
+		data:$('form#formCpuAlarm').serialize(),
+		success:function(result){
+			 alert(result);
+		}
+	});
+  });
+  
+   $("a#memAlarmSave").click(function(e){
+    $.ajax({
+		type:'post',
+		url:'/lihelper/web/monitoralarm.action',
+		data:$('form#formMemAlarm').serialize(),
+		success:function(result){
+			 alert(result);
+		}
+	});
+  });
 
-
+   $("a#ioAlarmSave").click(function(e){
+    $.ajax({
+		type:'post',
+		url:'/lihelper/web/monitoralarm.action',
+		data:$('form#formIoAlarm').serialize(),
+		success:function(result){
+			 alert(result);
+		}
+	});
+  });
+  
 Ext.onReady(function() {
 	var cpuLoadStore = Ext.create('Ext.data.Store',{fields: [{name: 'cpu',type:'float'},{name: 'time'}]});
 	var memStore = Ext.create('Ext.data.Store',{fields: [{name: 'name'},{name: 'memory',type:'float'}]});	
@@ -46,10 +76,12 @@ Ext.onReady(function() {
 	
     function generateCpuLoad(obj) {
 		if (cpuArray.length < 8) {	
-			cpuArray.push({
-				cpu: obj.cpu,
-				time:obj.time
-			});
+			for(var i=0;i<8;i++){
+				cpuArray.push({
+					cpu: 0,
+					time:0
+				});		
+			};
 			cpuLoadStore.loadData(cpuArray);
 		}else{
 			

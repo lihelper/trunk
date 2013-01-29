@@ -24,9 +24,7 @@ public class MonitorAlarmAction extends ActionSupport {
 		AlarmItemEnum alarmItemEnum = AlarmItemEnum.getAlarmItemEnum(alarmItem);
 
 		ResultMessage<Object> reqResult = new ResultMessage<Object>();
-		if (alarmItemEnum == AlarmItemEnum.CPU) {
-			reqResult = clientService.monitorAlarm(clientId, alarmTypeEnum, alarmItemEnum, alarmModeNames);
-		}
+		
 		reqResult = clientService.monitorAlarm(clientId, alarmTypeEnum, alarmItemEnum, alarmModeNames, alarmValue);
 
 		if (reqResult.isSuccess()) {
