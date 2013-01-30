@@ -25,6 +25,7 @@ import log
 #import threading
 #from thread_pool import * 
 #import json
+import server_information
 import simplejson as json
         
 logger = log.LOG().getlogger()

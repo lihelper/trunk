@@ -23,6 +23,7 @@ import monitor_info
 import op_machine
 import get_history_data
 import alarm_control
+import datetime
 
 from tornado.options import define, options
 
@@ -36,6 +37,8 @@ class MachineInfoHandler(tornado.web.RequestHandler):
 
 class MonitorInfoHandler(tornado.web.RequestHandler):
     def get(self):
+        self.set_header("Content-Type", "application/json;charset=UTF-8")
+        self.set_header("Date",datetime.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT"))	
 	self.write(monitor_info.get_monitor_info())
 
 class OpMachineHandler(tornado.web.RequestHandler):

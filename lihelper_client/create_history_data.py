@@ -21,6 +21,7 @@ import xmlrpclib
 import sys
 import log
 import simplejson as json
+import monitor_info as monitor
         
 logger = log.LOG().getlogger()
 HISTORY_DATA_DIR = './history_data/'
@@ -57,7 +58,8 @@ def get_machine_value():
 	total_mem = os.popen('cat /proc/meminfo |grep MemTotal| awk -F " " \'{print $2}\'').read().strip()
 	free_mem =  os.popen('cat /proc/meminfo |grep MemFree| awk -F " " \'{print $2}\'').read().strip()
 	#mem_usage = str(int(mem) - int(free_mem))
-	cpu_usage = os.popen('top -n 1 |grep Cpu |awk -F " " \'{print $2}\'').read().strip().split("%")[0]
+	#cpu_usage = os.popen('top -n 1 |grep Cpu |awk -F " " \'{print $2}\'').read().strip().split("%")[0]
+	cpu_usage = monitor.get_cpu()
 	result = 'total_mem:' + total_mem  + ',' + "free_mem:" + free_mem + ","  + "cpu_usage:" + cpu_usage
 	global logger
         logger.debug("get machine info -->: " + str(result))
@@ -76,6 +78,8 @@ def write_history_data(time_format):
 	except SyntaxError:
 		logger.debug("write history data ERROR: " +  str(sys.exc_info()))
 if __name__ == '__main__':
+	print get_machine_value()
+	sys.exit(0)
 	write_min = -1
 	while 1:
 		time.sleep(3)
