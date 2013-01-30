@@ -2,7 +2,7 @@ Ext.require('Ext.data.*');
 Ext.require(['Ext.layout.container.Fit', 'Ext.window.MessageBox']);
 
 $(document).ready(function(){
-	$.getJSON("http://127.0.0.1:8080/lihelper/web/getvminfo.action?client_id=2&cookie_id=71FEEA2314A2DE55E38A45E82AFF0CF6",function(data){
+	$.getJSON("/lihelper/web/getvminfo.action?client_id=2&cookie_id=71FEEA2314A2DE55E38A45E82AFF0CF6",function(data){
 		$("#cpu").html(data.data.cpu);
 		$("#mem").html(data.data.mem);
 		$("#uptime").html(data.data.uptime);
@@ -62,7 +62,7 @@ Ext.onReady(function() {
 	var memArray = [];
 
 	function asynCall(){
-		$.getJSON("http://127.0.0.1:8080/lihelper/web/getmonitorinfo.action?client_id=2",function(data){
+		$.getJSON("/lihelper/web/getmonitorinfo.action?client_id=2",function(data){
 			obj = {
 				cpu: data.data.usage_cpu,
 				time:data.data.timestamp,
