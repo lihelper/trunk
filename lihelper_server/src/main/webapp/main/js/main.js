@@ -24,10 +24,15 @@ $(document).ready(function(){
   $("a#cpuAlarmSave").click(function(e){
     $.ajax({
 		type:'post',
+		dataType:'json',
 		url:'/lihelper/web/monitoralarm.action',
 		data:$('form#formCpuAlarm').serialize(),
 		success:function(result){
-			 alert(result);
+			if(result.code != 200){
+				alert("failure");
+			}else{
+				alert("successful");
+			}
 		}
 	});
   });
@@ -35,21 +40,62 @@ $(document).ready(function(){
    $("a#memAlarmSave").click(function(e){
     $.ajax({
 		type:'post',
+		dataType:'json',
 		url:'/lihelper/web/monitoralarm.action',
 		data:$('form#formMemAlarm').serialize(),
 		success:function(result){
-			 alert(result);
+			if(result.code != 200){
+				alert("failure");
+			}else{
+				alert("successful");
+			}
 		}
 	});
   });
-
+  
+   $("a#diskAlarmSave").click(function(e){
+    $.ajax({
+		type:'post',
+		dataType:'json',
+		url:'/lihelper/web/monitoralarm.action',
+		data:$('form#formDiskAlarm').serialize(),
+		success:function(result){
+			if(result.code != 200){
+				alert("failure");
+			}else{
+				alert("successful");
+			}
+		}
+	});
+  });
+  
    $("a#ioAlarmSave").click(function(e){
     $.ajax({
 		type:'post',
+		dataType:'json',
 		url:'/lihelper/web/monitoralarm.action',
 		data:$('form#formIoAlarm').serialize(),
 		success:function(result){
-			 alert(result);
+			if(result.code != 200){
+				alert("failure");
+			}else{
+				alert("successful");
+			}
+		}
+	});
+  });
+    $("a#networkAlarmSave").click(function(e){
+    $.ajax({
+		type:'post',
+		dataType:'json',
+		url:'/lihelper/web/monitoralarm.action',
+		data:$('form#formNetworkAlarm').serialize(),
+		success:function(result){
+			if(result.code != 200){
+				alert("failure");
+			}else{
+				alert("successful");
+			}
 		}
 	});
   });

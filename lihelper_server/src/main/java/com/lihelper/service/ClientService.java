@@ -68,6 +68,8 @@ public interface ClientService {
 	 */
 	public ResultMessage<Object> monitorAlarm(int clientId, AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum, String[] alarmModes, int alarmValue);
 
+	
+	public ResultMessage<Object> getMonitorAlarmInfo(int clientId, AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum);
 	/**
 	 * 获取远程客户端的监控信息，并以json格式返回
 	 * 

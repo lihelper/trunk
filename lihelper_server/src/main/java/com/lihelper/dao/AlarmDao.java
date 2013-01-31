@@ -21,5 +21,5 @@ public interface AlarmDao {
 	 * @param alarmValue
 	 * @return
 	 */
-	public int inertAlarm(int clientId, String alarmType, String alarmItem, int alarmValue);
+	public int insertAlarm(int clientId, String alarmType, String alarmItem, int alarmValue);
 }

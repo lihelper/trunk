@@ -11,7 +11,7 @@ import com.lihelper.util.ParameterUtil;
 import com.lihelper.util.StackUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class MonitorAlarmAction extends ActionSupport {
+public class GetMonitorAlarmInfoAction extends ActionSupport {
 
 	private final static long serialVersionUID = -7318873585201820884L;
 
@@ -20,22 +20,18 @@ public class MonitorAlarmAction extends ActionSupport {
 		int clientId = ParameterUtil.getParameterIntValue(Constants.CLIENT_ID);
 		String alarmType = ParameterUtil.getParameterStringValue(Constants.ALARM_TYPE);
 		String alarmItem = ParameterUtil.getParameterStringValue(Constants.ALARM_ITEM);
-		int alarmValue = ParameterUtil.getParameterIntValue(Constants.ALARM_VALUE);
-		String[] alarmModeNames = ParameterUtil.getParameterListValue(Constants.ALARM_MODE);
 
 		AlarmTypeEnum alarmTypeEnum = AlarmTypeEnum.getAlarmTypeEnum(alarmType);
 		AlarmItemEnum alarmItemEnum = AlarmItemEnum.getAlarmItemEnum(alarmItem);
 
-		ResultMessage<Object> reqResult = new ResultMessage<Object>();
+		ResultMessage<Object> reqResult = clientService.getMonitorAlarmInfo(clientId, alarmTypeEnum, alarmItemEnum);
 
-		reqResult = clientService.monitorAlarm(clientId, alarmTypeEnum, alarmItemEnum, alarmModeNames, alarmValue);
-
-		String jsonResult = "{\"code\":-1}";
-		if (reqResult.isSuccess()) {
-			jsonResult = "{\"code\":200}";
+		if (reqResult != null && reqResult.isSuccess()) {
+			StackUtil.setResult(ServletActionContext.getContext().getValueStack(), reqResult);
+		} else {
+			StackUtil.setResult(ServletActionContext.getContext().getValueStack(), Constants.JSON_ERROR_RESULT);
 		}
 
-		StackUtil.setResult(ServletActionContext.getContext().getValueStack(), jsonResult);
 		return Constants.ACTION_JSON_RESULT;
 	}
 

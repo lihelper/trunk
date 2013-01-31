@@ -22,6 +22,7 @@
     
     
 	<package name="web" extends="struts-default" namespace="/web">   
+        
 	    <result-types>
 	        <result-type name="velocity" class="org.apache.struts2.dispatcher.VelocityResult" default="true"/>
 	        <result-type name="jsonResult" class="jsonResult"/>
@@ -33,8 +34,14 @@
 	  	
 	  	<global-results>
 			<result type="velocity" name="Login">/template/login.vm</result>
+			 <result name="exception">/error.html</result>
 		</global-results>
-		  	
+  
+        <!-- 定义全局异常映射 -->   
+        <global-exception-mappings>     
+            <exception-mapping exception="java.lang.Exception" result="exception"/>  
+        </global-exception-mappings>
+        		  	
 	    <action name="getvminfo.action" class="getvminfo" method="execute">
 	        <!-- <interceptor-ref name ="authorizationInterceptor" />  -->
 	  		<result type="jsonResult" name="JsonResult"></result>	
@@ -48,10 +55,14 @@
 
 	    <action name="monitoralarm.action" class="monitorAlarm" method="execute">
 	        <!--<interceptor-ref name ="authorizationInterceptor" />-->
-	  		<result type="velocity" name="MonitorAlarmSuccess">/template/restart_vm_success.vm</result>
-	 		<result type="velocity" name="MonitorAlarmFailure">/template/restart_vm_failed.vm</result>		
+			<result type="jsonResult" name="JsonResult"></result>	
 	    </action>
 	    
+	    <action name="getmonitoralarminfo.action" class="getMonitorAlarmInfo" method="execute">
+	        <!--<interceptor-ref name ="authorizationInterceptor" />-->
+			<result type="jsonResult" name="JsonResult"></result>	
+	    </action>
+	    	    
 	    <action name="getmonitorinfo.action" class="getMonitorInfo" method="execute">
 	        <!--<interceptor-ref name ="authorizationInterceptor" />-->
 	        <result type="jsonResult" name="JsonResult"></result>	
@@ -76,6 +87,6 @@
 		<action name="monitor" class="webProxyAction" method="execute">
 	     	<interceptor-ref name ="authorizationInterceptor" /> 
 		</action>
-	 	-->
+	 	--> 
 	</package>
 </struts>

@@ -3,6 +3,12 @@ package com.lihelper.constant;
 public class Constants {
 
 	/**
+	 * JSON返回值
+	 */
+	public final static String JSON_ERROR_RESULT =  "{\"code\":-1}";
+	public final static String JSON_SUCCESS_RESULT =  "{\"code\":-1}";
+	
+	/**
 	 * 请求参数
 	 */
 	public final static String METHOD = "method";

@@ -83,7 +83,11 @@
     <bean id="monitorAlarm" class="com.lihelper.web.action.MonitorAlarmAction">
          <property name="clientService" ref="clientService"/>
     </bean> 
-       
+ 
+    <bean id="getMonitorAlarmInfo" class="com.lihelper.web.action.GetMonitorAlarmInfoAction">
+         <property name="clientService" ref="clientService"/>
+    </bean> 
+          
     <bean id="login" class="com.lihelper.web.action.LoginAction">
          <property name="userService" ref="userService"/>
     </bean> 

@@ -1,10 +1,6 @@
 package com.lihelper.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -18,13 +14,11 @@ import com.lihelper.constant.Constants;
 import com.lihelper.dao.AlarmDao;
 import com.lihelper.dao.AlarmModeDao;
 import com.lihelper.dao.ClientDao;
+import com.lihelper.model.Alarm;
 import com.lihelper.model.AlarmItemEnum;
 import com.lihelper.model.AlarmTypeEnum;
 import com.lihelper.model.BasicClient;
-import com.lihelper.model.Client;
-import com.lihelper.model.Disk;
 import com.lihelper.model.MonitorTypeEnum;
-import com.lihelper.model.Network;
 import com.lihelper.model.ResultMessage;
 import com.lihelper.service.ClientService;
 import com.lihelper.service.HttpClientAdapter;
@@ -88,7 +82,7 @@ public class ClientServiceImpl implements ClientService {
 		DefaultTransactionDefinition def = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);// 事务定义类
 		TransactionStatus status = transactionManager.getTransaction(def);
 		try {
-			int alarmId = alarmDao.inertAlarm(clientId, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
+			int alarmId = alarmDao.insertAlarm(clientId, alarmTypeEnum.getName(), alarmItemEnum.getName(), alarmValue);
 
 			for (String alarmModeName : alarmModes) {
 				alarmModeDao.insertAlarmMode(alarmId, alarmModeName);
@@ -193,5 +187,27 @@ public class ClientServiceImpl implements ClientService {
 
 	public void setClientDao(ClientDao clientDao) {
 		this.clientDao = clientDao;
+	}
+
+	@Override
+	public ResultMessage<Object> getMonitorAlarmInfo(int clientId, AlarmTypeEnum alarmTypeEnum, AlarmItemEnum alarmItemEnum) {
+		Alarm alarm = alarmDao.getAlarm(clientId, alarmTypeEnum.getName(), alarmItemEnum.getName());
+		
+		if(alarm == null){
+			return null;
+		}
+		
+		List<String> alarmModeSet = alarmModeDao.getAlarmModeByAlarmId(alarm.getId());
+		if(alarmModeSet == null){
+			return null;
+		}
+		
+		alarm.setAlarmModeSet(alarmModeSet);
+		/** 设置输出返回值 */
+		ResultMessage<Object> resultMessage = new ResultMessage<Object>();
+		resultMessage.setCode(200);
+		resultMessage.setMsg("successful");
+		resultMessage.setR(alarm);
+		return resultMessage;
 	}
 }
