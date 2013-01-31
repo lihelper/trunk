@@ -91,13 +91,13 @@
                 {
                     //alert("ddd");
                     var options = { 
-                    target:'#result', //后台将把传递过来的值赋给该元素
+                    //target:'#result', //后台将把传递过来的值赋给该元素
                     url:'web/login.action', //提交给哪个执行
                     type:'POST'//, 
                     //success: function(){ alert($('#result').text());} //显示操作提示
                     }; 
-                    $('#form1').ajaxSubmit(options); 
-                    return false; //为了不刷新页面,返回false，反正都已经在后台执行完了，没事！
+                   // $('#form1').ajaxSubmit(options); 
+                    //return false; //为了不刷新页面,返回false，反正都已经在后台执行完了，没事！
 
                 });  
             }
