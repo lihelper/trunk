@@ -7,9 +7,9 @@
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:/jdbc.properties</value>
-				<value>classpath:/email.properties</value>
-				<value>classpath:/notify.properties</value>
+				<value>file:${app.config.dir}/jdbc.properties</value>
+				<value>file:${app.config.dir}/email.properties</value>
+				<value>file:${app.config.dir}/notify.properties</value>
 			</list>
 		</property>
 	</bean>
