@@ -87,20 +87,32 @@ def data2json(content_list,element):
 	try:
 		data_list = []
 		for content in content_list:
-			tmp_dict = {}
 			cs = content.split('\t')
+			tmp_dict = {}
+			cpu_dict = {}
+			mem_dict = {}
+			net_dict = {}
 			if cs[1] == 'value':
-				usage_cpu = "0"
-				total_mem = "0"
-				free_mem = "0"
+				cpu_dict = {}
+				mem_dict = {}
+				net_dict = {}
 			else:
-				usage_cpu = str(cs[1].split(",")[2].split(":")[1])
-				total_mem = str(cs[1].split(",")[0].split(":")[1])
-				free_mem = str(cs[1].split(",")[1].split(":")[1])
+				cs_dict = []
+				cs_dict = eval(cs[1])
+				for keys in cs_dict.keys():
+					if keys == 'mem':
+						mem_dict = cs_dict[keys]
+					if keys == 'cpu':
+						cpu_dict['cpu'] = cs_dict[keys]
+					if keys == 'network':
+						net_dict['network'] = cs_dict[keys]
 			if element == 'cpu':
-				tmp_dict = {"usage_cpu":usage_cpu,"timestamp":cs[0]}
+				tmp_dict = cpu_dict
 			if element == 'mem':
-				tmp_dict = {"total_mem":total_mem,"free_mem":free_mem,"timestamp":cs[0]}
+				tmp_dict = mem_dict
+			if element == 'network':
+				tmp_dict = net_dict
+			tmp_dict['timestamp'] = cs[0]
 			data_list.append(tmp_dict)
 		dict_result = {"code":200,"data":data_list}
 		json_result = json.dumps(dict_result)
@@ -133,4 +145,6 @@ def read_file_data(file_list,date_interval):
 if __name__ == '__main__':
     #get_date_interval('2011-12-23','2012-12-30')
     #get_history_data('2013-01-01','2013-01-02','mem')
-    print get_history_data('2013-1-14','2013-1-19','mem')
+    print get_history_data('2013-1-30','2013-1-31','mem')
+    print get_history_data('2013-1-30','2013-1-31','cpu')
+    print get_history_data('2013-1-30','2013-1-31','network')
