@@ -5,6 +5,7 @@ import com.lihelper.model.RequestHolder;
 import com.lihelper.model.User;
 import com.lihelper.util.CacheUtil;
 import com.lihelper.util.ParameterUtil;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
@@ -25,15 +26,14 @@ public class AuthorizationInterceptor implements Interceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		String cookieId = ParameterUtil.getParameterStringValue(Constants.COOKIE_ID);
-		Object obj = CacheUtil.getCache(cookieId);
+		ActionContext actionContext = invocation.getInvocationContext();
+
+		Object obj = actionContext.getSession().get(Constants.LIHELPER_SESSION_USER);
 
 		if (obj == null) {
 			return LOGIN;
 		}
-
 		RequestHolder.setCurrentUser((User) obj);
-
 		return invocation.invoke();
 	}
 

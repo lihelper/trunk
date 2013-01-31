@@ -8,6 +8,9 @@ public class Constants {
 	public final static String JSON_ERROR_RESULT =  "{\"code\":-1}";
 	public final static String JSON_SUCCESS_RESULT =  "{\"code\":-1}";
 	
+	
+	public final static String LIHELPER_SESSION_USER = "lihelper.session.user";
+	
 	/**
 	 * 请求参数
 	 */

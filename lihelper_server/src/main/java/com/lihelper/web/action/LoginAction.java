@@ -3,10 +3,9 @@ package com.lihelper.web.action;
 import com.lihelper.constant.Constants;
 import com.lihelper.model.User;
 import com.lihelper.service.UserService;
-import com.lihelper.util.CacheUtil;
-import com.lihelper.util.CookieUtil;
 import com.lihelper.util.MD5Util;
 import com.lihelper.util.ParameterUtil;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
@@ -26,12 +25,13 @@ public class LoginAction extends ActionSupport {
 			return USER_NOT_FOUND;
 		}
 
-		if (!user.getPassword().equals(md5Password)) {
+		if (!md5Password.equals(user.getPassword())) {
 			return INVAILD_PASSWORD;
 		}
 
-		cookieId = CookieUtil.generateCookieId(email);
-		CacheUtil.putCache(cookieId, user);
+		// 保存session
+		ActionContext actionContext = ActionContext.getContext();
+		actionContext.getSession().put(Constants.LIHELPER_SESSION_USER, user);
 
 		return LOGIN_SUCCESS;
 	}
@@ -40,12 +40,6 @@ public class LoginAction extends ActionSupport {
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
-	}
-
-	private String cookieId;
-
-	public String getCookieId() {
-		return cookieId;
 	}
 
 	private static final String USER_NOT_FOUND = "UserNotFound";
