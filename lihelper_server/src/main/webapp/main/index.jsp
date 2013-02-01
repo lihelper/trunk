@@ -126,6 +126,24 @@
 								<div id="dynamicMem"></div>
 							</div>
 						  </div>
+
+						<div id="historyCpu" class="modal hide fade" style="display: none; ">
+							<div class="modal-header">
+								<a class="close" data-dismiss="modal">×</a>
+								<h3>历史性能数据</h3>
+							</div>
+							<form id="formGetmonitorinfos" name="formGetmonitorinfos">
+								<input type="hidden" name="client_id" value="2">
+								<input type="text" class="span1" placeholder="2013-1-31" name="begin">
+								<input type="text" class="span1" placeholder="2013-1-31" name="end">
+								<input type="text" class="span1" placeholder="cpu" name="monitor_type">
+								<a href="#" class="btn btn-primary" id="getmonitorinfos">查询</a>
+							</form>
+							<div class="modal-body" id="history">
+							     
+							</div>
+						</div>
+					    <td><a data-toggle="modal" id="ahistory" href="#historyCpu" class="btn btn-small btn-primary">CPU历史性能数据</a></td>
 					</div>
 				  </div>
 				  </div>

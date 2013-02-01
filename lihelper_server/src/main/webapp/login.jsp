@@ -54,7 +54,7 @@
        </form>
    </div>
    
-   <form id="form1" method="POST" action="web/login.action">   
+   <form id="form1" method="POST" action="login.do">   
       <div class="all-errors"></div>
       <div class="input"> <input id="id_email" type="text" name="email" maxlength="75" placeholder="邮箱"/> </div>
       <div class="input"> <input type="password" name="password" id="id_password" placeholder="密码" /> </div>
@@ -92,7 +92,7 @@
                     //alert("ddd");
                     var options = { 
                     //target:'#result', //后台将把传递过来的值赋给该元素
-                    url:'web/login.action', //提交给哪个执行
+                    url:'login.do', //提交给哪个执行
                     type:'POST'//, 
                     //success: function(){ alert($('#result').text());} //显示操作提示
                     }; 

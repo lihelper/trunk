@@ -2,7 +2,7 @@ Ext.require('Ext.data.*');
 Ext.require(['Ext.layout.container.Fit', 'Ext.window.MessageBox']);
 
 $(document).ready(function(){
-	$.getJSON("/lihelper/web/getvminfo.action?client_id=2&cookie_id=71FEEA2314A2DE55E38A45E82AFF0CF6",function(data){
+	$.getJSON("/lihelper/web/getvminfo.do?client_id=2&cookie_id=71FEEA2314A2DE55E38A45E82AFF0CF6",function(data){
 		$("#cpu").html(data.data.cpu);
 		$("#mem").html(data.data.mem);
 		$("#uptime").html(data.data.uptime);
@@ -25,7 +25,7 @@ $(document).ready(function(){
     $.ajax({
 		type:'post',
 		dataType:'json',
-		url:'/lihelper/web/monitoralarm.action',
+		url:'/lihelper/web/monitoralarm.do',
 		data:$('form#formCpuAlarm').serialize(),
 		success:function(result){
 			if(result.code != 200){
@@ -41,7 +41,7 @@ $(document).ready(function(){
     $.ajax({
 		type:'post',
 		dataType:'json',
-		url:'/lihelper/web/monitoralarm.action',
+		url:'/lihelper/web/monitoralarm.do',
 		data:$('form#formMemAlarm').serialize(),
 		success:function(result){
 			if(result.code != 200){
@@ -57,7 +57,7 @@ $(document).ready(function(){
     $.ajax({
 		type:'post',
 		dataType:'json',
-		url:'/lihelper/web/monitoralarm.action',
+		url:'/lihelper/web/monitoralarm.do',
 		data:$('form#formDiskAlarm').serialize(),
 		success:function(result){
 			if(result.code != 200){
@@ -73,7 +73,7 @@ $(document).ready(function(){
     $.ajax({
 		type:'post',
 		dataType:'json',
-		url:'/lihelper/web/monitoralarm.action',
+		url:'/lihelper/web/monitoralarm.do',
 		data:$('form#formIoAlarm').serialize(),
 		success:function(result){
 			if(result.code != 200){
@@ -88,7 +88,7 @@ $(document).ready(function(){
     $.ajax({
 		type:'post',
 		dataType:'json',
-		url:'/lihelper/web/monitoralarm.action',
+		url:'/lihelper/web/monitoralarm.do',
 		data:$('form#formNetworkAlarm').serialize(),
 		success:function(result){
 			if(result.code != 200){
@@ -100,6 +100,199 @@ $(document).ready(function(){
 	});
   });
   
+  var historyStore = Ext.create('Ext.data.Store',{fields: [{name: 'timestamp'},{name: 'usage_cpu'}]});
+  //初始化history
+ $("a#ahistory").click(function(e){
+	var cpuArray=[];
+	for(var i=0;i<8;i++){
+		cpuArray.push({
+			timestamp: 0,
+			usage_cpu:0
+		});		
+	};
+	historyStore.loadData(cpuArray);	
+    Ext.create('Ext.chart.Chart', {
+        renderTo: Ext.get("history"),
+        width: 500,
+        height: 300,
+        store: historyStore,	 	    
+        theme: 'Category1',
+        animate: false,
+        axes: [
+           {
+     
+            type: 'Numeric',//配置坐标的类型。一般用到的是Numeric、Category
+            position: 'left', //4种位置设置.left, bottom, right, top
+            fields: ['cpu'],//可以配置多个字段，用来设置坐标显示的值。其实这个配置和series中的yFiled配置项是没有关系的
+            label: {//可以配置文字的显示方式。默认显示字段的值。比如设置label旋转一定的度数
+                  rotate: {
+                      degrees: 360
+                  }
+            
+            },
+	          labelTitle: {
+                font: '15px Arial'
+            },
+            title: 'CPU Load',//配置坐标需要显示的title
+            minimum: 0,//minimum：可以配置坐标的最小值。
+            maximum:100,//当然会有对应的最大值maximum。
+            majorTickSteps:4,//可以配合使用majorTickSteps(主刻度，配置总共有多少个刻度)，
+                       //minorTickSteps(次刻度，在每个主可短中画次刻度。
+                       //比如配置10，则数字没增加10，会话一个次刻度)
+            grid: true
+            //grid :{ // 设定网格颜色值
+            //      odd: {
+            //          opacity: 1,
+            //          fill: '#ddd',
+            //          stroke: '#bbb',
+            //          'stroke-width': 1
+            //      }
+            //  }
+          },
+        {
+            type: 'Category',
+            position: 'bottom',
+            fields: ['timestamp'],
+            title: 'timestamp'
+         }
+        ],
+        series: [
+            {
+            title: 'Core 1 (3.4GHz)',	            
+            fill: true,//填充颜色           
+            type: 'line',//type：配置图表的类型，图表有很多类型。每个图表都有各自独特的配置项
+            //highlight: { //设置鼠标移动到图表上面，是否高亮。
+            //    size: 7,
+            //    radius: 7
+            //},
+           tips: {//设置鼠标移动到图表上时的提示信息
+              trackMouse: true,  
+              width: 140,  
+              height: 28,  
+              renderer: function(storeItem, item) {  
+                this.setTitle('usage cpu:' + storeItem.get('usage_cpu') + '%' );  
+              }},  
+              
+            axis: 'left',
+            xField: 'timestamp',//设定x坐标绑定的字段。因为axes设定了坐标的值，所以这个字段绑定的值必须在axes的坐标值中
+            yField: 'usage_cpu',//设定y坐标绑定的字段
+				   // markerConfig: { //设定点的形状,大小,颜色
+				   //         type: 'circle',
+				   //         radius: 3,
+				   //         'fill': '#f00'
+				   //     }
+				    lineWidth: 4,
+            showMarkers: false,
+				    style: {
+              'stroke-width': 1
+              }
+            }]
+    });
+ });
+   
+ $("a#getmonitorinfos").click(function(e){
+ 
+	var historyStore = new Ext.data.Store({
+        autoDestroy: true,
+        proxy: new Ext.data.HttpProxy({
+            type:'ajax',
+            url: '/lihelper/getmonitorinfos.do',
+			data:$('form#formGetmonitorinfos').serialize(),
+            headers: { 'Content-type': 'application/json' },
+            reader:{
+                 type:'json',
+                 root:'data'
+            }
+        }),
+        fields: [{
+            name: 'timestamp'},
+        {
+            name: 'usage_cpu'}]
+    });
+	
+	historyStore.load();
+	 
+	
+    Ext.create('Ext.chart.Chart', {
+        renderTo: Ext.get("history"),
+        width: 500,
+        height: 300,
+        store: historyStore,	 	    
+        theme: 'Category1',
+        animate: false,
+        axes: [
+           {
+     
+            type: 'Numeric',//配置坐标的类型。一般用到的是Numeric、Category
+            position: 'left', //4种位置设置.left, bottom, right, top
+            fields: ['cpu'],//可以配置多个字段，用来设置坐标显示的值。其实这个配置和series中的yFiled配置项是没有关系的
+            label: {//可以配置文字的显示方式。默认显示字段的值。比如设置label旋转一定的度数
+                  rotate: {
+                      degrees: 360
+                  }
+            
+            },
+	          labelTitle: {
+                font: '15px Arial'
+            },
+            title: 'CPU Load',//配置坐标需要显示的title
+            minimum: 0,//minimum：可以配置坐标的最小值。
+            maximum:100,//当然会有对应的最大值maximum。
+            majorTickSteps:4,//可以配合使用majorTickSteps(主刻度，配置总共有多少个刻度)，
+                       //minorTickSteps(次刻度，在每个主可短中画次刻度。
+                       //比如配置10，则数字没增加10，会话一个次刻度)
+            grid: true
+            //grid :{ // 设定网格颜色值
+            //      odd: {
+            //          opacity: 1,
+            //          fill: '#ddd',
+            //          stroke: '#bbb',
+            //          'stroke-width': 1
+            //      }
+            //  }
+          },
+        {
+            type: 'Category',
+            position: 'bottom',
+            fields: ['time'],
+            title: 'time'
+         }
+        ],
+        series: [
+            {
+            title: 'Core 1 (3.4GHz)',	            
+            fill: true,//填充颜色           
+            type: 'line',//type：配置图表的类型，图表有很多类型。每个图表都有各自独特的配置项
+            //highlight: { //设置鼠标移动到图表上面，是否高亮。
+            //    size: 7,
+            //    radius: 7
+            //},
+           tips: {//设置鼠标移动到图表上时的提示信息
+              trackMouse: true,  
+              width: 140,  
+              height: 28,  
+              renderer: function(storeItem, item) {  
+                this.setTitle('usage cpu:' + storeItem.get('cpu') + '%' );  
+              }},  
+              
+            axis: 'left',
+            xField: 'time',//设定x坐标绑定的字段。因为axes设定了坐标的值，所以这个字段绑定的值必须在axes的坐标值中
+            yField: 'cpu',//设定y坐标绑定的字段
+				   // markerConfig: { //设定点的形状,大小,颜色
+				   //         type: 'circle',
+				   //         radius: 3,
+				   //         'fill': '#f00'
+				   //     }
+				    lineWidth: 4,
+            showMarkers: false,
+				    style: {
+              'stroke-width': 1
+              }
+            }]
+    });
+    	
+});
+  
 Ext.onReady(function() {
 	var cpuLoadStore = Ext.create('Ext.data.Store',{fields: [{name: 'cpu',type:'float'},{name: 'time'}]});
 	var memStore = Ext.create('Ext.data.Store',{fields: [{name: 'name'},{name: 'memory',type:'float'}]});	
@@ -108,7 +301,7 @@ Ext.onReady(function() {
 	var memArray = [];
 
 	function asynCall(){
-		$.getJSON("/lihelper/web/getmonitorinfo.action?client_id=2",function(data){
+		$.getJSON("/lihelper/web/getmonitorinfo.do?client_id=2",function(data){
 			obj = {
 				cpu: data.data.usage_cpu,
 				time:data.data.timestamp,

@@ -33,7 +33,7 @@
 	    </interceptors>
 	  	
 	  	<global-results>
-			<result type="velocity" name="Login">/template/login.vm</result>
+			<result type="redirect" name="login">login.jsp</result>
 			 <result name="exception">/error.html</result>
 		</global-results>
   
@@ -42,44 +42,44 @@
             <exception-mapping exception="java.lang.Exception" result="exception"/>  
         </global-exception-mappings>
         		  	
-	    <action name="getvminfo.action" class="getvminfo" method="execute">
-	        <!-- <interceptor-ref name ="authorizationInterceptor" />  -->
+	    <action name="getvminfo.do" class="getvminfo" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor"/>
 	  		<result type="jsonResult" name="JsonResult"></result>	
 	    </action>
 	
-	    <action name="restart.action" class="restart" method="execute">
+	    <action name="restart.do" class="restart" method="execute">
 	         <interceptor-ref name ="authorizationInterceptor" />
 	  		<result type="velocity" name="RestartSuccess">/template/restart_vm_success.vm</result>
 	 		<result type="velocity" name="RestartFailure">/template/restart_vm_failed.vm</result>	
 	    </action>
 
-	    <action name="monitoralarm.action" class="monitorAlarm" method="execute">
-	        <!--<interceptor-ref name ="authorizationInterceptor" />-->
+	    <action name="monitoralarm.do" class="monitorAlarm" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
 			<result type="jsonResult" name="JsonResult"></result>	
 	    </action>
 	    
-	    <action name="getmonitoralarminfo.action" class="getMonitorAlarmInfo" method="execute">
-	        <!--<interceptor-ref name ="authorizationInterceptor" />-->
+	    <action name="getmonitoralarminfo.do" class="getMonitorAlarmInfo" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
 			<result type="jsonResult" name="JsonResult"></result>	
 	    </action>
 	    	    
-	    <action name="getmonitorinfo.action" class="getMonitorInfo" method="execute">
-	        <!--<interceptor-ref name ="authorizationInterceptor" />-->
+	    <action name="getmonitorinfo.do" class="getMonitorInfo" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
 	        <result type="jsonResult" name="JsonResult"></result>	
 	    </action>
 	
-	    <action name="getmonitorinfos.action" class="getMonitorInfos" method="execute">
-	        <!--<interceptor-ref name ="authorizationInterceptor" />-->
+	    <action name="getmonitorinfos.do" class="getMonitorInfos" method="execute">
+	        <interceptor-ref name ="authorizationInterceptor" />
 	        <result type="jsonResult" name="JsonResult"></result>	
 	    </action>
 	    	    	    
 	    <action name="login.do" class="login" method="execute">
-	  		<result name="UserNotFound">login.jsp</result>
-	        <result name="LoginSuccess">/main/index.jsp</result>
+	  		<result name="error">login.jsp</result>
+	        <result name="success" type="redirect">/main/index.jsp</result>
 	    </action>
 	  
-	    <action name="register.action" class="register" method="execute">
-	  		<result type="redirect" name="RegisterSuccess">/main/index.html</result>
+	    <action name="register.do" class="register" method="execute">
+	  		<result name="RegisterSuccess" type="redirect">/main/index.jsp</result>
 	     	<result type="velocity" name="RegisterFailure">/template/register_failure.vm</result>
 	    </action>	 
 	          

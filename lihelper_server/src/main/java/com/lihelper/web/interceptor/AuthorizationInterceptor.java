@@ -3,8 +3,6 @@ package com.lihelper.web.interceptor;
 import com.lihelper.constant.Constants;
 import com.lihelper.model.RequestHolder;
 import com.lihelper.model.User;
-import com.lihelper.util.CacheUtil;
-import com.lihelper.util.ParameterUtil;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
@@ -37,5 +35,5 @@ public class AuthorizationInterceptor implements Interceptor {
 		return invocation.invoke();
 	}
 
-	private static final String LOGIN = "Login";
+	private static final String LOGIN = "login";
 }

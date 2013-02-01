@@ -22,18 +22,18 @@ public class LoginAction extends ActionSupport {
 
 		User user = userService.getUserByEmail(email);
 		if (user == null) {
-			return USER_NOT_FOUND;
+			return ERROR;
 		}
 
 		if (!md5Password.equals(user.getPassword())) {
-			return INVAILD_PASSWORD;
+			return ERROR;
 		}
 
 		// 保存session
 		ActionContext actionContext = ActionContext.getContext();
 		actionContext.getSession().put(Constants.LIHELPER_SESSION_USER, user);
 
-		return LOGIN_SUCCESS;
+		return SUCCESS;
 	}
 
 	private UserService userService;
@@ -42,7 +42,6 @@ public class LoginAction extends ActionSupport {
 		this.userService = userService;
 	}
 
-	private static final String USER_NOT_FOUND = "UserNotFound";
-	private static final String INVAILD_PASSWORD = "InvalidPassword";
-	private static final String LOGIN_SUCCESS = "LoginSuccess";
+	private static final String ERROR = "error";
+	private static final String SUCCESS = "success";
 }
