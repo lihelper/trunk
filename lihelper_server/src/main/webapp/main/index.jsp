@@ -127,23 +127,32 @@
 							</div>
 						  </div>
 
-						<div id="historyCpu" class="modal hide fade" style="display: none; ">
+						<div id="divHistoryMonitorData" class="modal hide fade" style="display: none;left:400px; height:500px;width:1000px;">
 							<div class="modal-header">
 								<a class="close" data-dismiss="modal">×</a>
 								<h3>历史性能数据</h3>
 							</div>
-							<form id="formGetmonitorinfos" name="formGetmonitorinfos">
+							<form id="formGetMonitorInfosByCpu" name="formGetmonitorinfosByCpu">
 								<input type="hidden" name="client_id" value="2">
-								<input type="text" class="span1" placeholder="2013-1-31" name="begin">
-								<input type="text" class="span1" placeholder="2013-1-31" name="end">
-								<input type="text" class="span1" placeholder="cpu" name="monitor_type">
-								<a href="#" class="btn btn-primary" id="getmonitorinfos">查询</a>
+								<input type="hidden" name="monitor_type" value="cpu">
+								开始时间:<input type="text" class="span2"  placeholder="2013-1-31" name="begin" value="2013-1-31">
+								结束时间:<input type="text" class="span2"  placeholder="2013-1-31" name="end" value="2013-1-31">
+								<a href="#" class="btn btn-primary" id="getMonitorInfosByCpu">查询</a>
 							</form>
-							<div class="modal-body" id="history">
-							     
+							<div>
+							<div class="modal-body" id="divDrawCpuHistory"></div>
+
+							<form id="formGetMonitorInfosByMem" name="formGetMonitorInfosByMem">
+								<input type="hidden" name="client_id" value="2">
+								<input type="hidden" name="monitor_type" value="mem">
+								开始时间:<input type="text" class="span2" placeholder="2013-1-31" name="begin" value="2013-1-31">
+								结束时间:<input type="text" class="span2" placeholder="2013-1-31" name="end" value="2013-1-31">								
+								<a href="#" class="btn btn-primary" id="getMonitorInfosByMem">查询</a>
+							</form>
+							<div class="modal-body" id="divDrawMemHistory"></div>
 							</div>
 						</div>
-					    <td><a data-toggle="modal" id="ahistory" href="#historyCpu" class="btn btn-small btn-primary">CPU历史性能数据</a></td>
+					    <td><a data-toggle="modal" id="aHistoryMonitorData" href="#divHistoryMonitorData" class="btn btn-small btn-primary">历史性能数据</a></td>
 					</div>
 				  </div>
 				  </div>
